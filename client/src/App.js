@@ -7,6 +7,7 @@ import Banner from "./Components/Banner";
 import WebtoonList from "./Components/WebtoonList/WebtoonList";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
+import Signup from "./Components/Signup";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<WebtoonList />} />
                 <Route exact path="/login" element={<Login />} />
+                <Route exact path="/signup" element={<Signup />} />
             </Routes>
             <Footer />
         </div>

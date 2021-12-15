@@ -32,7 +32,7 @@ function Login() {
 
     return (
         <div className={styles.login}>
-            <div className={styles.loginbox}>
+            <div className={styles.container}>
                 <div className={styles.top}>
                     <h4>로그인</h4>
                 </div>
