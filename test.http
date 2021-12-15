@@ -1,0 +1,21 @@
+@hostname = http://localhost:3001/webtoon
+@content-type = application/json
+
+
+
+GET {{hostname}}
+###
+
+POST http://localhost:3001/webtoon HTTP/1.1
+Content-Type: {{content-type}}
+{
+    "title": "전자오락수호대",
+    "author": "가스파드",
+    "publisher": "Naver",
+    "image": "https://shared-comic.pstatic.net/thumb/webtoon/637931/thumbnail/thumbnail_IMAG06_a00dcf02-989d-49ca-b267-a8da6208e0d0.jpg",
+    "url": "https://comic.naver.com/webtoon/list?titleId=637931",
+    "genre": "스토리, 판타지",
+    "age": "전체",
+    "days": "완결"
+}
+###

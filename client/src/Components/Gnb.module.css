@@ -1,0 +1,23 @@
+.gnb {
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.gnb ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.gnb li {
+    width: 100%;
+    text-align: center;
+    padding: 16px 8px 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.gnb li:hover {
+    color: var(--google-blue);
+}
