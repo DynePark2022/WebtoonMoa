@@ -1,6 +1,6 @@
 .banner {
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--background-white);
     color: #ffffff;
     overflow: hidden;
     position: relative;
@@ -31,13 +31,12 @@
     right: 10px;
 }
 
-.item {
+.banner_image {
     width: 100%;
     height: 100%;
-    background-color: #ddd;
 }
 
-.item img {
+.banner_image img {
     width: 100%;
     height: 100%;
     object-fit: cover;

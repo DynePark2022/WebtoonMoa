@@ -1,7 +1,6 @@
 .webtoonList {
     width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid #eeeeee;
+    background-color: var(--background-white);
     padding-bottom: 20px;
 }
 

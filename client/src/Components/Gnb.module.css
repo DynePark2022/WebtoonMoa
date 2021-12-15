@@ -1,7 +1,7 @@
 .gnb {
     width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid #eeeeee;
+    background-color: var(--background-white);
+    border-bottom: 1px solid var(--border-grey);
 }
 
 .gnb ul {

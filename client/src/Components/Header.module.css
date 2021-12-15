@@ -1,9 +1,9 @@
 header {
-    background-color: #ffffff;
+    background-color: var(--background-white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid var(--border-grey);
 }
 
 .logo {
@@ -21,7 +21,7 @@ header {
 
 .icons i {
     padding: 12px 10px;
-    border-left: 1px solid #eeeeee;
+    border-left: 1px solid var(--border-grey);
     font-size: 16px;
     cursor: pointer;
 }
