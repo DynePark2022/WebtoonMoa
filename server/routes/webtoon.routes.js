@@ -1,11 +1,9 @@
-const express = require("express");
-const router = express.Router();
-const {
-    getWebtoon,
-    createWebtoon,
-} = require("../controllers/webtoons.controller");
+const { Router } = require("express");
+const router = Router();
 
-router.get("/", getWebtoon);
-router.post("/", createWebtoon);
+const webtoonController = require("../controllers/webtoons.controller");
+
+router.get("/", webtoonController.getWebtoon);
+router.post("/", webtoonController.postWebtoon);
 
 module.exports = router;
