@@ -5,15 +5,17 @@ const webtoonRoutes = require("./routes/webtoon.routes");
 const authRoutes = require("./routes/auth.routes");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const { requireAuth } = require("./middleware/auth.middleware");
 
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
 const MONGODB_URI = process.env.MONGODB_URI;
+const ORIGIN = process.env.ORIGIN;
 
 // Middleware
-app.use(cors({ origin: "*", credentials: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: ORIGIN, credentials: true }));
 app.use(cookieParser());
 
 // DB
@@ -25,15 +27,12 @@ mongoose
     .catch((error) => console.log(error.message));
 
 // Routes
-app.get("/", function (req, res) {
+app.get("*", checkUser);
+app.get("/", (req, res) => {
     res.send("hi");
 });
-// app.get("/set-cookies", function (req, res) {
-//     const dayInSec = 60 * 60 * 24;
-//     res.setHeader("Set-Cookie", "newUser=true");
-//     res.cookie("newUser", false, { maxAge: 1000 * dayInSec, httpOnly: true });
-//     res.send("cookie");
-// });
-
+app.get("/secret", requireAuth, (req, res) => {
+    res.send("authorized page");
+});
 app.use("/webtoon", webtoonRoutes);
 app.use(authRoutes);
