@@ -3,8 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import InputForm from "./InputForm";
 import styles from "./Login.module.css";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
+    let state = useSelector((state) => state);
+    let dispatch = useDispatch();
+
     const navigate = useNavigate();
     const [values, setValues] = useState({
         email: "",
@@ -37,7 +41,8 @@ function Login() {
         axios
             .post("http://localhost:3001/login", { ...values })
             .then((res) => {
-                console.log(res);
+                console.log(res.data);
+                dispatch({ type: "getUser", payload: res.data });
                 navigate("/");
             })
             .catch((err) => {
