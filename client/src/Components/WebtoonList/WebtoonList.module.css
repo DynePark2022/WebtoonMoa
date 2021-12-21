@@ -24,7 +24,7 @@
 }
 
 @media screen and (max-width: 860px) {
-    .webtoons {
+    .webtoonList {
         grid-template-columns: repeat(4, 1fr);
     }
 }
