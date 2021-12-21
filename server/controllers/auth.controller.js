@@ -1,5 +1,7 @@
 const User = require("../models/user.model");
 const argon2 = require("argon2");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // Handle errors
 const handleErrors = (err) => {
@@ -29,15 +31,26 @@ const handleErrors = (err) => {
     }
 };
 
+const dayInSec = 24 * 60 * 60;
+
+const createToken = (id) => {
+    return jwt.sign({ id }, JWT_Token_Secret, { expiresIn: dayInSec });
+};
+
 const createUser = async (req, res) => {
     const { username, email, password, confirmPassword } = req.body;
     if (password === confirmPassword) {
         try {
             const user = await User.create({ username, email, password });
-            res.status(201).json(user._id);
+            const token = createToken(user._id);
+            res.cookie("jwt", token, {
+                httpOnly: true,
+                maxAge: dayInSec * 1000,
+            });
+            return res.status(201).json({ user: user._id });
         } catch (err) {
             const errors = handleErrors(err);
-            res.status(400).json({ errors });
+            return res.status(400).json({ errors });
         }
     }
     res.status(400).send("passwords do not match");

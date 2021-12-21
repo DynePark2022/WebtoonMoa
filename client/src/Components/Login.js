@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputForm from "./InputForm";
 import styles from "./Login.module.css";
+import axios from "axios";
 
 function Login() {
+    const navigate = useNavigate();
     const [values, setValues] = useState({
         email: "",
         password: "",
@@ -30,6 +32,19 @@ function Login() {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios
+            .post("http://localhost:3001/login", { ...values })
+            .then((res) => {
+                console.log(res);
+                navigate("/");
+            })
+            .catch((err) => {
+                alert(err);
+            });
+    };
+
     return (
         <div className={styles.login}>
             <div className={styles.container}>
@@ -45,7 +60,9 @@ function Login() {
                             onChange={onChange}
                         />
                     ))}
-                    <button type="submit">로그인</button>
+                    <button onClick={handleSubmit} type="submit">
+                        로그인
+                    </button>
                 </form>
                 <div className={styles.bot}>
                     <Link to="/signup">회원가입</Link>

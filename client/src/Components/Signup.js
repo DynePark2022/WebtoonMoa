@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputForm from "./InputForm";
 import styles from "./Signup.module.css";
 import termsOfUse from "../DB/termsOfUse";
+import axios from "axios";
 
 function Signup() {
+    const navigate = useNavigate();
+
     const [values, setValues] = useState({
         username: "",
         email: "",
         password: "",
-        confirmpassword: "",
+        confirmPassword: "",
     });
 
     const inputs = [
@@ -59,10 +62,22 @@ function Signup() {
 
     const onChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value });
-        console.log(e.target.name);
     };
 
-    console.log(values);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios
+            .post("http://localhost:3001/signup", { ...values })
+            .then((res) => {
+                console.log(res);
+                navigate("/");
+            })
+            .catch((err) => {
+                console.log(err);
+                alert(err);
+            });
+    };
+
     return (
         <div className={styles.signup}>
             <div className={styles.container}>
@@ -90,7 +105,7 @@ function Signup() {
                         (필수)
                         <strong>이용약관</strong>에 동의합니다.
                     </label>
-                    <button type="submit">회원가입</button>
+                    <button onClick={handleSubmit}>회원가입</button>
                 </form>
 
                 <div className={styles.bot}>
