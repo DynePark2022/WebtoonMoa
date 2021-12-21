@@ -5,7 +5,7 @@ const webtoonRoutes = require("./routes/webtoon.routes");
 const authRoutes = require("./routes/auth.routes");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const { requireAuth } = require("./middleware/auth.middleware");
+const { requireAuth, checkUser } = require("./middleware/auth.middleware");
 
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
