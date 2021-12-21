@@ -1,24 +1,22 @@
-const Webtoon = require("../model/webtoon.model");
+const Webtoon = require("../models/webtoon.model");
 
 const getWebtoon = async (req, res) => {
     try {
-        const Webtoons = await Webtoon.find();
-        console.log(Webtoons);
-        res.status(200).json(Webtoons);
+        const webtoons = await Webtoon.find();
+        res.status(200).json(webtoons);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 };
 
-const createWebtoon = async (req, res) => {
+const postWebtoon = async (req, res) => {
     try {
-        const newWebtoon = new Webtoon(req.body);
-        await newWebtoon.save();
-        res.status(201).json(newWebtoon);
+        const webtoon = await Webtoon.create(req.body);
+        res.status(201).json(webtoon);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
     res.send("webtoon added!");
 };
 
-module.exports = { getWebtoon, createWebtoon };
+module.exports = { getWebtoon, postWebtoon };

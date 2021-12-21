@@ -1,0 +1,56 @@
+.login {
+    background-color: var(--background-white);
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+}
+
+.container {
+    width: 400px;
+    border: 1px solid var(--border-grey);
+    border-radius: 4px;
+    margin: 20px auto;
+}
+
+.top {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-grey);
+    background: #fafafa;
+}
+
+.mid {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-grey);
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 12px;
+    font-weight: normal;
+    margin-bottom: 6px;
+}
+
+.mid button {
+    width: 100%;
+    border: none;
+    padding: 5px 10px;
+    background-color: var(--google-blue);
+    color: white;
+    border-radius: 4px;
+}
+
+.mid button:hover {
+    filter: brightness(90%);
+}
+
+.bot {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.bot :first-child {
+    margin-right: 20px;
+}

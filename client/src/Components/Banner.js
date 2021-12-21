@@ -11,7 +11,7 @@ function Banner() {
                 <button className={styles.right}>
                     <i class="fas fa-chevron-right" />
                 </button>
-                <div className={styles.item}>
+                <div className={styles.banner_image}>
                     <img
                         src="https://thumbs.dreamstime.com/z/merry-christmas-colorful-balls-banner-decoration-stars-backgroun-background-text-77218307.jpg"
                         alt="a"

@@ -1,4 +1,4 @@
-@hostname = http://localhost:3001/webtoon
+@hostname = http://localhost:3001
 @content-type = application/json
 
 
@@ -8,6 +8,7 @@ GET {{hostname}}
 
 POST http://localhost:3001/webtoon HTTP/1.1
 Content-Type: {{content-type}}
+
 {
     "title": "전자오락수호대",
     "author": "가스파드",
@@ -19,3 +20,23 @@ Content-Type: {{content-type}}
     "days": "완결"
 }
 ###
+
+POST {{hostname}}/signup HTTP/1.1
+Content-Type: {{content-type}}
+
+{
+    "username": "TomatoSauce",
+    "email": "111@gmail.com",
+    "password": "123123123q",
+    "confirmPassword": "123123123q"
+}
+
+###
+
+POST {{hostname}}/login HTTP/1.1
+Content-Type: {{content-type}}
+
+{
+    "email": "111@gmail.com",
+    "password": "123123123q"
+}

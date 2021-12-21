@@ -1,0 +1,42 @@
+.inputForm {
+    margin-bottom: 8px;
+}
+
+.inputForm label {
+    color: black;
+}
+
+.inputForm input {
+    width: 100%;
+    padding: 8px 0 6px 8px;
+    border: 1px solid var(--border-grey);
+    border-radius: 4px;
+}
+
+.inputForm input:focus {
+    outline: none;
+    box-shadow: 0px 0px 2px var(--google-blue);
+}
+
+.inputForm label {
+    font-size: 12px;
+}
+
+.inputForm span {
+    font-size: 10px;
+    padding: 0 4px;
+    color: var(--google-red);
+    display: none;
+}
+
+.inputForm input:invalid[focused="true"] + span {
+    display: block;
+}
+
+.inputForm input:invalid[focused="true"] {
+    border: 1px solid var(--google-red);
+}
+
+.inputForm input:invalid[focused="true"]:focus {
+    box-shadow: 0px 0px 2px var(--google-red);
+}

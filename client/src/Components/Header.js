@@ -8,7 +8,7 @@ function Header() {
             <div className={styles.logo}>
                 <Link to="/">
                     <h1>WebtoonMoa</h1>
-                    {/* <img src="#" alt="Main Logo" /> */}
+                    {/* <img src="#" alt="Main Logo" />  */}
                 </Link>
             </div>
             <div className={styles.icons}>
