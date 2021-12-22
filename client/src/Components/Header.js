@@ -1,10 +1,12 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import { signOut } from "../actions/user";
 
 function Header() {
-    const username = useSelector((state) => state.username);
+    const username = useSelector((state) => state.user.username);
+    let dispatch = useDispatch();
 
     return (
         <header>
@@ -16,9 +18,9 @@ function Header() {
             </div>
             <div className={styles.icons}>
                 {username ? (
-                    <Link to="/logout">
-                        <button>로그아웃</button>
-                    </Link>
+                    <button onClick={() => dispatch(signOut())}>
+                        로그아웃
+                    </button>
                 ) : (
                     <Link to="/login">
                         <button>로그인</button>

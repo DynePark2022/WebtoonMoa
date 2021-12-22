@@ -6,7 +6,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
-    let state = useSelector((state) => state);
+    useSelector((state) => state);
     let dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -39,10 +39,11 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:3001/login", { ...values })
+            .post("http://localhost:3001/login", values, {
+                withCredentials: true,
+            })
             .then((res) => {
-                console.log(res.data);
-                dispatch({ type: "getUser", payload: res.data });
+                dispatch({ type: "GET_USER", payload: res.data });
                 navigate("/");
             })
             .catch((err) => {
@@ -65,7 +66,11 @@ function Login() {
                             onChange={onChange}
                         />
                     ))}
-                    <button onClick={handleSubmit} type="submit">
+                    <button
+                        // onClick={() => dispatch(signIn(values))}
+                        onClick={handleSubmit}
+                        type="submit"
+                    >
                         로그인
                     </button>
                 </form>

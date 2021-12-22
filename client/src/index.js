@@ -4,21 +4,11 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
+import reducer from "./Reducers/reducer";
+import thunk from "redux-thunk";
 
-let user = { _id: "", username: "", email: "" };
-
-function reducer(state = user, action) {
-    if (action.type === "getUser") {
-        let copy = { ...state };
-        copy.username = action.payload.username;
-        return copy;
-    } else {
-        return state;
-    }
-}
-
-const store = createStore(reducer);
+const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
     <React.StrictMode>
