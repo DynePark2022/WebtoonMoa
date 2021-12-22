@@ -27,6 +27,7 @@ mongoose
     .catch((error) => console.log(error.message));
 
 // Routes
+app.use(authRoutes);
 app.get("*", checkUser);
 app.get("/", (req, res) => {
     res.send("hi");
@@ -35,4 +36,3 @@ app.get("/secret", requireAuth, (req, res) => {
     res.send("authorized page");
 });
 app.use("/webtoon", webtoonRoutes);
-app.use(authRoutes);

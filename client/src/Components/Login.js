@@ -3,8 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import InputForm from "./InputForm";
 import styles from "./Login.module.css";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
+    useSelector((state) => state);
+    let dispatch = useDispatch();
+
     const navigate = useNavigate();
     const [values, setValues] = useState({
         email: "",
@@ -35,9 +39,11 @@ function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:3001/login", { ...values })
+            .post("http://localhost:3001/login", values, {
+                withCredentials: true,
+            })
             .then((res) => {
-                console.log(res);
+                dispatch({ type: "GET_USER", payload: res.data });
                 navigate("/");
             })
             .catch((err) => {
@@ -60,7 +66,11 @@ function Login() {
                             onChange={onChange}
                         />
                     ))}
-                    <button onClick={handleSubmit} type="submit">
+                    <button
+                        // onClick={() => dispatch(signIn(values))}
+                        onClick={handleSubmit}
+                        type="submit"
+                    >
                         로그인
                     </button>
                 </form>
