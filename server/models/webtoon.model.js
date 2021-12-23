@@ -7,11 +7,21 @@ const WebtoonSchema = new Schema({
     publisher: { type: String, required: true },
     image: { type: String, required: true },
     url: { type: String, required: true },
-    genre: String,
+    // isAdult: { type: Boolean, required: true },
     age: String,
+    genre: String,
     days: String,
     likes: Number,
     hates: Number,
+    latest_episode: String,
+    latest_url: String,
+    createdAt: { type: Date, immutable: true, default: () => Date.now() },
+    updatedAt: { type: Date, default: () => Date.now() },
+});
+
+WebtoonSchema.pre("save", function (next) {
+    this.updatedAt = Date.now();
+    next();
 });
 
 const Webtoon = mongoose.model("webtoon", WebtoonSchema);
