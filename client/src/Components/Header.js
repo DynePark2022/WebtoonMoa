@@ -5,7 +5,7 @@ import styles from "./Header.module.css";
 import { signOut } from "../actions/user";
 
 function Header() {
-    const username = useSelector((state) => state.user.username);
+    const username = useSelector((state) => state.reducerUser.user.username);
     let dispatch = useDispatch();
 
     return (

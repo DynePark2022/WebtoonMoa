@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Webtoon from "./Webtoon";
 import styles from "./WebtoonList.module.css";
-import dummy from "../../DB/data.json";
+import useWebtoonSearch from "../../actions/useWebtoonSearch";
 
 function WebtoonList() {
-    let allWebtoons = dummy.webtoons;
-    if (true) {
-        allWebtoons.length = 32;
-    }
-    let sampleWebtoons = allWebtoons;
+    const [page, setPage] = useState(1);
+    let limit = 8;
+    const { webtoons, loading, error } = useWebtoonSearch(page, limit);
+
+    const handleSubmit = () => {
+        setPage(page + 1);
+    };
     return (
         <div className={styles.webtoonList}>
             <div className={styles.webtoons}>
-                {sampleWebtoons.map((webtoon) => (
-                    <Webtoon key={webtoon.id} webtoon={webtoon} />
+                {webtoons.map((webtoon) => (
+                    <Webtoon key={webtoon._id} webtoon={webtoon} />
                 ))}
             </div>
-            <button>더보기</button>
+
+            <div>{loading && "Loading..."}</div>
+            <div>{error && "Error!!!"}</div>
+            <button onClick={handleSubmit}>더보기</button>
         </div>
     );
 }

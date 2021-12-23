@@ -1,3 +1,5 @@
+import { combineReducers } from "redux";
+
 let userState = {
     user: {
         isAdult: false,
@@ -17,7 +19,7 @@ let userState = {
 export const GET_USER = "GET_USER";
 export const LOGOUT = "LOGOUT";
 
-const reducer = (state = userState, action) => {
+const reducerUser = (state = userState, action) => {
     switch (action.type) {
         case GET_USER:
             let copy = { ...state };
@@ -32,4 +34,20 @@ const reducer = (state = userState, action) => {
     }
 };
 
-export default reducer;
+export const GET_WEBTOON = "GET_WEBTOON";
+export const LIKE_WEBTOON = "GET_WEBTOON";
+
+const reducerWebtoon = (state = [], action) => {
+    switch (action.type) {
+        case GET_WEBTOON:
+            return [...state, ...action.payload.data];
+        case LIKE_WEBTOON:
+            return state;
+        default:
+            return state;
+    }
+};
+
+const reducers = combineReducers({ reducerUser, reducerWebtoon });
+
+export default reducers;
