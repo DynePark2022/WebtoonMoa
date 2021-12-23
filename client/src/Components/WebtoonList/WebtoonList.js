@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Webtoon from "./Webtoon";
 import styles from "./WebtoonList.module.css";
-// import dummy from "../../DB/data.json";
-import { getWebtoon } from "../../actions/webtoon";
-import { useDispatch, useSelector } from "react-redux";
+import useWebtoonSearch from "../../actions/useWebtoonSearch";
 
 function WebtoonList() {
-    const webtoons = useSelector((state) => state.reducerWebtoon);
-    let dispatch = useDispatch();
+    const [page, setPage] = useState(1);
+    let limit = 8;
+    const { webtoons, loading, error } = useWebtoonSearch(page, limit);
 
-    useEffect(() => {
-        dispatch(getWebtoon());
-    }, []);
-
-    // let allWebtoons = dummy.webtoons;
-    // if (true) {
-    //     allWebtoons.length = 32;
-    // }
-    // let sampleWebtoons = allWebtoons;
+    const handleSubmit = () => {
+        setPage(page + 1);
+    };
     return (
         <div className={styles.webtoonList}>
             <div className={styles.webtoons}>
@@ -25,7 +18,10 @@ function WebtoonList() {
                     <Webtoon key={webtoon._id} webtoon={webtoon} />
                 ))}
             </div>
-            <button>더보기</button>
+
+            <div>{loading && "Loading..."}</div>
+            <div>{error && "Error!!!"}</div>
+            <button onClick={handleSubmit}>더보기</button>
         </div>
     );
 }

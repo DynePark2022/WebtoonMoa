@@ -3,7 +3,6 @@ import { GET_USER, LOGOUT } from "../Reducers/reducer";
 
 export const signOut = () => async (dispatch) => {
     try {
-        console.log("hi");
         const { data } = await api.get_logout();
         console.log(data);
         dispatch({ type: LOGOUT });

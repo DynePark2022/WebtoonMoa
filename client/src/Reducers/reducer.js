@@ -40,10 +40,7 @@ export const LIKE_WEBTOON = "GET_WEBTOON";
 const reducerWebtoon = (state = [], action) => {
     switch (action.type) {
         case GET_WEBTOON:
-            // const temp = action.payload;
-            const temp = [...action.payload];
-            state = temp;
-            return state;
+            return [...state, ...action.payload.data];
         case LIKE_WEBTOON:
             return state;
         default:

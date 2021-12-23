@@ -1,7 +1,8 @@
 import axios from "axios";
 const url = "http://localhost:3001";
 
-export const get_webtoon = () => axios.get(`${url}/webtoon`);
+export const get_webtoon = (page, limit) =>
+    axios.get(`${url}/webtoon?page=${page}&limit=${limit}`);
 export const get_logout = () =>
     axios.get(`${url}/logout`, { withCredentials: true });
 export const post_login = (input) =>
