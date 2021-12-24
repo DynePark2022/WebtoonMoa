@@ -17,7 +17,8 @@ function HoverButton() {
 
     return (
         <div className={styles.HoverButton}>
-            <div className={showHover && `${styles.show}`}>
+            {/* ERROR = <div className={showHover && `${styles.show}`> */}
+            <div className={showHover ? `${styles.show}` : undefined}>
                 <button onClick={scrollTop}>
                     <i class="fas fa-chevron-up"></i>
                 </button>
@@ -31,7 +32,7 @@ function HoverButton() {
                 </button>
             </div>
             <button
-                className={showHover && `${styles.plus}`}
+                className={showHover ? `${styles.plus}` : undefined}
                 onClick={onClickHandler}
             >
                 <i class="fas fa-plus"></i>
