@@ -49,10 +49,10 @@ function Banner() {
         <div className={styles.banner}>
             <div className={styles.container}>
                 <button onClick={slideLeft} className={styles.left}>
-                    <i class="fas fa-chevron-left" />
+                    <i className="fas fa-chevron-left" />
                 </button>
                 <button onClick={slideRight} className={styles.right}>
-                    <i class="fas fa-chevron-right" />
+                    <i className="fas fa-chevron-right" />
                 </button>
                 <div
                     className={styles.everySlides}

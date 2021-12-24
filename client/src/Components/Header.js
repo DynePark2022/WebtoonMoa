@@ -26,27 +26,27 @@ function Header() {
                         <button>로그인</button>
                     </Link>
                 )}
-                <i class="fas fa-search"></i>
-                <i class="fas fa-folder-open"></i>
+                <i className="fas fa-search"></i>
+                <i className="fas fa-folder-open"></i>
                 <Link to="/user">
-                    <i class="fas fa-user"></i>
+                    <i className="fas fa-user"></i>
                     <span>{username}</span>
                 </Link>
-                <i class="fas fa-bars"></i>
+                <i className="fas fa-bars"></i>
 
                 {/* {username ? <span>hello, {username}</span> : null} */}
-                {/* <i class="fas fa-search"></i>
-                <i class="fas fa-folder-open"></i>
+                {/* <i className="fas fa-search"></i>
+                <i className="fas fa-folder-open"></i>
                 <Link to="/user">
-                    <i class="fas fa-user"></i>
+                    <i className="fas fa-user"></i>
                 </Link>
                 <Link to="/login">
-                    <i class="fas fa-lock"></i>{" "}
+                    <i className="fas fa-lock"></i>{" "}
                 </Link>
                 <Link to="/out">
-                    <i class="fas fa-lock"></i>{" "}
+                    <i className="fas fa-lock"></i>{" "}
                 </Link>
-                <i class="fas fa-bars"></i> */}
+                <i className="fas fa-bars"></i> */}
             </div>
         </header>
     );
