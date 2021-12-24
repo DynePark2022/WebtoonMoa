@@ -14,11 +14,10 @@ function HoverButton() {
     const scrollBottom = () => {
         window.scrollTo({ top: 99999, behavior: "smooth" });
     };
-    const goHome = () => {};
 
     return (
         <div className={styles.HoverButton}>
-            <div className={!showHover && `${styles.show}`}>
+            <div className={showHover && `${styles.show}`}>
                 <button onClick={scrollTop}>
                     <i class="fas fa-chevron-up"></i>
                 </button>
@@ -31,7 +30,6 @@ function HoverButton() {
                     <i class="fas fa-chevron-down"></i>
                 </button>
             </div>
-
             <button
                 className={showHover && `${styles.plus}`}
                 onClick={onClickHandler}

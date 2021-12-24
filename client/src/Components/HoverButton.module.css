@@ -1,18 +1,17 @@
 .HoverButton {
-    position: sticky;
+    position: fixed;
     bottom: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    right: 20px;
 }
 
 .HoverButton > div {
     display: flex;
     flex-direction: column;
+    opacity: 0;
 }
 
 .HoverButton button {
-    transition: all 0.3s ease;
+    transition: transform 200ms, background-color 200ms;
     margin: 2px 10px;
     color: white;
     font-size: 12px;
@@ -23,12 +22,17 @@
     border-radius: 100%;
 }
 
+.HoverButton button:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
 .HoverButton > .plus {
     transform: rotate(45deg);
 }
 
 .HoverButton > .show {
+    transition: opacity 300ms;
     display: flex;
     flex-direction: column;
-    display: none;
+    opacity: 1;
 }
