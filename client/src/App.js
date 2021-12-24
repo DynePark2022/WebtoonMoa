@@ -8,6 +8,7 @@ import WebtoonList from "./Components/WebtoonList/WebtoonList";
 import Footer from "./Components/Footer";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
+import HoverButton from "./Components/HoverButton";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route exact path="/signup" element={<Signup />} />
             </Routes>
             <Footer />
+            <HoverButton />
         </div>
     );
 }
