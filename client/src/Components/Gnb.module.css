@@ -21,3 +21,7 @@
 .gnb li:hover {
     color: var(--google-blue);
 }
+
+.selected_tab {
+    color: var(--google-blue);
+}
