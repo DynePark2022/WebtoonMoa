@@ -9,6 +9,7 @@ import Footer from "./Components/Footer";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import HoverButton from "./Components/HoverButton";
+import Main from "./Components/Main";
 
 function App() {
     return (
@@ -17,7 +18,8 @@ function App() {
             <Gnb />
             <Banner />
             <Routes>
-                <Route exact path="/" element={<WebtoonList />} />
+                <Route exact path="/" element={<Main />} />
+                <Route path="/webtoon" element={<WebtoonList />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
             </Routes>

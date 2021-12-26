@@ -4,28 +4,14 @@
 
 GET {{hostname}}
 
-### Post Webtoon #1
-POST {{hostname}}/webtoon HTTP/1.1
-Content-Type: {{content-type}}
-
-{
-    "title": "전자오락수호대",
-    "author": "가스파드",
-    "publisher": "Naver",
-    "image": "https://shared-comic.pstatic.net/thumb/webtoon/637931/thumbnail/thumbnail_IMAG06_a00dcf02-989d-49ca-b267-a8da6208e0d0.jpg",
-    "url": "https://comic.naver.com/webtoon/list?titleId=637931",
-    "genre": "스토리, 판타지",
-    "age": "전체",
-    "days": "완결"
-}
-### Post Webtoon #2
+### Post Webtoon
 POST {{hostname}}/webtoon HTTP/1.1
 Content-Type: {{content-type}}
 
         {
-            "id": 306,
             "title": "생각하는 정이",
             "publisher": "Bufftoon",
+            "toon": "completed",
             "author": "정이",
             "genre": "드라마",
             "image": "https://buffimgs.plaync.com/buff/contents/0/10077/cover_8a2ec7727edff4ccde40b373faaed32f5e40e3e32e3a13e6570325f883529f91.jpg",
@@ -33,6 +19,7 @@ Content-Type: {{content-type}}
             "age": "",
             "days": "기타A"
         }
+
 ### Get Webtoons OBSOLETE
 GET  {{hostname}}/webtoon HTTP/1.1
 Content-Type: {{content-type}}
@@ -40,6 +27,12 @@ Content-Type: {{content-type}}
 ### Get Webtoons Pagination
 GET  {{hostname}}/webtoon?page=1&limit=10 HTTP/1.1
 Content-Type: {{content-type}}
+
+### Get Webtoons Pagination/tab
+GET  {{hostname}}/webtoon?page=1&limit=10&toon=ongoing HTTP/1.1
+Content-Type: {{content-type}}
+
+
 
 ### Post signup
 POST {{hostname}}/signup HTTP/1.1
