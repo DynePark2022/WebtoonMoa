@@ -8,6 +8,7 @@ const WebtoonSchema = new Schema({
     image: { type: String, required: true },
     url: { type: String, required: true },
     // isAdult: { type: Boolean, required: true },
+    toon: String,
     age: String,
     genre: String,
     days: String,

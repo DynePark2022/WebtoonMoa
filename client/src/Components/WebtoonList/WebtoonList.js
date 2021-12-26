@@ -2,15 +2,21 @@ import React, { useState } from "react";
 import Webtoon from "./Webtoon";
 import styles from "./WebtoonList.module.css";
 import useWebtoonSearch from "../../actions/useWebtoonSearch";
+import { useSearchParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 function WebtoonList() {
-    const [page, setPage] = useState(1);
-    let limit = 8;
-    const { webtoons, loading, error } = useWebtoonSearch(page, limit);
+    const page = useSelector((state) => state.reducerPage);
+    const dispatch = useDispatch();
+    const [searchParams] = useSearchParams();
+    const toon = searchParams.get("toon");
+    const limit = 4;
+    const { webtoons, loading, error } = useWebtoonSearch(page, limit, toon);
 
     const handleSubmit = () => {
-        setPage(page + 1);
+        dispatch({ type: "INCREASE_PAGE" });
     };
+
     return (
         <div className={styles.webtoonList}>
             <div className={styles.webtoons}>

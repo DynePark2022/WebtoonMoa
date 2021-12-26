@@ -1,0 +1,7 @@
+.main {
+    font-size: 20px;
+    height: 400px;
+    background-color: var(--background-white);
+    text-align: center;
+    padding-top: 100px;
+}
