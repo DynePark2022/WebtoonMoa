@@ -12,6 +12,7 @@ function WebtoonList() {
     const toon = searchParams.get("toon");
     const limit = 4;
     const { webtoons, loading, error } = useWebtoonSearch(page, limit, toon);
+    console.log(webtoons);
 
     const handleSubmit = () => {
         dispatch({ type: "INCREASE_PAGE" });

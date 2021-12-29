@@ -49,11 +49,10 @@ const postWebtoon = async (req, res) => {
 };
 
 const getSingleWebtoon = async (req, res) => {
-    const title = req.params.title;
-    console.log(title);
+    const id = req.params.id;
     try {
-        const webtoon = await Webtoon.findOne({ title: title });
-        res.status(201).json(webtoon);
+        const webtoon = await Webtoon.findOne({ _id: id });
+        res.status(200).json(webtoon);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
