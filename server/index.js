@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const app = express();
 const webtoonRoutes = require("./routes/webtoon.routes");
 const authRoutes = require("./routes/auth.routes");
+const commentRoutes = require("./routes/comment.routes");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/auth.middleware");
@@ -36,3 +37,4 @@ app.get("/secret", requireAuth, (req, res) => {
     res.send("authorized page");
 });
 app.use("/webtoon", webtoonRoutes);
+app.use("/comment", commentRoutes);

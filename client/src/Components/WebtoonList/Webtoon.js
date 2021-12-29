@@ -13,7 +13,7 @@ function Webtoon({ webtoon }) {
                     alt={webtoon.title}
                 />
             </a>
-            <Link to={`/webtoon/${webtoon.id}`}>
+            <Link to={`/webtoon/${webtoon._id}`}>
                 <div className={styles.title}>{webtoon.title}</div>
             </Link>
             <div className={styles.tag}>

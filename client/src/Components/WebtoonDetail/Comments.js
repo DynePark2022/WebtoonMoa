@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import InputForm from "../InputForm";
-import styles from "./CommentList.module.css";
-import { Link } from "react-router-dom";
+import styles from "./Comments.module.css";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Comment from "./Comment";
+import useFetch from "../../actions/useFetch";
 
-function Comments() {
-    const user = "RandomID";
-    const webtoon_id = "1";
-    // const user = "";
-
+function Comments({ postId }) {
+    const { id } = useParams();
+    const username = "RandomID";
+    const email = "abc@gmail.com";
     const [values, setValues] = useState({
-        user,
-        webtoon_id,
+        username,
+        email,
+        postId: id,
         comment: "",
     });
 
@@ -20,30 +21,33 @@ function Comments() {
         setValues({ ...values, comment: e.target.value });
     };
 
-    console.log(values);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:3001/comments", values, {
-                withCredentials: true,
-            })
+            .post("http://localhost:3001/comment", values)
             .then((res) => {
                 console.log(res);
+                alert("댓글이 작성되었습니다.");
             })
             .catch((err) => {
                 alert(err);
             });
     };
 
+    const { data, loading, error } = useFetch(
+        `http://localhost:3001/comment/${postId}`
+    );
+
+    console.log(values);
+
     return (
         <div className={styles.comments}>
             <h3>Comments</h3>
             <div className={styles.submit_form}>
-                {user ? (
+                {username ? (
                     <form action="/comments" method="POST">
                         <div className={styles.comments_top}>
-                            <div className={styles.my_userid}>{user}</div>
+                            <div className={styles.my_userid}>{username}</div>
                             <div className={styles.form_length}>
                                 {values.comment.length}/200
                             </div>
@@ -68,9 +72,15 @@ function Comments() {
                     </div>
                 )}
             </div>
-            <div className={styles.comments_list}>
-                <Comment />
-            </div>
+            <div>{loading && "Loading..."}</div>
+            <div>{error && "Error!!!"}</div>
+            {data && (
+                <div className={styles.comments_list}>
+                    {data.map((comment) => (
+                        <Comment key={comment._id} data={comment} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

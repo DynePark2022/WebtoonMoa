@@ -20,8 +20,23 @@ Content-Type: {{content-type}}
             "days": "기타A"
         }
 
-### Get Webtoons OBSOLETE
-GET  {{hostname}}/webtoon HTTP/1.1
+### Post a Comment
+POST {{hostname}}/comment HTTP/1.1
+Content-Type: {{content-type}}
+
+{
+    "comment": "Goodbye world!",
+    "username": "CarrotCake",
+    "email":"carrot@gmail.com",
+    "postId": "sample"
+}
+
+###
+DELETE {{hostname}}/comment/61cc773b1516b09d7963160b HTTP/1.1
+Content-Type: {{content-type}}
+
+### Get Webtoon
+GET  {{hostname}}/webtoon/61c81cfb6ba14204571de9a1 HTTP/1.1
 Content-Type: {{content-type}}
 
 ### Get Webtoons Pagination
@@ -32,7 +47,9 @@ Content-Type: {{content-type}}
 GET  {{hostname}}/webtoon?page=1&limit=10&toon=ongoing HTTP/1.1
 Content-Type: {{content-type}}
 
-
+### Get Comments
+GET  {{hostname}}/comment/61c81c6c6ba14204571de98b HTTP/1.1
+Content-Type: {{content-type}}
 
 ### Post signup
 POST {{hostname}}/signup HTTP/1.1

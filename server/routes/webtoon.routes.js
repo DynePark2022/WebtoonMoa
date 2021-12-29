@@ -3,7 +3,8 @@ const router = Router();
 
 const webtoonController = require("../controllers/webtoons.controller");
 
-router.get("/", webtoonController.getWebtoon);
+router.get("/", webtoonController.getWebtoons);
+router.get("/:id", webtoonController.getSingleWebtoon);
 router.post("/", webtoonController.postWebtoon);
 
 module.exports = router;

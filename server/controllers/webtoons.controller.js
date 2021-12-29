@@ -1,6 +1,6 @@
 const Webtoon = require("../models/webtoon.model");
 
-const getWebtoon = async (req, res) => {
+const getWebtoons = async (req, res) => {
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
     const toon = req.query.toon;
@@ -48,4 +48,13 @@ const postWebtoon = async (req, res) => {
     }
 };
 
-module.exports = { getWebtoon, postWebtoon };
+const getSingleWebtoon = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const webtoon = await Webtoon.findOne({ _id: id });
+        res.status(200).json(webtoon);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+};
+module.exports = { getWebtoons, postWebtoon, getSingleWebtoon };

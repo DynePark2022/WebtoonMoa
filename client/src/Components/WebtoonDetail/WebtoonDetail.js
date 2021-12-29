@@ -1,25 +1,17 @@
 import React from "react";
 import "./WebtoonDetail.css";
 import Webtoon from "../WebtoonList/Webtoon";
-import CommentList from "./CommentList";
+import Comments from "./Comments";
+import { useParams } from "react-router-dom";
+import useFetch from "../../actions/useFetch";
 
 function WebtoonDetail() {
-    const webtoon = {
-        title: "아비무쌍",
-        toon: "ongoing",
-        publisher: "Kakao",
-        author: "노경찬, 이현석, 카카오웹툰 스튜디오, 인타임",
-        genre: "액션/무협",
-        image: "https://kr-a.kakaopagecdn.com/P/C/1395/sharing/2x/eacb00ec-9034-42cb-a533-7c7690741113.jpg",
-        url: "https://webtoon.kakao.com/content/%EC%95%84%EB%B9%84%EB%AC%B4%EC%8C%8D/1395",
-        days: "화",
-        synopsis:
-            "아비무쌍 줄거리 블라블라 줄거리 블라블라 줄거리 \n엔터침 블라블라 줄거리 블라블라 줄거리 블라블라\n줄거리 블라블라 줄거리 블라블라 줄거리 블라블라",
-        age: "전체",
-    };
-
+    const url = "http://localhost:3001/";
+    const { id } = useParams();
+    const { data, error, loading } = useFetch(`${url}webtoon/${id}`);
+    const webtoon = data;
     const dummyWebtoon = {
-        webtoon: [
+        recWebtoon: [
             {
                 _id: 1,
                 title: "1초",
@@ -116,54 +108,6 @@ function WebtoonDetail() {
                 age: "전체",
                 days: "완결",
             },
-            {
-                _id: 9,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
-                toon: "completed",
-                publisher: "Naver",
-                author: "김규삼",
-                genre: "스토리, 개그",
-                image: "https://shared-comic.pstatic.net/thumb/webtoon/697679/thumbnail/thumbnail_IMAG06_9a844df7-d7ef-4ce9-9bcd-84254976f4b6.jpg",
-                url: "https://comic.naver.com/webtoon/list?titleId=697679",
-                age: "전체",
-                days: "완결",
-            },
-            {
-                _id: 10,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
-                toon: "completed",
-                publisher: "Naver",
-                author: "김규삼",
-                genre: "스토리, 개그",
-                image: "https://shared-comic.pstatic.net/thumb/webtoon/697679/thumbnail/thumbnail_IMAG06_9a844df7-d7ef-4ce9-9bcd-84254976f4b6.jpg",
-                url: "https://comic.naver.com/webtoon/list?titleId=697679",
-                age: "전체",
-                days: "완결",
-            },
-            {
-                _id: 11,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
-                toon: "completed",
-                publisher: "Naver",
-                author: "김규삼",
-                genre: "스토리, 개그",
-                image: "https://shared-comic.pstatic.net/thumb/webtoon/697679/thumbnail/thumbnail_IMAG06_9a844df7-d7ef-4ce9-9bcd-84254976f4b6.jpg",
-                url: "https://comic.naver.com/webtoon/list?titleId=697679",
-                age: "전체",
-                days: "완결",
-            },
-            {
-                _id: 12,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
-                toon: "completed",
-                publisher: "Naver",
-                author: "김규삼",
-                genre: "스토리, 개그",
-                image: "https://shared-comic.pstatic.net/thumb/webtoon/697679/thumbnail/thumbnail_IMAG06_9a844df7-d7ef-4ce9-9bcd-84254976f4b6.jpg",
-                url: "https://comic.naver.com/webtoon/list?titleId=697679",
-                age: "전체",
-                days: "완결",
-            },
         ],
     };
 
@@ -206,13 +150,15 @@ function WebtoonDetail() {
                         </button>
                     </div>
                 </div>
+                <div>{loading && "Loading..."}</div>
+                <div>{error && "Error!!!"}</div>
             </div>
-            <CommentList />
+            <Comments postId={data._id} />
             <div className="recommend">
                 <h1>Recommendation</h1>
                 <div className="recommend_list">
-                    {dummyWebtoon.webtoon.map((webtoon) => (
-                        <Webtoon key={webtoon._id} webtoon={webtoon} />
+                    {dummyWebtoon.recWebtoon.map((toon) => (
+                        <Webtoon key={toon._id} webtoon={toon} />
                     ))}
                 </div>
             </div>
