@@ -1,0 +1,87 @@
+.webtoon_detail {
+    background-color: var(--background-white);
+    padding: 20px;
+}
+
+.webtoon {
+    display: flex;
+    border-bottom: 1px solid var(--border-grey);
+}
+
+.img_container {
+    max-height: 200px;
+    max-width: 200px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.img_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.webtoon_content {
+    margin: 20px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.webtoon_title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.webtoon_author {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.webtoon_synopsis {
+    margin: 8px 0;
+    white-space: pre-line;
+}
+
+.webtoon_genre::after,
+.webtoon_days::after {
+    content: "|";
+    margin: 0 8px;
+}
+
+.buttons > button {
+    margin: 8px 8px 0 0;
+    border: none;
+    padding: 5px 20px;
+    background-color: var(--google-blue);
+    color: white;
+    border-radius: 4px;
+}
+
+.buttons > button:hover {
+    transition: filter 300ms;
+    filter: brightness(0.9);
+}
+
+/* Recommendation list */
+.recommend_list {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 860px) {
+    .recommend_list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .recommend_list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Webtoon from "./Webtoon";
 import styles from "./WebtoonList.module.css";
 import useWebtoonSearch from "../../actions/useWebtoonSearch";
@@ -16,7 +16,6 @@ function WebtoonList() {
     const handleSubmit = () => {
         dispatch({ type: "INCREASE_PAGE" });
     };
-
     return (
         <div className={styles.webtoonList}>
             <div className={styles.webtoons}>

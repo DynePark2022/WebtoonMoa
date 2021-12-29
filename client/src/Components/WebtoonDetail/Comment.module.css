@@ -1,0 +1,56 @@
+.comment {
+    position: relative;
+    border-bottom: 1px solid var(--border-grey);
+    padding: 20px;
+}
+
+.comment .user_id {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.comment .comment_content {
+    font-size: 13px;
+}
+
+.comment .created_at {
+    margin-top: 4px;
+    font-size: 10px;
+    color: #999;
+}
+
+.comment_reply {
+    padding: 0 8px;
+    margin: 8px 0 2px;
+    font-size: 12px;
+    background-color: var(--background-white);
+    border: 1px solid var(--border-grey);
+}
+
+.comment_more {
+    position: absolute;
+    padding: 0 8px 8px 8px;
+    top: 20px;
+    right: 20px;
+    font-size: 8px;
+    color: #999;
+    background: none;
+}
+
+.comment_recommend {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.comment_recommend button {
+    padding: 0 8px;
+    font-size: 12px;
+    background-color: var(--background-white);
+    border: 1px solid var(--border-grey);
+    margin: 0 4px;
+}
+
+.comment_recommend button span {
+    color: grey;
+}
