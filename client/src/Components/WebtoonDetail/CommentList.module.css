@@ -1,0 +1,49 @@
+.comments {
+    margin: 20px 0;
+}
+
+.comments > h3 {
+    margin-bottom: 12px;
+}
+
+.submit_form {
+    font-size: 12px;
+    padding: 20px 20px 10px 20px;
+    border: 1px solid var(--border-grey);
+}
+
+.comments_top {
+    display: flex;
+    padding: 0 4px;
+    justify-content: space-between;
+}
+
+.my_userid {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.submit_form a {
+    text-decoration: underline;
+}
+
+.comments_bottom {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comments_bottom .button_submit {
+    padding: 4px 12px;
+    background-color: var(--google-blue);
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.comments_list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* recommend */

@@ -10,6 +10,7 @@ import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import HoverButton from "./Components/HoverButton";
 import Main from "./Components/Main";
+import WebtoonDetail from "./Components/WebtoonDetail/WebtoonDetail";
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Main />} />
                 <Route path="/webtoon" element={<WebtoonList />} />
+                <Route path="/webtoon/:id" element={<WebtoonDetail />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
             </Routes>
