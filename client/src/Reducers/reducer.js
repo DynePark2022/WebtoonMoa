@@ -40,7 +40,7 @@ export const TAB_BLGL = "TAB_BLGL";
 export const TAB_COMPLETED = "TAB_COMPLETED";
 export const TAB_MY = "TAB_MY";
 export const TAB_COMMUNITY = "TAB_COMMUNITY";
-export const TAB_CLEAR = "TAB_CLEAER";
+export const TAB_CLEAR = "TAB_CLEAR";
 
 const reducerTab = (state = [], action) => {
     switch (action.type) {

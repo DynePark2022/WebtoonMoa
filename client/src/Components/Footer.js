@@ -1,14 +1,27 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 
 function Footer() {
+    let dispatch = useDispatch();
+
     return (
         <footer>
             <div className={styles.top}>
-                <Link to="/login">로그인</Link>
-                <Link to="/signup">회원가입</Link>
-                <Link to="/signup">고객센터</Link>
+                <Link
+                    to="/login"
+                    onClick={() => dispatch({ type: "TAB_CLEAR" })}
+                >
+                    로그인
+                </Link>
+                <Link
+                    to="/signup"
+                    onClick={() => dispatch({ type: "TAB_CLEAR" })}
+                >
+                    회원가입
+                </Link>
+                {/* <Link to="/help">고객센터</Link> */}
             </div>
             <div className={styles.bottom}>
                 웹툰모아는 비영리, 웹툰 비교 웹사이트입니다. <br /> 웹툰은 모두
