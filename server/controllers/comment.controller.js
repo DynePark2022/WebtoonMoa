@@ -14,9 +14,12 @@ const postComment = async (req, res) => {
     try {
         const comment = await Comment.create(req.body);
         res.status(201).json(comment);
-        // res.send("comment added!");
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        if (req.body.comment.length == 0) {
+            res.status(411).json({ message: error._message });
+        } else {
+            res.status(409).json({ message: error._message });
+        }
     }
 };
 

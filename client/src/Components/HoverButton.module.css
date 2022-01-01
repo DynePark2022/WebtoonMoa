@@ -4,15 +4,14 @@
     right: 20px;
 }
 
-.HoverButton > div {
+.show {
     display: flex;
     flex-direction: column;
-    opacity: 0;
 }
 
 .HoverButton button {
     transition: transform 200ms, background-color 200ms;
-    margin: 2px 10px;
+    margin: 2px 0 0 0;
     color: white;
     font-size: 12px;
     font-weight: bold;
@@ -26,13 +25,15 @@
     background-color: rgba(0, 0, 0, 0.7);
 }
 
-.HoverButton > .plus {
+.plus {
     transform: rotate(45deg);
 }
 
-.HoverButton > .show {
-    transition: opacity 300ms;
+.HoverButton .show {
     display: flex;
     flex-direction: column;
-    opacity: 1;
+}
+
+.hidden {
+    background-color: red;
 }
