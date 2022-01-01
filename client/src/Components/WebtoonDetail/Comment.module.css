@@ -4,16 +4,20 @@
     padding: 20px;
 }
 
-.comment .user_id {
+.my_comment {
+    background-color: #f4f4f4;
+}
+
+.user_id {
     font-weight: bold;
     font-size: 13px;
 }
 
-.comment .comment_content {
+.comment_content {
     font-size: 13px;
 }
 
-.comment .created_at {
+.created_at {
     margin-top: 4px;
     font-size: 10px;
     color: #999;
@@ -32,9 +36,33 @@
     padding: 0 8px 8px 8px;
     top: 20px;
     right: 20px;
-    font-size: 8px;
-    color: #999;
+    font-size: 12px;
+    color: grey;
     background: none;
+}
+
+.more {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    border: 1px solid var(--border-grey);
+    background-color: var(--background-white);
+}
+
+.more button {
+    font-size: 12px;
+    background: var(--background-white);
+    padding: 4px 8px;
+}
+
+.more button:hover {
+    filter: brightness(0.9);
+}
+
+.more :nth-child(2) {
+    border-top: 1px solid var(--border-grey);
 }
 
 .comment_recommend {

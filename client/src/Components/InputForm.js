@@ -8,7 +8,6 @@ function InputForm(props) {
     const handleFocus = (e) => {
         setFocused(true);
     };
-
     return (
         <div className={styles.inputForm}>
             <input

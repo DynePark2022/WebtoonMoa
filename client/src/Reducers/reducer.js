@@ -18,6 +18,7 @@ let userState = {
 //Constants Folder / ActionType File
 export const GET_USER = "GET_USER";
 export const LOGOUT = "LOGOUT";
+export const TEMP = "TEMP";
 
 const reducerUser = (state = userState, action) => {
     switch (action.type) {
@@ -29,6 +30,12 @@ const reducerUser = (state = userState, action) => {
             let empty = { ...state };
             empty.user.username = "";
             return empty;
+        case TEMP:
+            let copy2 = { ...state };
+            copy2.user.username = "temp";
+            copy2.user.email = "temp@gmail.com";
+            copy2.user._id = "1";
+            return copy2;
         default:
             return state;
     }

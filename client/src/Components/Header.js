@@ -18,7 +18,11 @@ function Header() {
                     {/* <img src="#" alt="Main Logo" />  */}
                 </Link>
             </div>
+            {username && <div>안녕하세요 {username}님</div>}
             <div className={styles.icons}>
+                <button onClick={() => dispatch({ type: "TEMP" })}>
+                    임시 로그인
+                </button>
                 <i className="fas fa-search"></i>
                 {username ? (
                     <>

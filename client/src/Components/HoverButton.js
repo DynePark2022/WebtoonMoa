@@ -18,19 +18,21 @@ function HoverButton() {
     return (
         <div className={styles.HoverButton}>
             {/* ERROR = <div className={showHover && `${styles.show}`> */}
-            <div className={showHover ? `${styles.show}` : undefined}>
-                <button onClick={scrollTop}>
-                    <i className="fas fa-chevron-up"></i>
-                </button>
-                <Link to="/">
-                    <button>
-                        <i className="fas fa-home"></i>
+            {showHover && (
+                <div className={styles.show}>
+                    <button onClick={scrollTop}>
+                        <i className="fas fa-chevron-up"></i>
                     </button>
-                </Link>
-                <button onClick={scrollBottom}>
-                    <i className="fas fa-chevron-down"></i>
-                </button>
-            </div>
+                    <Link to="/">
+                        <button>
+                            <i className="fas fa-home"></i>
+                        </button>
+                    </Link>
+                    <button onClick={scrollBottom}>
+                        <i className="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+            )}
             <button
                 className={showHover ? `${styles.plus}` : undefined}
                 onClick={onClickHandler}
