@@ -1,5 +1,7 @@
 .comments {
-    margin: 20px 0;
+    background-color: var(--background-white);
+    padding: 16px 20px;
+    margin-bottom: 12px;
 }
 
 .comments > h3 {
