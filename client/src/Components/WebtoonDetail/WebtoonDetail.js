@@ -26,7 +26,7 @@ function WebtoonDetail() {
             },
             {
                 _id: 2,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
+                title: "쌉니다 천리마마트 ",
                 toon: "completed",
                 publisher: "Naver",
                 author: "김규삼",
@@ -38,7 +38,7 @@ function WebtoonDetail() {
             },
             {
                 _id: 3,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
+                title: "쌉니다 천리마마트 ",
                 toon: "completed",
                 publisher: "Naver",
                 author: "김규삼",
@@ -50,7 +50,7 @@ function WebtoonDetail() {
             },
             {
                 _id: 4,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
+                title: "쌉니다 천리마마트 ",
                 toon: "completed",
                 publisher: "Naver",
                 author: "김규삼",
@@ -62,7 +62,7 @@ function WebtoonDetail() {
             },
             {
                 _id: 5,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
+                title: "쌉니다 천리마마트 ",
                 toon: "completed",
                 publisher: "Naver",
                 author: "김규삼",
@@ -74,7 +74,7 @@ function WebtoonDetail() {
             },
             {
                 _id: 6,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
+                title: "쌉니다 천리마마트 ",
                 toon: "completed",
                 publisher: "Naver",
                 author: "김규삼",
@@ -86,7 +86,7 @@ function WebtoonDetail() {
             },
             {
                 _id: 7,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
+                title: "쌉니다 천리마마트 ",
                 toon: "completed",
                 publisher: "Naver",
                 author: "김규삼",
@@ -98,7 +98,7 @@ function WebtoonDetail() {
             },
             {
                 _id: 8,
-                title: "[드라마원작] 쌉니다 천리마마트 ",
+                title: "쌉니다 천리마마트 ",
                 toon: "completed",
                 publisher: "Naver",
                 author: "김규삼",
@@ -113,55 +113,111 @@ function WebtoonDetail() {
 
     return (
         <div className="webtoon_detail">
-            <div className="webtoon">
-                <div className="img_container">
-                    <img src={webtoon.image} alt={webtoon.title} />
-                </div>
-                <div className="webtoon_content">
-                    <div className="webtoon_content_text">
-                        <span className="webtoon_title">{webtoon.title}</span>
-                        <span className="webtoon_author">{webtoon.author}</span>
-                        <p className="webtoon_synopsis">{webtoon.synopsis}</p>
-                        <span className="webtoon_genre">{webtoon.genre}</span>
-                        <span className="webtoon_days">{webtoon.days}</span>
-                        <span className="webtoon_age">
-                            {webtoon.age} 이용가
-                        </span>
-                    </div>
-                    <div className="buttons">
-                        <button>웹툰보기</button>
-                        <button>
-                            <i className="far fa-bookmark"></i>
-                        </button>
-                        <button>
-                            <i className="fas fa-bookmark"></i>
-                        </button>
-                        <button>
-                            <i className="fas fa-heart"></i>
-                        </button>
-                        <button>
-                            <i className="fas fa-star"></i>
-                        </button>
-                        <button>
-                            <i className="fas fa-thumbs-up"></i>
-                        </button>
-                        <button>
-                            <i className="fas fa-thumbs-down"></i>
-                        </button>
-                    </div>
-                </div>
+            <div className="webtoon_detail_main">
                 <div>{loading && "Loading..."}</div>
                 <div>{error && "Error!!!"}</div>
-            </div>
-            <Comments postId={data._id} />
-            <div className="recommend">
-                <h1>Recommendation</h1>
-                <div className="recommend_list">
-                    {dummyWebtoon.recWebtoon.map((toon) => (
-                        <Webtoon key={toon._id} webtoon={toon} />
-                    ))}
+                <div className="main_title">
+                    <h1>{webtoon.title}</h1>
+                </div>
+                <div className="main_info">
+                    <div className="info_wrap">
+                        <div className="img_container">
+                            <img src={webtoon.image} alt={webtoon.title} />
+                        </div>
+                        <div className="info_container">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>장르</th>
+                                        <td>{webtoon.genre}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>원작</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>작가</th>
+                                        <td>{webtoon.author}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>출판사</th>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <th>연재처</th>
+                                        <td>{webtoon.publisher}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>연재 기간</th>
+                                        <td>0000. 00. 00 ~ 0000. 00. 00</td>
+                                    </tr>
+                                    <tr>
+                                        <th>연재 주기</th>
+                                        <td>{webtoon.days}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>이용 등급</th>
+                                        <td>{webtoon.age}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div className="buttons">
+                                <a href={webtoon.url}>
+                                    <button>웹툰보기</button>
+                                </a>
+                                <button>
+                                    <i className="fas fa-bookmark"></i>
+                                </button>
+                                <button>
+                                    <i className="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="main_synopsis">
+                        <h3>줄거리</h3>
+                        <div>{webtoon.synopsis}lorem</div>
+                    </div>
+                </div>
+                <Comments postId={data._id} />
+                <div className="recommend">
+                    <h1>Recommendation</h1>
+                    <div className="recommend_list">
+                        {dummyWebtoon.recWebtoon.map((toon) => (
+                            <Webtoon key={toon._id} webtoon={toon} />
+                        ))}
+                    </div>
                 </div>
             </div>
+            <aside className="aside">
+                <div className="update">
+                    <h2>업데이트</h2>
+                    <li className="update_list">
+                        {dummyWebtoon.recWebtoon.map((toon) => (
+                            <ul>
+                                <div className="update_img_container">
+                                    <img src={toon.image} alt={toon.title} />
+                                </div>
+                                <div>{toon.title}</div>
+                            </ul>
+                        ))}
+                    </li>
+                </div>
+                <hr />
+                <div className="hot">
+                    <h2>현재인기</h2>
+                    <li className="update_list">
+                        {dummyWebtoon.recWebtoon.map((toon) => (
+                            <ul>
+                                <div className="update_img_container">
+                                    <img src={toon.image} alt={toon.title} />
+                                </div>
+                                <div>{toon.title}</div>
+                            </ul>
+                        ))}
+                    </li>
+                </div>
+            </aside>
         </div>
     );
 }
