@@ -15,18 +15,13 @@ function Header() {
                     <h1 onClick={() => dispatch({ type: "TAB_CLEAR" })}>
                         WebtoonMoa
                     </h1>
-                    {/* <img src="#" alt="Main Logo" />  */}
                 </Link>
             </div>
             {username && <div>안녕하세요 {username}님</div>}
             <div className={styles.icons}>
-                <button onClick={() => dispatch({ type: "TEMP" })}>
-                    임시 로그인
-                </button>
                 <i className="fas fa-search"></i>
                 {username ? (
-                    <>
-                        {/* <span>안녕하세요 {username}님   </span> */}
+                    <Link to="/">
                         <button
                             className={styles.auth}
                             onClick={() => {
@@ -36,16 +31,24 @@ function Header() {
                         >
                             로그아웃
                         </button>
-                    </>
-                ) : (
-                    <Link to="/login">
-                        <button
-                            className={styles.auth}
-                            onClick={() => dispatch({ type: "TAB_CLEAR" })}
-                        >
-                            로그인
-                        </button>
                     </Link>
+                ) : (
+                    <>
+                        <Link to="/login">
+                            <button
+                                className={styles.auth}
+                                onClick={() => dispatch({ type: "TAB_CLEAR" })}
+                            >
+                                로그인
+                            </button>
+                        </Link>
+                        <button
+                            className={styles.temp_login}
+                            onClick={() => dispatch({ type: "TEMP" })}
+                        >
+                            임시 로그인
+                        </button>
+                    </>
                 )}
             </div>
         </header>

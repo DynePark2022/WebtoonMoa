@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import styles from "./Comment.module.css";
+import styles from "./SingleComment.module.css";
 
 function Comment({ comment: c }) {
     const user = useSelector((state) => state.reducerUser.user);
@@ -21,7 +21,6 @@ function Comment({ comment: c }) {
             (await axios
                 .delete(url, { withCredentials: true })
                 .then((res) => {
-                    console.log(res);
                     setComment(false);
                 })
                 .catch((err) => console.log(err)));
@@ -46,10 +45,6 @@ function Comment({ comment: c }) {
                 </div>
                 <div className={styles.comment_content}>{comment.comment}</div>
                 <div className={styles.created_at}>{comment.createdAt}</div>
-                <button className={styles.comment_reply}>
-                    답글 {""}
-                    <i className="fas fa-caret-down"></i>
-                </button>
                 <button className={styles.comment_more} onClick={handleShow}>
                     <i className="fas fa-ellipsis-v"></i>
                 </button>
@@ -63,7 +58,7 @@ function Comment({ comment: c }) {
                 )}
                 <div className={styles.comment_recommend}>
                     <button className={styles.comment_like}>
-                        <i className="far fa-thumbs-up"></i>{" "}
+                        <i className="far fa-thumbs-up"></i>
                         <span>{comment.thumbUp}</span>
                     </button>
                     <button className={styles.comment_hate}>

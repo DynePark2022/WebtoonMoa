@@ -3,8 +3,18 @@ const Comment = require("../models/comment.model");
 const getComments = async (req, res) => {
     const postId = req.params.id;
     try {
-        const comments = await Comment.find({ postId: postId });
+        const comments = await Comment.find({ postId: postId, parentId: null });
         res.status(200).json(comments);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+};
+
+const getNestedComments = async (req, res) => {
+    const parentId = req.params.id;
+    try {
+        const nestedComments = await Comment.find({ parentId: parentId });
+        res.status(200).json(nestedComments);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
@@ -15,7 +25,7 @@ const postComment = async (req, res) => {
         const comment = await Comment.create(req.body);
         res.status(201).json(comment);
     } catch (error) {
-        if (req.body.comment.length == 0) {
+        if (req.body.comment.length === 0) {
             res.status(411).json({ message: error._message });
         } else {
             res.status(409).json({ message: error._message });
@@ -37,4 +47,10 @@ const deleteComment = async (req, res) => {
     }
 };
 
-module.exports = { getComments, postComment, updateComment, deleteComment };
+module.exports = {
+    getComments,
+    postComment,
+    updateComment,
+    deleteComment,
+    getNestedComments,
+};

@@ -1,0 +1,28 @@
+.comment {
+    position: relative;
+    border-bottom: 1px solid var(--border-grey);
+}
+
+.comment_nest {
+    position: absolute;
+    top: 70px;
+    left: 20px;
+    padding: 0 8px;
+    margin-top: 4px;
+    font-size: 12px;
+    background-color: var(--background-white);
+    border: 1px solid var(--border-grey);
+}
+
+.comment_nest span {
+    margin-right: 4px;
+}
+
+.comment_nest:hover {
+    transition: filter 100ms;
+    filter: brightness(0.9);
+}
+
+.comment_nest:active {
+    filter: brightness(0.8);
+}

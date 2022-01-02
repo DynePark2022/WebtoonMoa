@@ -1,0 +1,14 @@
+.comments {
+    background-color: var(--background-white);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+}
+
+.comments > h3 {
+    margin-bottom: 12px;
+}
+
+.comments_list {
+    display: flex;
+    flex-direction: column;
+}

@@ -29,12 +29,12 @@ mongoose
 
 // Routes
 app.use(authRoutes);
+app.use("/webtoon", webtoonRoutes);
+app.use("/comment", commentRoutes);
 app.get("*", checkUser);
 app.get("/", (req, res) => {
-    res.send("hi");
+    console.log(req);
 });
 app.get("/secret", requireAuth, (req, res) => {
     res.send("authorized page");
 });
-app.use("/webtoon", webtoonRoutes);
-app.use("/comment", commentRoutes);
