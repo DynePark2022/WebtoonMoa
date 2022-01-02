@@ -1,28 +1,24 @@
 import React, { useState } from "react";
-import InputForm from "../InputForm";
-import styles from "./Comments.module.css";
+import styles from "./CommentsForm.module.css";
+import InputForm from "../../InputForm";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import Comment from "./Comment";
-import useFetch from "../../actions/useFetch";
 import { useSelector } from "react-redux";
 
-function Comments({ postId }) {
+function CommentsForm({ addComment, setAddComment, loading, parentId }) {
     const user = useSelector((state) => state.reducerUser.user);
-    const { data, loading, error } = useFetch(
-        `http://localhost:3001/comment/${postId}`
-    );
-    const [addComment, setAddComment] = useState([]);
+
     const { id } = useParams();
     const [values, setValues] = useState({
         username: user.username,
         email: user.email,
         postId: id,
         comment: "",
+        parentId: "",
     });
-
+    console.log(values);
     const onChange = (e) => {
-        setValues({ ...values, comment: e.target.value });
+        setValues({ ...values, parentId: parentId, comment: e.target.value });
     };
 
     const handleSubmit = async (e) => {
@@ -31,16 +27,15 @@ function Comments({ postId }) {
             .post("http://localhost:3001/comment", values)
             .then((res) => {
                 setAddComment([...addComment, res.data]);
+                console.log(res.data);
                 alert("댓글이 작성되었습니다.");
             })
             .catch((err) => {
                 alert(err);
             });
     };
-
     return (
-        <div className={styles.comments}>
-            <h3>Comments</h3>
+        <div className={styles.comments_form}>
             <div className={styles.submit_form}>
                 {user.username ? (
                     <form action="/comments" method="POST">
@@ -61,7 +56,9 @@ function Comments({ postId }) {
                         <div className={styles.comments_bottom}>
                             <button
                                 onClick={handleSubmit}
-                                disabled={loading || values.comment.length == 0}
+                                disabled={
+                                    loading || values.comment.length === 0
+                                }
                                 className={styles.button_submit}
                             >
                                 등록
@@ -75,26 +72,8 @@ function Comments({ postId }) {
                     </div>
                 )}
             </div>
-            <div>{loading && "Loading..."}</div>
-            <div>{error && "Error!!!"}</div>
-            <div className={styles.comments_list}>
-                {data && (
-                    <>
-                        {data.map((comment) => (
-                            <Comment key={comment._id} comment={comment} />
-                        ))}
-                    </>
-                )}
-                {addComment && (
-                    <>
-                        {addComment.map((comment) => (
-                            <Comment key={comment._id} comment={comment} />
-                        ))}
-                    </>
-                )}
-            </div>
         </div>
     );
 }
 
-export default Comments;
+export default CommentsForm;

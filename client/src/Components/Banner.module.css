@@ -28,8 +28,8 @@
 
 .container .left:hover,
 .container .right:hover {
-    transition: color 200ms;
-    color: grey;
+    transition: filter 200ms;
+    filter: brightness(0.8);
 }
 
 .container .left {

@@ -1,0 +1,17 @@
+.nested_comment {
+    margin-left: 40px;
+    background-color: rgb(230, 230, 230);
+}
+
+.arrow_position {
+    position: relative;
+}
+
+.arrow {
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    font-size: 13px;
+    color: grey;
+}

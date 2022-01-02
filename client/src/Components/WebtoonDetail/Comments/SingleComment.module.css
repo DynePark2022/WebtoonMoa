@@ -1,11 +1,10 @@
 .comment {
     position: relative;
-    border-bottom: 1px solid var(--border-grey);
-    padding: 20px;
+    padding: 20px 20px 24px 20px;
 }
 
 .my_comment {
-    background-color: #f4f4f4;
+    background-color: rgb(239, 246, 255);
 }
 
 .user_id {
@@ -23,18 +22,10 @@
     color: #999;
 }
 
-.comment_reply {
-    padding: 0 8px;
-    margin: 8px 0 2px;
-    font-size: 12px;
-    background-color: var(--background-white);
-    border: 1px solid var(--border-grey);
-}
-
 .comment_more {
     position: absolute;
     padding: 0 8px 8px 8px;
-    top: 20px;
+    top: 10px;
     right: 20px;
     font-size: 12px;
     color: grey;
@@ -45,10 +36,11 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 20px;
+    top: 10px;
     right: 40px;
     border: 1px solid var(--border-grey);
     background-color: var(--background-white);
+    z-index: 1;
 }
 
 .more button {
@@ -58,6 +50,7 @@
 }
 
 .more button:hover {
+    transition: filter 100ms;
     filter: brightness(0.9);
 }
 
@@ -67,7 +60,7 @@
 
 .comment_recommend {
     position: absolute;
-    bottom: 20px;
+    bottom: 5px;
     right: 20px;
 }
 
@@ -78,7 +71,15 @@
     border: 1px solid var(--border-grey);
     margin: 0 4px;
 }
+.comment_recommend button:hover {
+    transition: filter 100ms;
+    filter: brightness(0.9);
+}
 
+.comment_recommend button:active {
+    filter: brightness(0.8);
+}
 .comment_recommend button span {
+    margin-left: 4px;
     color: grey;
 }

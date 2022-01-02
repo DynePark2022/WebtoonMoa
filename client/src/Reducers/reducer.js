@@ -25,17 +25,19 @@ const reducerUser = (state = userState, action) => {
         case GET_USER:
             let copy = { ...state };
             copy.user.username = action.payload.username;
+            copy.user.email = action.payload.email;
+            copy.user._id = action.payload._id;
             return copy;
         case LOGOUT:
             let empty = { ...state };
             empty.user.username = "";
             return empty;
         case TEMP:
-            let copy2 = { ...state };
-            copy2.user.username = "temp";
-            copy2.user.email = "temp@gmail.com";
-            copy2.user._id = "1";
-            return copy2;
+            let temp = { ...state };
+            temp.user.username = "temp";
+            temp.user.email = "temp@gmail.com";
+            temp.user._id = "1";
+            return temp;
         default:
             return state;
     }

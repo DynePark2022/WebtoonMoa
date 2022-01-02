@@ -65,7 +65,11 @@ const loginUser = async (req, res) => {
             httpOnly: true,
             maxAge: dayInSec * 1000,
         });
-        res.status(200).json({ username: user.username, userid: user._id });
+        res.status(200).json({
+            username: user.username,
+            userid: user._id,
+            email: user.email,
+        });
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json(errors);
@@ -75,7 +79,6 @@ const loginUser = async (req, res) => {
 const logoutUser = (req, res) => {
     res.cookie("jwt", "", { maxAge: 1 });
     res.send("logout");
-    res.redirect("/");
 };
 
 const secureUser = (req, res) => {

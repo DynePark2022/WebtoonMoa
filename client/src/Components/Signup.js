@@ -95,7 +95,7 @@ function Signup() {
                         />
                     ))}
                     <div className={styles.termsOfUse}>{termsOfUse}</div>
-                    <label for={styles.checkbox}>
+                    <label htmlFor={styles.checkbox}>
                         <input
                             className={styles.checkbox}
                             type="checkbox"

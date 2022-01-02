@@ -3,7 +3,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--border-grey);
 }
 
 .logo {
@@ -22,21 +21,24 @@ header {
 
 .icons i {
     padding: 12px 10px;
-    border-left: 1px solid var(--border-grey);
     border-right: 1px solid var(--border-grey);
     font-size: 16px;
     cursor: pointer;
 }
 
-.icons i:hover {
-    color: var(--google-blue);
-}
-
 .auth {
+    margin-left: 10px;
     background: none;
     padding: 4px;
 }
 
 .auth:hover {
     color: var(--google-blue);
+}
+
+.temp_login {
+    margin: 0 10px;
+    padding-left: 10px;
+    border-left: 1px solid var(--border-grey);
+    background-color: var(--background-white);
 }
