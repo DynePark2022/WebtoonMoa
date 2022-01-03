@@ -1,0 +1,34 @@
+2 Ways To Structure Redux App
+https://www.youtube.com/watch?v=fn9Y76Naw_U
+
+#1
+Redux
+/actions
+../x
+../y
+
+/constants
+../x
+../y
+
+/reducers
+../x
+../y
+
+pros: organized, standard
+cons: every reducer = 3 files => complex
+      third party library(ie. redux-saga) => messy
+
+
+###
+
+#2 ducks
+every single reducer = 1 file
+
+Redux
+x.js
+y.js
+
+pros: less file, easy to work
+cons: long, complex reducer = 1 long file
+      => make seperate reducers
