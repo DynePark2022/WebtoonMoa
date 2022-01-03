@@ -1,16 +1,16 @@
 import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Header from "./Components/Header";
-import Gnb from "./Components/Gnb";
-import Banner from "./Components/Banner";
-import WebtoonList from "./Components/WebtoonList/WebtoonList";
-import Footer from "./Components/Footer";
-import Login from "./Components/Login";
-import Signup from "./Components/Signup";
-import HoverButton from "./Components/HoverButton";
-import Main from "./Components/Main";
-import WebtoonDetail from "./Components/WebtoonDetail/WebtoonDetail";
+import Header from "./Components/Header/Header";
+import Gnb from "./Components/Gnb/Gnb";
+import Banner from "./Components/Banner/Banner";
+import WebtoonList from "./Pages/WebtoonList/WebtoonList";
+import Footer from "./Components/Footer/Footer";
+import Login from "./Pages/Login/Login";
+import Signup from "./Pages/Signup/Signup";
+import HoverButton from "./Components/HoverButton/HoverButton";
+import Main from "./Pages/Main/Main";
+import WebtoonDetail from "./Pages/WebtoonDetail/WebtoonDetail";
 
 function App() {
     return (

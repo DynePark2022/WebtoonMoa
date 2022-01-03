@@ -1,9 +1,9 @@
 import React from "react";
 import Webtoon from "../../Components/Webtoon/Webtoon";
 import styles from "./WebtoonList.module.css";
-import useWebtoonSearch from "../../Hooks/useWebtoonSearch";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import useWebtoonSearch from "../../Hooks/useWebtoonSearch";
 
 function WebtoonList() {
     const page = useSelector((state) => state.reducerPage);
