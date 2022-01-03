@@ -1,6 +1,5 @@
 .comment {
     position: relative;
-    border-bottom: 1px solid var(--border-grey);
 }
 
 .comment_nest {

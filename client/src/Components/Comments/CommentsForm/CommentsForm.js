@@ -27,7 +27,6 @@ function CommentsForm({ addComment, setAddComment, loading, parentId }) {
             .post("http://localhost:3001/comment", values)
             .then((res) => {
                 setAddComment([...addComment, res.data]);
-                console.log(res.data);
                 alert("댓글이 작성되었습니다.");
             })
             .catch((err) => {

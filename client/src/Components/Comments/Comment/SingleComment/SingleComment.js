@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import useToggle from "../../../../Hooks/useToggle";
 import styles from "./SingleComment.module.css";
+import { delete_comment } from "../../../../api";
 
 function Comment({ comment: c }) {
     const user = useSelector((state) => state.reducerUser.user);
@@ -12,16 +12,9 @@ function Comment({ comment: c }) {
     const emailStars = "*".repeat(c.email.length - 3);
     const emailMasked = c.email.substring(0, 3) + emailStars;
 
-    const deleteComment = async () => {
-        const url = `http://localhost:3001/comment/${c._id}`;
-
-        window.confirm("댓글을 삭제할까요?") &&
-            (await axios
-                .delete(url, { withCredentials: true })
-                .then((res) => {
-                    setComment(false);
-                })
-                .catch((err) => console.log(err)));
+    const deleteComment = () => {
+        delete_comment(c._id);
+        setComment(null);
     };
 
     const report = () => {

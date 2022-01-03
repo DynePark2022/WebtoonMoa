@@ -1,6 +1,7 @@
 .comment {
     position: relative;
     padding: 20px 20px 24px 20px;
+    border-bottom: 1px solid var(--border-grey);
 }
 
 .my_comment {
