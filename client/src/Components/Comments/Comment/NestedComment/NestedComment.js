@@ -6,7 +6,7 @@ import useFetch from "../../../../Hooks/useFetch";
 
 function NestedComment({ parentId }) {
     const [addComment, setAddComment] = useState([]);
-    const { data, loading, error } = useFetch(
+    const [data, loading, error] = useFetch(
         `http://localhost:3001/comment/nested/${parentId}`
     );
 

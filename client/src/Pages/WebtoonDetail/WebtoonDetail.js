@@ -9,8 +9,7 @@ import { RecWebtoonArray } from "../../DB/text";
 function WebtoonDetail() {
     const url = "http://localhost:3001/";
     const { id } = useParams();
-    const { data, error, loading } = useFetch(`${url}webtoon/${id}`);
-    const webtoon = data;
+    const [webtoon, loading, error] = useFetch(`${url}webtoon/${id}`);
 
     return (
         <div className="webtoon_detail">
@@ -104,7 +103,7 @@ function WebtoonDetail() {
                 </aside>
             </div>
             <div className="bottom">
-                <Comments postId={data._id} />
+                <Comments postId={webtoon._id} />
                 <div className="recommend">
                     <h1>Recommendation</h1>
                     <div className="recommend_list">
