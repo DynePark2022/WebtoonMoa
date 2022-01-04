@@ -13,8 +13,13 @@ function Comment({ comment: c }) {
     const emailMasked = c.email.substring(0, 3) + emailStars;
 
     const deleteComment = () => {
-        delete_comment(c._id);
-        setComment(null);
+        window.confirm("댓글을 삭제할까요?") &&
+            delete_comment(c._id)
+                .then((res) => {
+                    console.log(res);
+                    setComment(null);
+                })
+                .catch((err) => console.log(err));
     };
 
     const report = () => {

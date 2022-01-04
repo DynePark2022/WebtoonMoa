@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styles from "./CommentsForm.module.css";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import InputForm from "../../InputForm/InputForm";
+import { add_comment } from "../../../api";
 
 function CommentsForm({ addComment, setAddComment, loading, parentId }) {
     const user = useSelector((state) => state.reducerUser.user);
@@ -23,8 +23,7 @@ function CommentsForm({ addComment, setAddComment, loading, parentId }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await axios
-            .post("http://localhost:3001/comment", values)
+        add_comment(values)
             .then((res) => {
                 setAddComment([...addComment, res.data]);
                 alert("댓글이 작성되었습니다.");
