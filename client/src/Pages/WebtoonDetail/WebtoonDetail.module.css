@@ -1,146 +1,194 @@
 .webtoon_detail {
-    background-color: var(--background-white);
-    padding: 20px;
-}
-
-.webtoon {
-    display: flex;
-    border-bottom: 1px solid var(--border-grey);
-}
-
-.img_container {
-    max-height: 200px;
-    max-width: 200px;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 20px;
-}
-
-.img_container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.webtoon_content {
-    margin: 20px;
-    font-size: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+}
+.top {
+    width: 100%;
+    height: 100%;
+    margin-top: 12px;
+    display: flex;
 }
 
-.webtoon_title {
+.webtoon_detail_main {
+    flex: 1;
+}
+
+.main_title {
+    flex: 1;
+    background-color: var(--background-white);
+    padding: 16px 20px;
+    border: 1px solid var(--border-grey);
+    font-size: 16px;
     font-weight: bold;
-    font-size: 20px;
-}
-
-.webtoon_author {
-    margin-left: 10px;
-    font-size: 12px;
-}
-
-.webtoon_synopsis {
-    margin: 8px 0;
-    white-space: pre-line;
-}
-
-.webtoon_genre::after,
-.webtoon_days::after {
-    content: "|";
-    margin: 0 8px;
-}
-
-.buttons > button {
-    margin: 8px 8px 0 0;
-    border: none;
-    padding: 5px 20px;
-    background-color: var(--google-blue);
-    color: white;
-    border-radius: 4px;
-}
-
-.buttons > button:hover {
-    transition: filter 300ms;
-    filter: brightness(0.9);
-}
-
-.comments {
-    margin: 20px 0;
-}
-
-.comments > h3 {
     margin-bottom: 12px;
 }
 
-.comments_list {
+.main_info {
+    background-color: var(--background-white);
+    padding: 20px 20px;
+    border: 1px solid var(--border-grey);
+    margin-bottom: 12px;
+}
+
+.info_wrap {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 12px;
+}
+
+.img_container {
+    width: 300px;
+    height: 400px;
+}
+
+.img_container img {
+    object-fit: contain;
+    background-color: var(--border-grey);
+    width: 100%;
+    height: 100%;
+}
+
+.info_container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+.info_container table {
+    font-size: 13px;
+    margin-bottom: 12px;
+    border-collapse: separate;
+    border-spacing: 0 8px;
 }
 
-.comment {
-    position: relative;
-    border-bottom: 1px solid var(--border-grey);
-    padding: 20px;
+.info_container th {
+    width: 100px;
+    text-align: left;
 }
 
-.comment .user_id {
+.info_container .buttons {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.buttons a {
+    width: 100%;
+}
+
+.info_container .buttons button {
+    width: 40%;
+    background-color: var(--google-blue);
+    padding: 8px 12px;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.main_synopsis {
+    border: 1px solid var(--border-grey);
+    padding: 12px;
+    font-size: 12px;
+}
+
+.main_synopsis h3 {
     font-weight: bold;
-    font-size: 13px;
+    margin-bottom: 8px;
 }
 
-.comment .comment_content {
-    font-size: 13px;
+.buttons button:hover {
+    transition: filter 100ms;
+    filter: brightness(0.95);
 }
 
-.comment .created_at {
-    margin-top: 4px;
-    font-size: 10px;
-    color: #999;
-}
-
-.comment_reply {
-    padding: 0 8px;
-    margin: 8px 0 2px;
-    font-size: 12px;
-    background-color: var(--background-white);
-    border: 1px solid var(--border-grey);
-}
-
-.comment_more {
-    position: absolute;
-    padding: 0 8px 8px 8px;
-    top: 20px;
-    right: 20px;
-    font-size: 8px;
-    color: #999;
-    background: none;
-}
-.comment_recommend {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-
-.comment_recommend button {
-    padding: 0 8px;
-    font-size: 12px;
-    background-color: var(--background-white);
-    border: 1px solid var(--border-grey);
-    margin: 0 4px;
-}
-
-.comment_recommend button span {
-    color: grey;
+.buttons button:active {
+    box-shadow: inset 0 0 10px #333;
 }
 
 /* Recommendation list */
+.recommend {
+    background-color: var(--background-white);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+}
 
 .recommend_list {
-    padding: 20px;
+    padding: 16px 0;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 12px;
+    overflow: hidden;
+}
+
+/* aside */
+
+.aside {
+    overflow: hidden;
+    height: 588px;
+    max-width: 200px;
+    margin: 0 0 12px 12px;
+    padding: 16px 8px;
+    background-color: var(--background-white);
+    border: 1px solid var(--border-grey);
+}
+
+.update h2 {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.update li {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.update_img_container {
+    border: 1px solid var(--border-grey);
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+}
+
+.update_img_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.update_title {
+    font-size: 11px;
+    max-width: 100px;
+    max-height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.update ul {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+/* hot */
+.hot h2 {
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.hot li {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.hot ul {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
 }
 
 @media screen and (max-width: 860px) {

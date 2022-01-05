@@ -11,6 +11,7 @@ import Signup from "./Pages/Signup/Signup";
 import HoverButton from "./Components/HoverButton/HoverButton";
 import Main from "./Pages/Main/Main";
 import WebtoonDetail from "./Pages/WebtoonDetail/WebtoonDetail";
+import My from "./Pages/My/My";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/webtoon/:id" element={<WebtoonDetail />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
+                <Route exact path="/user" element={<My />} />
             </Routes>
             <Footer />
             <HoverButton />

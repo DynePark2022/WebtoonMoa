@@ -85,4 +85,9 @@ const secureUser = (req, res) => {
     res.send("secure user");
 };
 
-module.exports = { createUser, loginUser, logoutUser, secureUser };
+module.exports = {
+    createUser,
+    loginUser,
+    logoutUser,
+    secureUser,
+};
