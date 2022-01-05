@@ -22,6 +22,7 @@ const UserSchema = new Schema({
         required: [true, "password is required"],
         minlength: [8, "minimum 8 characters required"],
     },
+    bookmark: [String],
     createdAt: { type: Date, immutable: true, default: () => Date.now() },
 });
 

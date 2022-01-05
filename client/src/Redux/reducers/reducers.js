@@ -9,11 +9,7 @@ let userState = {
         username: "",
         email: "",
     },
-    likes: [],
-    history: [],
-    favorites: [],
-    hates: [],
-    comments: [],
+    bookmark: [],
 };
 
 const reducerUser = (state = userState, action) => {

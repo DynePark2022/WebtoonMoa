@@ -1,5 +1,5 @@
 import React from "react";
-import "./WebtoonDetail.css";
+import styles from "./WebtoonDetail.module.css";
 import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import Webtoon from "../../Components/Webtoon/Webtoon";
@@ -12,20 +12,20 @@ function WebtoonDetail() {
     const [webtoon, loading, error] = useFetch(`${url}webtoon/${id}`);
 
     return (
-        <div className="webtoon_detail">
-            <div className="top">
-                <div className="webtoon_detail_main">
+        <div className={styles.webtoon_detail}>
+            <div className={styles.top}>
+                <div className={styles.webtoon_detail_main}>
                     <div>{loading && "Loading..."}</div>
                     <div>{error && "Error!!!"}</div>
-                    <div className="main_title">
+                    <div className={styles.main_title}>
                         <h1>{webtoon.title}</h1>
                     </div>
-                    <div className="main_info">
-                        <div className="info_wrap">
-                            <div className="img_container">
+                    <div className={styles.main_info}>
+                        <div className={styles.info_wrap}>
+                            <div className={styles.img_container}>
                                 <img src={webtoon.image} alt={webtoon.title} />
                             </div>
-                            <div className="info_container">
+                            <div className={styles.info_container}>
                                 <table>
                                     <tbody>
                                         <tr>
@@ -62,38 +62,40 @@ function WebtoonDetail() {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div className="buttons">
+                                <div className={styles.buttons}>
                                     <a href={webtoon.url}>
                                         <button>웹툰보기</button>
                                     </a>
-                                    <button>
+                                    {/* <button>
                                         <i className="fas fa-bookmark"></i>
-                                    </button>
+                                    </button> */}
                                     <button>
                                         <i className="fas fa-heart"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div className="main_synopsis">
+                        <div className={styles.main_synopsis}>
                             <h3>줄거리</h3>
                             <div>{webtoon.synopsis}lorem</div>
                         </div>
                     </div>
                 </div>
-                <aside className="aside">
-                    <div className="update">
+                <aside className={styles.aside}>
+                    <div className={styles.update}>
                         <h2>최신 업데이트</h2>
-                        <li className="update_list">
+                        <li className={styles.update_list}>
                             {RecWebtoonArray.map((toon) => (
                                 <ul key={toon._id}>
-                                    <div className="update_img_container">
+                                    <div
+                                        className={styles.update_img_container}
+                                    >
                                         <img
                                             src={toon.image}
                                             alt={toon.title}
                                         />
                                     </div>
-                                    <div className="update_title">
+                                    <div className={styles.update_title}>
                                         {toon.title}
                                     </div>
                                 </ul>
@@ -102,11 +104,11 @@ function WebtoonDetail() {
                     </div>
                 </aside>
             </div>
-            <div className="bottom">
+            <div className={styles.bottom}>
                 <Comments postId={webtoon._id} />
-                <div className="recommend">
+                <div className={styles.recommend}>
                     <h1>Recommendation</h1>
-                    <div className="recommend_list">
+                    <div className={styles.recommend_list}>
                         {RecWebtoonArray.map((toon) => (
                             <Webtoon key={toon._id} webtoon={toon} />
                         ))}
