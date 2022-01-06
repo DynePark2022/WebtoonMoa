@@ -5,7 +5,7 @@ import styles from "./SingleComment.module.css";
 import { delete_comment } from "../../../../api";
 
 function Comment({ comment: c }) {
-    const user = useSelector((state) => state.reducerUser.user);
+    const user = useSelector((state) => state.reducerUser);
     const [comment, setComment] = useState(c);
     const [showMore, toggle] = useToggle(false);
 

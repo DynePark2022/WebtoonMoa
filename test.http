@@ -10,6 +10,8 @@ GET  {{hostname}}/secret HTTP/1.1
 ###user
 GET  {{hostname}}/user HTTP/1.1
 
+###
+GET  {{hostname}}/webtoon/bookmark?ids=a HTTP/1.1
 
 ### Post Webtoon
 POST {{hostname}}/webtoon HTTP/1.1

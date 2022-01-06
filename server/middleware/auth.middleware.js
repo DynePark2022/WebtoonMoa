@@ -21,24 +21,20 @@ const requireAuth = (req, res, next) => {
 
 const checkUser = (req, res, next) => {
     const token = req.cookies.jwt;
-    console.log("checkuser");
 
     if (token) {
         jwt.verify(token, JWT_TOKEN_SECRET, async (err, decodedToken) => {
             if (err) {
                 res.locals.user = null;
-                console.log("failed!");
                 next();
             } else {
                 let user = await User.findById(decodedToken.id);
                 res.locals.user = user;
-                console.log("passed!");
                 next();
             }
         });
     } else {
         res.locals.user = null;
-        console.log("no token");
         next();
     }
 };

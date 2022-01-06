@@ -5,6 +5,6 @@ const userController = require("../controllers/user.controller");
 const { checkUser } = require("../middleware/auth.middleware");
 
 router.get("/", checkUser, userController.getUser);
-router.get("/bookmark/:id", checkUser, userController.patchBookmark);
+router.patch("/bookmark", checkUser, userController.patchBookmark);
 
 module.exports = router;

@@ -69,6 +69,7 @@ const loginUser = async (req, res) => {
             username: user.username,
             userid: user._id,
             email: user.email,
+            bookmark: user.bookmark,
         });
     } catch (err) {
         const errors = handleErrors(err);

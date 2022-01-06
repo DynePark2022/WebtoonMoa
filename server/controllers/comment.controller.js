@@ -33,10 +33,6 @@ const postComment = async (req, res) => {
     }
 };
 
-const updateComment = async (req, res) => {
-    console.log(req);
-};
-
 const deleteComment = async (req, res) => {
     const id = req.params.id;
     try {
@@ -50,7 +46,6 @@ const deleteComment = async (req, res) => {
 module.exports = {
     getComments,
     postComment,
-    updateComment,
     deleteComment,
     getNestedComments,
 };

@@ -34,9 +34,10 @@ export const delete_comment = async (comment_id) =>
         withCredentials: true,
     });
 
-// webtoon
-export const bookmark_webtoon = async (webtoon_id) => {
-    await axios.get(`${url}/user/bookmark/${webtoon_id}`, {
-        withCredentials: true,
-    });
-};
+// user
+export const patch_user = async (webtoon_id) =>
+    await axios.patch(
+        `${url}/user/bookmark`,
+        { webtoon_id },
+        { withCredentials: true }
+    );

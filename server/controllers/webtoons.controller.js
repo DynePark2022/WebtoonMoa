@@ -57,4 +57,14 @@ const getSingleWebtoon = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 };
-module.exports = { getWebtoons, postWebtoon, getSingleWebtoon };
+
+const getBookmarked = async (req, res) => {
+    const ids = req.query.ids.split(",");
+    try {
+        const webtoons = await Webtoon.find({ _id: { $in: ids } });
+        res.status(200).json(webtoons);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+};
+module.exports = { getWebtoons, postWebtoon, getSingleWebtoon, getBookmarked };

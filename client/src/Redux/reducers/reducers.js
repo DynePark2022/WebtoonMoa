@@ -2,13 +2,9 @@ import { combineReducers } from "redux";
 import * as CON from "../constants/constants";
 
 let userState = {
-    user: {
-        isAdult: false,
-        isAdmin: false,
-        _id: "",
-        username: "",
-        email: "",
-    },
+    _id: undefined,
+    username: undefined,
+    email: undefined,
     bookmark: [],
 };
 
@@ -16,19 +12,24 @@ const reducerUser = (state = userState, action) => {
     switch (action.type) {
         case CON.GET_USER:
             let copy = { ...state };
-            copy.user.username = action.payload.username;
-            copy.user.email = action.payload.email;
-            copy.user._id = action.payload._id;
+            copy.username = action.payload.username;
+            copy.email = action.payload.email;
+            copy._id = action.payload._id;
+            copy.bookmark = action.payload.bookmark;
             return copy;
+        case CON.UPDATE_BOOKMARK:
+            let copy2 = { ...state };
+            copy2.bookmark = action.payload.bookmark;
+            return copy2;
         case CON.LOGOUT:
             let empty = { ...state };
-            empty.user.username = "";
+            empty.username = "";
             return empty;
         case CON.TEMP:
             let temp = { ...state };
-            temp.user.username = "temp";
-            temp.user.email = "temp@gmail.com";
-            temp.user._id = "1";
+            temp.username = "temp";
+            temp.email = "temp@gmail.com";
+            temp._id = "1";
             return temp;
         default:
             return state;

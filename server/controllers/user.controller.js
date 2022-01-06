@@ -16,67 +16,35 @@ const getUser = (req, res) => {
 
 // todo
 const patchBookmark = async (req, res) => {
-    console.log("patch bookmark");
     try {
-        const webtoonId = req.params.id;
+        const webtoon_id = req.body.webtoon_id;
         const { _id, bookmark } = res.locals.user;
-        // console.log(11111111);
-        // console.log(_id.toString());
-        // console.log(webtoonId);
-        // if (_id.toString() == webtoonId) {
-        //     console.log("same");
-        // } else {
-        //     console.log("diff");
-        // }
-        console.log(`webtoonId`);
-        console.log(webtoonId);
-        console.log(`before bookmark`);
-        console.log(bookmark);
-        if (!bookmark.includes(webtoonId)) {
-            console.log("dont include");
-            const added = bookmark.push(webtoonId);
-            console.log(added);
-            await User.findByIdAndUpdate(
-                { _id },
-                { bookmark: added },
-                { new: true },
-                (error, data) => {
-                    if (error) {
-                        console.log(error);
-                        // res.status(409).json({ message: error.message });
-                    } else {
-                        console.log(data);
-                        console.log("added");
-                        // res.status(200).json(data);
-                    }
-                }
+
+        const options = { new: true };
+        if (bookmark.includes(webtoon_id)) {
+            const index = bookmark.indexOf(webtoon_id);
+            bookmark.splice(index, 1);
+            const data = await User.findByIdAndUpdate(
+                _id,
+                { bookmark },
+                options
             );
+            res.status(201).json({ bookmark: data.bookmark });
         } else {
-            console.log("include");
-            const index = bookmark.indexOf(webtoonId);
-            console.log(`index${index}`);
-            const deleted = bookmark.splice(index, 1);
-            console.log(`After bookmark`);
-            console.log(bookmark);
-            console.log(`deleted${deleted}`);
-            await User.findByIdAndUpdate(
-                { _id },
-                { bookmark: deleted },
-                { new: true },
-                (error, data) => {
-                    if (error) {
-                        // res.status(409).json({ message: error.message });
-                        console.log(error);
-                    } else {
-                        console.log(data);
-                        console.log("removed");
-                        // res.status(200).json(data);
-                    }
-                }
+            const added = bookmark.concat(webtoon_id);
+            const data = await User.findByIdAndUpdate(
+                _id,
+                { bookmark: added },
+                options
             );
+            res.status(201).json({ bookmark: data.bookmark });
         }
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        if (res.locals.user === null) {
+            res.status(401).json({ error: "no user" });
+        } else {
+            res.status(409).json({ message: error.message });
+        }
     }
 };
 
