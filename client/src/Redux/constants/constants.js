@@ -1,4 +1,5 @@
 export const GET_USER = "GET_USER";
+export const UPDATE_BOOKMARK = "UPDATE_BOOKMARK";
 export const LOGOUT = "LOGOUT";
 export const TEMP = "TEMP";
 

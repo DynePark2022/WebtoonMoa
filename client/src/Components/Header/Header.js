@@ -5,9 +5,8 @@ import styles from "./Header.module.css";
 import { signOut } from "../../Redux/actions/actions";
 
 function Header() {
-    const username = useSelector((state) => state.reducerUser.user.username);
+    const user = useSelector((state) => state.reducerUser);
     let dispatch = useDispatch();
-
     return (
         <header>
             <div className={styles.logo}>
@@ -17,10 +16,10 @@ function Header() {
                     </h1>
                 </Link>
             </div>
-            {username && <div>안녕하세요 {username}님</div>}
+            {user.username && <div>안녕하세요 {user.username}님</div>}
             <div className={styles.icons}>
                 <i className="fas fa-search"></i>
-                {username ? (
+                {user.username ? (
                     <Link to="/">
                         <button
                             className={styles.auth}

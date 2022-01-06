@@ -1,0 +1,35 @@
+.my {
+    background-color: var(--background-white);
+}
+
+.my h1 {
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    /* background-color: red; */
+}
+
+.webtoonList {
+    width: 100%;
+    background-color: var(--background-white);
+    padding-bottom: 20px;
+}
+
+.webtoons {
+    padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
+}
+
+@media screen and (max-width: 860px) {
+    .webtoons {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .webtoons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

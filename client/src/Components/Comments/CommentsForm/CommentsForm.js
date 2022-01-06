@@ -6,7 +6,7 @@ import InputForm from "../../InputForm/InputForm";
 import { add_comment } from "../../../api";
 
 function CommentsForm({ addComment, setAddComment, loading, parentId }) {
-    const user = useSelector((state) => state.reducerUser.user);
+    const user = useSelector((state) => state.reducerUser);
 
     const { id } = useParams();
     const [values, setValues] = useState({

@@ -44,7 +44,6 @@ function Login() {
             })
             .then((res) => {
                 dispatch({ type: "GET_USER", payload: res.data });
-                console.log(res.data);
                 navigate("/");
             })
             .catch((err) => {

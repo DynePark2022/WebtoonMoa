@@ -1,29 +1,28 @@
 import React from "react";
-import { bookmark_webtoon } from "../../api";
+import { useSelector } from "react-redux";
+import styles from "./My.module.css";
+import Webtoon from "../../Components/Webtoon/Webtoon";
 import useFetch from "../../Hooks/useFetch";
 
 function My() {
-    const [data, loading, error] = useFetch(`http://localhost:3001/user`);
-
-    const webtoonAId = `61d0e87f51f19fe86c06afab`;
-    // const webtoonBId = "61c81cfb6ba14204571de9a1";
-
-    const bookmark = () => {
-        bookmark_webtoon(webtoonAId)
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => console.log(err));
-    };
-
-    console.log(data);
+    const user = useSelector((state) => state.reducerUser);
+    const booked = user.bookmark;
+    const [data, loading, error] = useFetch(
+        `http://localhost:3001/webtoon/bookmark?ids=${booked}`
+    );
+    console.log(loading, error);
     return (
-        <div>
-            <h1>this is user page</h1>
-            {loading && <div>loading</div>}
-            {error && <div>error</div>}
-            {data && <div>{data.username}</div>}
-            <button onClick={bookmark}>북마크하기 </button>
+        <div className={styles.my}>
+            <h1>{user.username}님이 찜한 웹툰</h1>
+            <div className={styles.webtoonList}>
+                {data && (
+                    <div className={styles.webtoons}>
+                        {data.map((webtoon) => (
+                            <Webtoon key={webtoon._id} webtoon={webtoon} />
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

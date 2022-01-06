@@ -5,11 +5,29 @@ import useFetch from "../../Hooks/useFetch";
 import Webtoon from "../../Components/Webtoon/Webtoon";
 import Comments from "../../Components/Comments/Comments";
 import { RecWebtoonArray } from "../../DB/text";
+import { useDispatch, useSelector } from "react-redux";
+import { patch_user } from "../../api";
+import { UPDATE_BOOKMARK } from "../../Redux/constants/constants";
 
 function WebtoonDetail() {
     const url = "http://localhost:3001/";
     const { id } = useParams();
     const [webtoon, loading, error] = useFetch(`${url}webtoon/${id}`);
+    const user = useSelector((state) => state.reducerUser);
+    const dispatch = useDispatch();
+
+    const submitBookmark = async () => {
+        patch_user(webtoon._id)
+            .then((res) => {
+                dispatch({
+                    type: UPDATE_BOOKMARK,
+                    payload: { bookmark: res.data.bookmark },
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     return (
         <div className={styles.webtoon_detail}>
@@ -66,12 +84,19 @@ function WebtoonDetail() {
                                     <a href={webtoon.url}>
                                         <button>웹툰보기</button>
                                     </a>
-                                    {/* <button>
+                                    <button
+                                        id={
+                                            user.bookmark.includes(webtoon._id)
+                                                ? `${styles.bookmarked}`
+                                                : undefined
+                                        }
+                                        onClick={submitBookmark}
+                                    >
                                         <i className="fas fa-bookmark"></i>
-                                    </button> */}
-                                    <button>
-                                        <i className="fas fa-heart"></i>
                                     </button>
+                                    {/* <button>
+                                        <i className="fas fa-heart"></i>
+                                    </button> */}
                                 </div>
                             </div>
                         </div>

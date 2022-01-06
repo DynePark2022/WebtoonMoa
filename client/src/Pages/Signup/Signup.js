@@ -69,8 +69,8 @@ function Signup() {
         axios
             .post("http://localhost:3001/signup", { ...values })
             .then((res) => {
-                console.log(res);
-                navigate("/");
+                alert("회원가입 되었습니다!");
+                navigate("/login");
             })
             .catch((err) => {
                 console.log(err);
