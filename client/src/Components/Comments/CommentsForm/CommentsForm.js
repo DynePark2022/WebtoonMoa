@@ -9,13 +9,14 @@ function CommentsForm({ addComment, setAddComment, loading, parentId }) {
     const user = useSelector((state) => state.reducerUser);
 
     const { id } = useParams();
-    const [values, setValues] = useState({
+    const defaultValue = {
         username: user.username,
         email: user.email,
         postId: id,
         comment: "",
         parentId: "",
-    });
+    };
+    const [values, setValues] = useState(defaultValue);
 
     const onChange = (e) => {
         setValues({ ...values, parentId: parentId, comment: e.target.value });
@@ -31,6 +32,7 @@ function CommentsForm({ addComment, setAddComment, loading, parentId }) {
             .catch((err) => {
                 alert(err);
             });
+        setValues(defaultValue);
     };
     return (
         <div className={styles.comments_form}>

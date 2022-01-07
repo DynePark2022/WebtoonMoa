@@ -58,6 +58,21 @@ const getSingleWebtoon = async (req, res) => {
     }
 };
 
+const searchWebtoon = async (req, res) => {
+    const search_text = req.params.name;
+    const regex = new RegExp(search_text, "i");
+    const query = {
+        $or: [{ title: regex }, { author: regex }],
+    };
+    try {
+        const webtoon = await Webtoon.find(query);
+        console.log(webtoon);
+        res.status(200).json(webtoon);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+};
+
 const getBookmarked = async (req, res) => {
     const ids = req.query.ids.split(",");
     try {
@@ -67,4 +82,10 @@ const getBookmarked = async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 };
-module.exports = { getWebtoons, postWebtoon, getSingleWebtoon, getBookmarked };
+module.exports = {
+    getWebtoons,
+    postWebtoon,
+    getSingleWebtoon,
+    searchWebtoon,
+    getBookmarked,
+};

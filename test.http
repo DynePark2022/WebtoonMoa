@@ -15,6 +15,9 @@ GET  {{hostname}}/user HTTP/1.1
 ###
 GET  {{hostname}}/webtoon/bookmark?ids=a HTTP/1.1
 
+###
+GET {{hostname}}/webtoon/search/곤 HTTP/1.1
+
 ### Post Webtoon
 POST {{hostname}}/webtoon HTTP/1.1
 Content-Type: {{content-type}}

@@ -19,8 +19,8 @@ const patchBookmark = async (req, res) => {
     try {
         const webtoon_id = req.body.webtoon_id;
         const { _id, bookmark } = res.locals.user;
-
         const options = { new: true };
+
         if (bookmark.includes(webtoon_id)) {
             const index = bookmark.indexOf(webtoon_id);
             bookmark.splice(index, 1);
