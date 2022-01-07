@@ -4,6 +4,7 @@ import InputForm from "../../Components/InputForm/InputForm";
 import styles from "./Login.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
+import { GET_USER } from "../../Redux/constants/constants";
 
 function Login() {
     useSelector((state) => state);
@@ -43,7 +44,7 @@ function Login() {
                 withCredentials: true,
             })
             .then((res) => {
-                dispatch({ type: "GET_USER", payload: res.data });
+                dispatch({ type: GET_USER, payload: res.data });
                 navigate("/");
             })
             .catch((err) => {

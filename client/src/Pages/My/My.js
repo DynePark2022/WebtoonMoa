@@ -10,10 +10,11 @@ function My() {
     const [data, loading, error] = useFetch(
         `http://localhost:3001/webtoon/bookmark?ids=${booked}`
     );
-    console.log(loading, error);
     return (
         <div className={styles.my}>
             <h1>{user.username}님이 찜한 웹툰</h1>
+            <div>{loading && "Loading..."}</div>
+            <div>{error && "Error!!!"}</div>
             <div className={styles.webtoonList}>
                 {data && (
                     <div className={styles.webtoons}>
