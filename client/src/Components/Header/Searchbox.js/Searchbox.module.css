@@ -1,5 +1,5 @@
 /* search */
-.Searchbox {
+.searchbox {
     width: 28px;
     height: 100%;
     border-radius: 100%;
@@ -13,16 +13,17 @@
 
 .icon {
     display: flex;
+    padding: 6px;
     justify-content: center;
     align-items: center;
     width: 28px;
     height: 100%;
     border-radius: 28px;
     color: var(--google-blue);
-    /* background-color: var(--background-white); */
+    background-color: var(--background-white);
 }
 
-.active {
+#active {
     height: 100%;
     width: 200px;
     border-radius: 5px;
@@ -51,6 +52,7 @@
     width: 20px;
     height: 100%;
     cursor: pointer;
+    padding: 10px;
 }
 
 .clear i {

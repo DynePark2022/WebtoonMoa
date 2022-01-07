@@ -6,7 +6,11 @@
     padding-top: 20px;
     font-size: 16px;
     text-align: center;
-    /* background-color: red; */
+}
+
+.not_found {
+    margin-top: 12px;
+    text-align: center;
 }
 
 .webtoonList {
