@@ -8,6 +8,13 @@ let userState = {
     bookmark: [],
 };
 
+const emptyUser = {
+    _id: undefined,
+    username: undefined,
+    email: undefined,
+    bookmark: [],
+};
+
 const reducerUser = (state = userState, action) => {
     switch (action.type) {
         case CON.GET_USER: {
@@ -25,9 +32,7 @@ const reducerUser = (state = userState, action) => {
         }
 
         case CON.LOGOUT: {
-            let copy = { ...state };
-            copy.username = "";
-            return copy;
+            return emptyUser;
         }
         case CON.TEMP: {
             let copy = { ...state };

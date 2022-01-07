@@ -2,13 +2,8 @@
     background-color: var(--background-white);
 }
 
-.search h1 {
-    padding-top: 20px;
-    font-size: 20px;
-    text-align: center;
-    /* background-color: red; */
-}
 .search h2 {
+    padding-top: 20px;
     font-size: 16px;
     text-align: center;
     /* background-color: red; */

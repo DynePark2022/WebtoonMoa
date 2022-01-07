@@ -16,6 +16,7 @@ import { get_user } from "./api";
 import { useDispatch } from "react-redux";
 import { GET_USER, LOGOUT } from "./Redux/constants/constants";
 import Search from "./Pages/Search/Search";
+import ProtectedRoutes from "./Pages/ProtectedRoutes";
 
 function App() {
     let dispatch = useDispatch();
@@ -24,7 +25,7 @@ function App() {
             dispatch({ type: GET_USER, payload: res.data });
         })
         .catch((err) => {
-            console.log(err);
+            console.log("no user");
             dispatch({ type: LOGOUT });
         });
 
@@ -40,7 +41,9 @@ function App() {
                 <Route path="/search/:input" element={<Search />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
-                <Route exact path="/user" element={<My />} />
+                <Route element={<ProtectedRoutes />}>
+                    <Route exact path="/user" element={<My />} />
+                </Route>
             </Routes>
             <Footer />
             <HoverButton />
