@@ -8,6 +8,7 @@ const userRoutes = require("./routes/user.routes");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/auth.middleware");
+const { response } = require("express");
 
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
@@ -33,7 +34,14 @@ app.use(authRoutes);
 app.use("/user", userRoutes);
 app.use("/webtoon", webtoonRoutes);
 app.use("/comment", commentRoutes);
-app.get("*", checkUser);
+app.get("/check", checkUser, (req, res) => {
+    try {
+        const { _id, username, email, bookmark } = res.locals.user;
+        res.status(200).json({ _id, username, email, bookmark });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 app.get("/", (req, res) => {
     console.log(req);
 });

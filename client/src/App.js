@@ -12,8 +12,22 @@ import HoverButton from "./Components/HoverButton/HoverButton";
 import Main from "./Pages/Main/Main";
 import WebtoonDetail from "./Pages/WebtoonDetail/WebtoonDetail";
 import My from "./Pages/My/My";
+import { get_user } from "./api";
+import { useDispatch } from "react-redux";
+import { GET_USER, LOGOUT } from "./Redux/constants/constants";
 
 function App() {
+    let dispatch = useDispatch();
+    get_user()
+        .then((res) => {
+            dispatch({ type: GET_USER, payload: res.data });
+        })
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: LOGOUT });
+        });
+
+    console.log("x");
     return (
         <div className="App">
             <Header />

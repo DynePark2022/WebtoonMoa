@@ -1,8 +1,7 @@
 import axios from "axios";
 const url = "http://localhost:3001";
 
-export const get_data = async (url) =>
-    await axios.get(url, { withCredentials: true });
+export const get_data = async (url) => await axios.get(url);
 
 export const get_webtoon_byTab = async (page, limit, toon) =>
     await axios.get(`${url}/webtoon?page=${page}&limit=${limit}&toon=${toon}`);
@@ -35,6 +34,14 @@ export const delete_comment = async (comment_id) =>
     });
 
 // user
+
+export const get_user = async () =>
+    await axios.get(`${url}/check`, { withCredentials: true });
+// export const get_user = async (token) =>
+//     await axios.get(`${url}/check`, {
+//         headers: { Authorization: `Bearer ${token}` },
+//     });
+
 export const patch_user = async (webtoon_id) =>
     await axios.patch(
         `${url}/user/bookmark`,

@@ -8,6 +8,8 @@ GET {{hostname}}
 GET  {{hostname}}/secret HTTP/1.1
 
 ###user
+GET  {{hostname}}/check HTTP/1.1
+###
 GET  {{hostname}}/user HTTP/1.1
 
 ###
