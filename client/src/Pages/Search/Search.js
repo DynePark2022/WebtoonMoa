@@ -14,10 +14,10 @@ function Search() {
 
     return (
         <div className={styles.search}>
-            <h1>Searchpage</h1>
             <h2>"{input}"에 대한 검색 결과입니다.</h2>
             <div>
-                {data.length === 0 &&
+                {!loading &&
+                    data.length === 0 &&
                     "찾으시는 웹툰이 없습니다. 웹툰 제목이나 작가로 검색해 주세요."}
             </div>
             <div className={styles.webtoonList}>

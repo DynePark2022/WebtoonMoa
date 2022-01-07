@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputForm from "../../Components/InputForm/InputForm";
 import styles from "./Login.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { GET_USER } from "../../Redux/constants/constants";
+import { GET_USER, LOGOUT, TAB_CLEAR } from "../../Redux/constants/constants";
 
 function Login() {
     useSelector((state) => state);
     let dispatch = useDispatch();
-
+    useEffect(() => {
+        dispatch({ type: LOGOUT });
+        dispatch({ type: TAB_CLEAR });
+    }, []);
     const navigate = useNavigate();
     const [values, setValues] = useState({
         email: "",
