@@ -15,6 +15,7 @@ import My from "./Pages/My/My";
 import { get_user } from "./api";
 import { useDispatch } from "react-redux";
 import { GET_USER, LOGOUT } from "./Redux/constants/constants";
+import Search from "./Pages/Search/Search";
 
 function App() {
     let dispatch = useDispatch();
@@ -27,7 +28,6 @@ function App() {
             dispatch({ type: LOGOUT });
         });
 
-    console.log("x");
     return (
         <div className="App">
             <Header />
@@ -37,6 +37,7 @@ function App() {
                 <Route exact path="/" element={<Main />} />
                 <Route path="/webtoon" element={<WebtoonList />} />
                 <Route path="/webtoon/:id" element={<WebtoonDetail />} />
+                <Route path="/search/:input" element={<Search />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
                 <Route exact path="/user" element={<My />} />

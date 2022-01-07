@@ -10,27 +10,32 @@ let userState = {
 
 const reducerUser = (state = userState, action) => {
     switch (action.type) {
-        case CON.GET_USER:
+        case CON.GET_USER: {
             let copy = { ...state };
             copy.username = action.payload.username;
             copy.email = action.payload.email;
             copy._id = action.payload._id;
             copy.bookmark = action.payload.bookmark;
             return copy;
-        case CON.UPDATE_BOOKMARK:
-            let copy2 = { ...state };
-            copy2.bookmark = action.payload.bookmark;
-            return copy2;
-        case CON.LOGOUT:
-            let empty = { ...state };
-            empty.username = "";
-            return empty;
-        case CON.TEMP:
-            let temp = { ...state };
-            temp.username = "temp";
-            temp.email = "temp@gmail.com";
-            temp._id = "1";
-            return temp;
+        }
+        case CON.UPDATE_BOOKMARK: {
+            let copy = { ...state };
+            copy.bookmark = action.payload.bookmark;
+            return copy;
+        }
+
+        case CON.LOGOUT: {
+            let copy = { ...state };
+            copy.username = "";
+            return copy;
+        }
+        case CON.TEMP: {
+            let copy = { ...state };
+            copy.username = "temp";
+            copy.email = "temp@gmail.com";
+            copy._id = "1";
+            return copy;
+        }
         default:
             return state;
     }

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { signOut } from "../../Redux/actions/actions";
+import Searchbox from "./Searchbox.js/Searchbox";
 
 function Header() {
     const user = useSelector((state) => state.reducerUser);
@@ -18,7 +19,8 @@ function Header() {
             </div>
             {user.username && <div>안녕하세요 {user.username}님</div>}
             <div className={styles.icons}>
-                <i className="fas fa-search"></i>
+                <Searchbox />
+
                 {user.username ? (
                     <Link to="/">
                         <button
