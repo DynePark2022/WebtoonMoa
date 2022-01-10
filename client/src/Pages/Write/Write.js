@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import styles from "./CommunityWrite.module.css";
+import styles from "./Write.module.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useSelector } from "react-redux";
 import { add_post } from "../../api";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function CommunityWrite() {
+function Write() {
     const user = useSelector((state) => state.reducerUser);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    console.log(user);
     const categoryTab = ["일반", "정보", "공유", "요청", "질문", "후기"];
 
     const defaultValue = {
@@ -21,15 +20,13 @@ function CommunityWrite() {
         category: "일반",
     };
     const [values, setValues] = useState(defaultValue);
-    console.log(values);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         add_post(values)
             .then((res) => {
-                console.log(res.data);
                 alert("글이 작성되었습니다.");
-                // navigate(`/post/${res.data._id}`);
+                navigate(`/post/${res.data._id}`);
             })
             .catch((err) => {
                 alert(err);
@@ -38,7 +35,7 @@ function CommunityWrite() {
     };
 
     return (
-        <div className={styles.community_write}>
+        <div className={styles.write}>
             <h1 className={styles.header}>글쓰기</h1>
             <ul className={styles.category}>
                 {categoryTab.map((tab, i) => (
@@ -73,10 +70,10 @@ function CommunityWrite() {
                 </div>
                 <CKEditor
                     editor={ClassicEditor}
-                    data="<p>Hello from CKEditor 5!</p>"
+                    data={values.content}
                     onChange={(event, editor) => {
                         const data = editor.getData();
-                        console.log(data);
+                        setValues({ ...values, content: data });
                     }}
                 />
                 <button className={styles.button} onClick={handleSubmit}>
@@ -87,4 +84,4 @@ function CommunityWrite() {
     );
 }
 
-export default CommunityWrite;
+export default Write;

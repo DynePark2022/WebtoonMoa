@@ -12,7 +12,7 @@ function Login() {
     useEffect(() => {
         dispatch({ type: LOGOUT });
         dispatch({ type: TAB_CLEAR });
-    }, []);
+    }, [dispatch]);
     const navigate = useNavigate();
     const [values, setValues] = useState({
         email: "",

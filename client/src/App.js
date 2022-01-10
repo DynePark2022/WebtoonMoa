@@ -19,7 +19,7 @@ import Search from "./Pages/Search/Search";
 import ProtectedRoutes from "./Pages/ProtectedRoutes";
 import Community from "./Pages/Community/Community";
 import CommunityPost from "./Pages/Community/CommunityPost.js/CommunityPost";
-import CommunityWrite from "./Pages/CommunityWrite/CommunityWrite";
+import Write from "./Pages/Write/Write";
 
 function App() {
     let dispatch = useDispatch();
@@ -46,7 +46,7 @@ function App() {
                 <Route path="/community/:id" element={<CommunityPost />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
-                <Route exact path="/write" element={<CommunityWrite />} />
+                <Route exact path="/write" element={<Write />} />
                 <Route element={<ProtectedRoutes />}>
                     <Route exact path="/user" element={<My />} />
                 </Route>

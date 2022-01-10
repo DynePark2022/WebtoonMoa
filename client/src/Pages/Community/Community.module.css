@@ -50,6 +50,10 @@ tbody tr {
     font-size: 11px;
     line-height: 28px;
     border-bottom: 1px solid var(--border-grey);
+    cursor: pointer;
+}
+tbody tr:hover {
+    background-color: var(--background-grey);
 }
 
 tbody tr :nth-child(1),
