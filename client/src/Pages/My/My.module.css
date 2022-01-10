@@ -2,11 +2,11 @@
     background-color: var(--background-white);
 }
 
-.my h1 {
+.my h3 {
     padding: 20px;
     font-size: 20px;
     text-align: center;
-    /* background-color: red; */
+    margin: 0;
 }
 
 .webtoonList {

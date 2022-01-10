@@ -71,7 +71,7 @@ function CommunityPost() {
                     </div>
                 </div>
                 <div className={styles.post_content}>
-                    {/* FIXME: XSS */}
+                    {/* TODO: BE sanitize */}
                     <div dangerouslySetInnerHTML={{ __html: post.content }} />
                 </div>
                 <div className={styles.post_like}>

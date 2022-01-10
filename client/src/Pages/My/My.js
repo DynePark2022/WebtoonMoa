@@ -12,7 +12,7 @@ function My() {
     );
     return (
         <div className={styles.my}>
-            <h1>{user.username}님이 찜한 웹툰</h1>
+            <h3>{user.username}님이 찜한 웹툰</h3>
             <div>{loading && "Loading..."}</div>
             <div>{error && "Error!!!"}</div>
             <div className={styles.webtoonList}>

@@ -36,7 +36,7 @@ function WebtoonDetail() {
                     <div>{loading && "Loading..."}</div>
                     <div>{error && "Error!!!"}</div>
                     <div className={styles.main_title}>
-                        <h1>{webtoon.title}</h1>
+                        <h3>{webtoon.title}</h3>
                     </div>
                     <div className={styles.main_info}>
                         <div className={styles.info_wrap}>
@@ -108,7 +108,7 @@ function WebtoonDetail() {
                 </div>
                 <aside className={styles.aside}>
                     <div className={styles.update}>
-                        <h2>최신 업데이트</h2>
+                        <h3>최신 업데이트</h3>
                         <li className={styles.update_list}>
                             {RecWebtoonArray.map((toon) => (
                                 <ul key={toon._id}>
@@ -132,7 +132,7 @@ function WebtoonDetail() {
             <div className={styles.bottom}>
                 <Comments postId={webtoon._id} />
                 <div className={styles.recommend}>
-                    <h1>Recommendation</h1>
+                    <h3>Recommendation</h3>
                     <div className={styles.recommend_list}>
                         {RecWebtoonArray.map((toon) => (
                             <Webtoon key={toon._id} webtoon={toon} />

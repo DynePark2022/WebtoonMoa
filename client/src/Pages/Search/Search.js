@@ -12,7 +12,7 @@ function Search() {
 
     return (
         <div className={styles.search}>
-            <h2>"{input}"에 대한 검색 결과입니다.</h2>
+            <h3>"{input}"에 대한 검색 결과입니다.</h3>
             <div className={styles.not_found}>
                 {!loading &&
                     data.length === 0 &&

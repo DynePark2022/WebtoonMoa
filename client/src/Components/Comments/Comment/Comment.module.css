@@ -3,6 +3,7 @@
 }
 
 .comment_nest {
+    cursor: pointer;
     position: absolute;
     top: 70px;
     left: 20px;
