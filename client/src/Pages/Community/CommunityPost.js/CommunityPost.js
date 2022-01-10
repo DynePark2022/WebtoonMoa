@@ -1,46 +1,72 @@
 import React from "react";
 import styles from "./CommunityPost.module.css";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
+import { useSelector } from "react-redux";
+import { delete_post } from "../../../api";
 
 function CommunityPost() {
+    const navigate = useNavigate();
+    const user = useSelector((state) => state.reducerUser);
     const { id } = useParams();
     const [data, loading, error] = useFetch(`http://localhost:3001/post/${id}`);
     const post = data[0];
+
+    const deletePost = () => {
+        window.confirm("댓글을 삭제할까요?") &&
+            delete_post(id)
+                .then((res) => {
+                    console.log(res);
+                    navigate("/community");
+                })
+                .catch((err) => console.log(err));
+    };
 
     return (
         data && (
             <div className={styles.community_post}>
                 <div>{loading && "loading"}</div>
                 <div>{error && "loading"}</div>
+                {user.username === post.username && (
+                    <div className={styles.buttons}>
+                        <div className={styles.delete} onClick={deletePost}>
+                            <i className="fas fa-trash"></i>
+                            <span>삭제</span>
+                        </div>
+                        <div className={styles.edit}>
+                            <i className="fas fa-pen"></i>
+                            <span>수정</span>
+                        </div>
+                    </div>
+                )}
                 <h2 className={styles.post_title}>{post.title}</h2>
                 <div className={styles.post_detail}>
                     <div className={styles.post_detail_left}>
-                        <div className={styles.post_author}>
+                        <div>
                             <i className="fas fa-user"></i>
-                            {post.username}
+                            <span>{post.username}</span>
                         </div>
-                        <div className={styles.post_category}>
+                        <div>
                             <i className="fas fa-tag"></i>
-                            {post.category}
+                            <span>{post.category}</span>
                         </div>
-                        <div className={styles.comments_count}>
+                        <div>
                             <i className="fas fa-comment"></i>
-                            {post.commentCount}
+                            <span>{post.commentCount}</span>
                         </div>
-                        <div className={styles.post_views}>
+                        <div>
                             <i className="fas fa-eye"></i>
-                            {post.viewCount}
+                            <span>{post.viewCount}</span>
                         </div>
-                        <div className={styles.post_likes}>
+                        <div>
                             <i className="fas fa-thumbs-up"></i>
-                            {post.thumbUp}
+                            <span>{post.thumbUp}</span>
                         </div>
                     </div>
                     <div className="post_detail_right">
                         <div className={styles.post_created}>
                             <i className="fas fa-clock"></i>
-                            {post.createdAt}
+                            <span>{post.createdAt}</span>
                         </div>
                     </div>
                 </div>

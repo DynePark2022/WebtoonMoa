@@ -5,8 +5,7 @@ import styles from "./Community.module.css";
 
 function Community() {
     const navigate = useNavigate();
-    const [data, loading, error] = useFetch(`http://localhost:3001/post/`);
-    console.log(data);
+    const [data] = useFetch(`http://localhost:3001/post/`);
 
     return (
         data && (
@@ -20,7 +19,6 @@ function Community() {
                 <table>
                     <thead>
                         <tr>
-                            {/* <th>번호</th> */}
                             <th>말머리</th>
                             <th>제목</th>
                             <th>글쓴이</th>

@@ -23,7 +23,7 @@ export const add_post = async (post) =>
     await axios.post(`${url}/post`, post, { withCredentials: true });
 
 export const delete_post = async (post_id) =>
-    await axios.delete(`${url}/post${post_id}`, { withCredentials: true });
+    await axios.delete(`${url}/post/${post_id}`, { withCredentials: true });
 
 // comment
 export const add_comment = async (comment) =>
