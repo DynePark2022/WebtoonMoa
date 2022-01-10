@@ -37,3 +37,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background-color: #909090;
 }
+
+.ck-editor__editable {
+    min-height: 300px;
+}
