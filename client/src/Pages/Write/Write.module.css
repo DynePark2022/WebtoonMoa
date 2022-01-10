@@ -1,0 +1,77 @@
+.write {
+    background-color: #fff;
+    padding: 20px;
+    color: var(--text-black);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.header {
+    font-size: 16px;
+    padding: 8px 12px;
+    width: 100%;
+    border-top: 1px solid var(--border-grey);
+    border-bottom: 1px solid var(--border-grey);
+}
+
+.category {
+    width: 100%;
+    display: flex;
+}
+
+.category li {
+    width: 10%;
+    text-align: center;
+    border: 1px solid var(--border-grey);
+}
+
+.category_tab {
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.category_tab:hover {
+    border: 1px solid var(--google-blue);
+}
+
+#selected_tab {
+    background-color: var(--background-grey);
+}
+
+.form_top {
+    width: 100%;
+    border: 1px solid var(--border-grey);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.form_top label[for="title"] {
+    background-color: var(--background-grey);
+    padding: 4px 12px;
+    border-right: 1px solid var(--border-grey);
+    margin: 0;
+    font-size: 14px;
+}
+
+.form_top input[id="title"] {
+    flex: 1;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.form_top input:focus {
+    outline: none;
+    box-shadow: 0px 0px 1px 1px var(--google-blue);
+}
+
+.button {
+    margin-top: 12px;
+    width: 82px;
+    height: 32px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--background-white);
+    background-color: var(--google-blue);
+}
