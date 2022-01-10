@@ -76,9 +76,7 @@ function Write() {
                         setValues({ ...values, content: data });
                     }}
                 />
-
-                <button className={styles.button}>
-                    {/* // onClick={handleSubmit}> */}
+                <button className={styles.button} onClick={handleSubmit}>
                     작성
                 </button>
             </form>
