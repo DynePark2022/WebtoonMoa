@@ -59,7 +59,7 @@ function Login() {
         <div className={styles.login}>
             <div className={styles.container}>
                 <div className={styles.top}>
-                    <h4>로그인</h4>
+                    <h3>로그인</h3>
                 </div>
                 <form action="/login" method="POST" className={styles.mid}>
                     {LoginArray.map((input) => (

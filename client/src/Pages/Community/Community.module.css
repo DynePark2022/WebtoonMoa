@@ -10,12 +10,15 @@
 .category {
     width: 100%;
     display: flex;
+    padding: 0;
+    margin: 0;
 }
 
 .category li {
-    width: 10%;
+    width: 100px;
     text-align: center;
     border: 1px solid var(--border-grey);
+    list-style: none;
 }
 
 .category_tab {
@@ -24,6 +27,8 @@
 }
 
 .button {
+    cursor: pointer;
+    border: none;
     width: 82px;
     height: 32px;
     margin: 0 12px;
@@ -39,6 +44,10 @@
     text-align: center;
     border-collapse: collapse;
     border-top: 2px solid var(--google-blue);
+}
+
+#selected {
+    background-color: var(--background-grey);
 }
 
 thead {

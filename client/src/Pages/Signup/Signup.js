@@ -82,7 +82,7 @@ function Signup() {
         <div className={styles.signup}>
             <div className={styles.container}>
                 <div className={styles.top}>
-                    <h4>회원가입</h4>
+                    <h3>회원가입</h3>
                 </div>
 
                 <form action="/signup" method="POST" className={styles.mid}>

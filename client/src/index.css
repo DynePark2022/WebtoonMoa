@@ -98,15 +98,15 @@ audio,
 input,
 button,
 video {
-    margin: 0;
+    /* margin: 0;
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
+    font: inherit; */
     vertical-align: baseline;
     box-sizing: border-box;
 }
-
+/* 
 a {
     text-decoration: none;
     color: inherit;
@@ -118,4 +118,4 @@ button {
 
 li {
     list-style: none;
-}
+} */

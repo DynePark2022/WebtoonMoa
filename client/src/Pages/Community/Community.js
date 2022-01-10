@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import styles from "./Community.module.css";
@@ -6,15 +6,24 @@ import styles from "./Community.module.css";
 function Community() {
     const navigate = useNavigate();
     const [data] = useFetch(`http://localhost:3001/post/`);
+    const [tab, setTab] = useState("전체글");
 
+    const categoryArray = ["전체글", "개념글", "공지"];
     return (
         data && (
             <div className={styles.community}>
                 <div className={styles.top_buttons}></div>
                 <ul className={styles.category}>
-                    <li className={styles.category_tab}>전체글</li>
-                    <li className={styles.category_tab}>개념글</li>
-                    <li className={styles.category_tab}>공지</li>
+                    {categoryArray.map((category) => (
+                        <li
+                            className={styles.category_tab}
+                            id={tab === category && `${styles.selected}`}
+                            key={category}
+                            onClick={() => setTab(category)}
+                        >
+                            {category}
+                        </li>
+                    ))}
                 </ul>
                 <table>
                     <thead>
