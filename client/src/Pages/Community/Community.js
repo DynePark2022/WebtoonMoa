@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./Community.module.css";
 
 function Community() {
@@ -53,7 +54,9 @@ function Community() {
                 </tbody>
             </table>
             <div>
-                <button className={styles.button}>글쓰기</button>
+                <Link to="/write">
+                    <button className={styles.button}>글쓰기</button>
+                </Link>
             </div>
         </div>
     );

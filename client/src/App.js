@@ -45,6 +45,7 @@ function App() {
                 <Route path="/community/:id" element={<CommunityPost />} />
                 <Route exact path="/login" element={<Login />} />
                 <Route exact path="/signup" element={<Signup />} />
+                {/* <Route exact path="/write" element={<Write />} /> */}
                 <Route element={<ProtectedRoutes />}>
                     <Route exact path="/user" element={<My />} />
                 </Route>
