@@ -7,18 +7,18 @@
     padding: 40px;
 }
 
-.lnb {
+.category {
     width: 100%;
     display: flex;
 }
 
-.lnb li {
+.category li {
     width: 10%;
     text-align: center;
     border: 1px solid var(--border-grey);
 }
 
-.lnb_tab {
+.category_tab {
     padding: 0 10px;
     cursor: pointer;
 }

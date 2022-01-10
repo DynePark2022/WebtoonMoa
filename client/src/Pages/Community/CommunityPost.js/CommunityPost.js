@@ -10,7 +10,7 @@ function CommunityPost() {
                     <div className={styles.post_author}>
                         <i className="fas fa-user"></i>아이디
                     </div>
-                    <div className={styles.post_tag}>
+                    <div className={styles.post_category}>
                         <i className="fas fa-tag"></i>정보
                     </div>
                     <div className={styles.comments_count}>

@@ -5,10 +5,10 @@ function Community() {
     return (
         <div className={styles.community}>
             <div className={styles.top_buttons}></div>
-            <ul className={styles.lnb}>
-                <li className={styles.lnb_tab}>전체글</li>
-                <li className={styles.lnb_tab}>개념글</li>
-                <li className={styles.lnb_tab}>공지</li>
+            <ul className={styles.category}>
+                <li className={styles.category_tab}>전체글</li>
+                <li className={styles.category_tab}>개념글</li>
+                <li className={styles.category_tab}>공지</li>
             </ul>
             <table>
                 <thead>
