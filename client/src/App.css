@@ -5,7 +5,11 @@
     --google-yellow: #F4B40;
     --google-green: #0f9d58;
     --border-grey: #ddd;
+    --background-grey: #f5f5f5;
     --background-white: #fff;
+    --text-black: #333;
+    --text-grey: #777;
+
     /* screen size = doesn't work in media-screen
     --tablet: 860px;
     --phone: 480px; */
@@ -32,4 +36,8 @@
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: #909090;
+}
+
+.ck-editor__editable {
+    min-height: 300px;
 }

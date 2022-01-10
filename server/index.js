@@ -5,10 +5,10 @@ const webtoonRoutes = require("./routes/webtoon.routes");
 const authRoutes = require("./routes/auth.routes");
 const commentRoutes = require("./routes/comment.routes");
 const userRoutes = require("./routes/user.routes");
+const postRoutes = require("./routes/post.routes");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const { requireAuth, checkUser } = require("./middleware/auth.middleware");
-const { response } = require("express");
 
 require("dotenv").config();
 const PORT = process.env.PORT || 3001;
@@ -34,6 +34,7 @@ app.use(authRoutes);
 app.use("/user", userRoutes);
 app.use("/webtoon", webtoonRoutes);
 app.use("/comment", commentRoutes);
+app.use("/post", postRoutes);
 app.get("/check", checkUser, (req, res) => {
     try {
         const { _id, username, email, bookmark } = res.locals.user;

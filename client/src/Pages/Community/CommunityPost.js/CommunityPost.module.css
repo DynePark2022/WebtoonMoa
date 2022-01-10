@@ -1,0 +1,80 @@
+.community_post {
+    background-color: var(--background-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-black);
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    margin: 8px;
+}
+
+.delete,
+.edit {
+    cursor: pointer;
+    padding: 4px 8px;
+    background-color: var(--background-grey);
+    border: 1px solid var(--border-grey);
+}
+
+.delete span,
+.edit span {
+    margin-left: 4px;
+}
+
+.post_title {
+    width: 100%;
+    background-color: var(--background-grey);
+    border-top: 1px solid var(--border-grey);
+    border-bottom: 1px solid var(--border-grey);
+    font-size: 20px;
+    padding: 12px;
+    font-weight: bold;
+}
+
+.post_detail {
+    width: 100%;
+    background-color: var(--background-white);
+    border-bottom: 1px solid var(--border-grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    padding: 12px;
+}
+
+.post_detail_left {
+    width: 50%;
+    display: flex;
+    gap: 12px;
+}
+
+.post_detail div > span {
+    margin-left: 4px;
+}
+
+.post_content {
+    width: 100%;
+    min-height: 200px;
+    padding: 40px 20px;
+}
+
+.post_like {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background-color: var(--background-grey);
+}

@@ -33,7 +33,7 @@ export const GnbArray = [
     { id: 2, name: "성인", url: "webtoon?toon=adult", type: "TAB_ADULT" },
     // { id: 3, name: "BL/GL", url: "webtoon?toon=bl%2Fgl", type: "TAB_BLGL" },
     { id: 4, name: "My", url: "user", type: "TAB_MY" },
-    { id: 5, name: "커뮤니티*", url: "community", type: "TAB_COMMUNITY" },
+    { id: 5, name: "커뮤니티", url: "community", type: "TAB_COMMUNITY" },
 ];
 
 export const RecWebtoonArray = [
