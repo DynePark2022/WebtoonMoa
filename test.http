@@ -98,4 +98,4 @@ Content-Type: {{content-type}}
 }
 
 ###
-GET {{hostname}}/post HTTP/1.1
+GET {{hostname}}/post/61dbe1d35d7a6b9e01e0cc77 HTTP/1.1

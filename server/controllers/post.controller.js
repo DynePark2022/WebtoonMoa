@@ -11,7 +11,7 @@ const getPosts = async (req, res) => {
 const getSinglePost = async (req, res) => {
     const postId = req.params.id;
     try {
-        const post = await Post.find({ postId: postId });
+        const post = await Post.find({ _id: postId });
         res.status(200).json(post);
     } catch (error) {
         res.status(409).json({ message: error.message });
@@ -20,6 +20,7 @@ const getSinglePost = async (req, res) => {
 
 const postPost = async (req, res) => {
     try {
+        console.log(req.body);
         const post = await Post.create(req.body);
         res.status(201).json(post);
     } catch (error) {

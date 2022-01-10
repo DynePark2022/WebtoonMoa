@@ -3,14 +3,13 @@ import styles from "./Write.module.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useSelector } from "react-redux";
-// import { add_post } from "../../api";
-// import { useNavigate } from "react-router-dom";
+import { add_post } from "../../api";
+import { useNavigate } from "react-router-dom";
 
 function Write() {
     const user = useSelector((state) => state.reducerUser);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
-    console.log(user);
     const categoryTab = ["일반", "정보", "공유", "요청", "질문", "후기"];
 
     const defaultValue = {
@@ -21,20 +20,19 @@ function Write() {
         category: "일반",
     };
     const [values, setValues] = useState(defaultValue);
-    console.log(values);
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-
-    //         .then((res) => {
-    //             console.log(res.data);
-    //             alert("글이 작성되었습니다.");
-    //             // navigate(`/post/${res.data._id}`);
-    //         })
-    //         .catch((err) => {
-    //             alert(err);
-    //         });
-    // };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        add_post(values)
+            .then((res) => {
+                alert("글이 작성되었습니다.");
+                navigate(`/post/${res.data._id}`);
+            })
+            .catch((err) => {
+                alert(err);
+            });
+        setValues(defaultValue);
+    };
 
     return (
         <div className={styles.write}>
@@ -72,10 +70,10 @@ function Write() {
                 </div>
                 <CKEditor
                     editor={ClassicEditor}
-                    data="<p>Hello from CKEditor 5!</p>"
+                    data={values.content}
                     onChange={(event, editor) => {
                         const data = editor.getData();
-                        console.log(data);
+                        setValues({ ...values, content: data });
                     }}
                 />
 
