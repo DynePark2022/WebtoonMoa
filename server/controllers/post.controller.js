@@ -1,8 +1,11 @@
 const Post = require("../models/post.model");
 
+const url = process.env.URL;
+
 const getPosts = async (req, res) => {
     try {
         const posts = await Post.find();
+        res.setHeader("Content-Security-Policy", `script-src ${url}`);
         res.status(200).json(posts);
     } catch (error) {
         res.status(409).json({ message: error.message });
@@ -12,6 +15,7 @@ const getSinglePost = async (req, res) => {
     const postId = req.params.id;
     try {
         const post = await Post.find({ _id: postId });
+        res.setHeader("Content-Security-Policy", `script-src ${url}`);
         res.status(200).json(post);
     } catch (error) {
         res.status(409).json({ message: error.message });
