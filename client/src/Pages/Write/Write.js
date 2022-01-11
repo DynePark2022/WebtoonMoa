@@ -5,12 +5,11 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { useSelector } from "react-redux";
 import { add_post } from "../../api";
 import { useNavigate } from "react-router-dom";
+import { categoryTab } from "../../DB/text";
 
 function Write() {
     const user = useSelector((state) => state.reducerUser);
     const navigate = useNavigate();
-
-    const categoryTab = ["일반", "정보", "공유", "요청", "질문", "후기"];
 
     const defaultValue = {
         title: "",
@@ -26,7 +25,7 @@ function Write() {
         add_post(values)
             .then((res) => {
                 alert("글이 작성되었습니다.");
-                navigate(`/post/${res.data._id}`);
+                navigate(`/community`);
             })
             .catch((err) => {
                 alert(err);

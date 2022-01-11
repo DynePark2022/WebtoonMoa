@@ -3,8 +3,10 @@ const url = "http://localhost:3001";
 
 export const get_data = async (url) => await axios.get(url);
 
-export const get_webtoon_byTab = async (page, limit, toon) =>
-    await axios.get(`${url}/webtoon?page=${page}&limit=${limit}&toon=${toon}`);
+export const get_data_byCategory = async (route, page, limit, category) =>
+    await axios.get(
+        `${url}/${route}?page=${page}&limit=${limit}&category=${category}`
+    );
 
 // auth
 export const get_logout = async () =>
@@ -14,7 +16,8 @@ export const post_login = async (login) =>
 
 // community post
 
-export const get_posts = async () => await axios.get(`${url}/post`);
+export const get_posts = async (category) =>
+    await axios.get(`${url}/post?category=${category}`);
 
 export const get_single_post = async (post_id) =>
     await axios.get(`${url}/post/${post_id}`);

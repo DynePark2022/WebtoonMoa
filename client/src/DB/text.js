@@ -17,20 +17,32 @@ export const BannerArray = [
     },
 ];
 
+export const categoryTab = ["일반", "정보", "공유", "요청", "질문", "후기"];
+export const categoryArray = [
+    { name: "전체", url: "" },
+    { name: "공지", url: "?category=공지" },
+    { name: "일반", url: "?category=일반" },
+    { name: "정보", url: "?category=정보" },
+    { name: "공유", url: "?category=공유" },
+    { name: "요청", url: "?category=요청" },
+    { name: "질문", url: "?category=질문" },
+    { name: "후기", url: "?category=후기" },
+];
+
 export const GnbArray = [
     {
         id: 0,
         name: "연재중",
-        url: "webtoon?toon=ongoing",
+        url: "webtoon?category=ongoing",
         type: "TAB_ONGOING",
     },
     {
         id: 1,
         name: "완결",
-        url: "webtoon?toon=completed",
+        url: "webtoon?category=completed",
         type: "TAB_COMPLETED",
     },
-    { id: 2, name: "성인", url: "webtoon?toon=adult", type: "TAB_ADULT" },
+    { id: 2, name: "성인", url: "webtoon?category=adult", type: "TAB_ADULT" },
     // { id: 3, name: "BL/GL", url: "webtoon?toon=bl%2Fgl", type: "TAB_BLGL" },
     { id: 4, name: "My", url: "user", type: "TAB_MY" },
     { id: 5, name: "커뮤니티", url: "community", type: "TAB_COMMUNITY" },

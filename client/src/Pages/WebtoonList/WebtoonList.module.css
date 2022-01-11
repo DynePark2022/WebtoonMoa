@@ -11,6 +11,10 @@
     gap: 12px;
 }
 
+.webtoonList h5 {
+    text-align: center;
+}
+
 .webtoonList button {
     width: 20%;
     display: block;
@@ -21,6 +25,12 @@
     background-color: #4285f4;
     color: #fff;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.webtoonList button:disabled {
+    pointer-events: none;
+    background-color: grey;
 }
 
 @media screen and (max-width: 860px) {
