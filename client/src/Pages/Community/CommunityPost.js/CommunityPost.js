@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./CommunityPost.module.css";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import { useSelector } from "react-redux";
 import { delete_post } from "../../../api";
@@ -13,7 +13,7 @@ function CommunityPost() {
     const post = data[0];
 
     const deletePost = () => {
-        window.confirm("댓글을 삭제할까요?") &&
+        window.confirm("글을 삭제할까요?") &&
             delete_post(id)
                 .then((res) => {
                     console.log(res);

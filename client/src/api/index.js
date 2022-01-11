@@ -14,7 +14,8 @@ export const post_login = async (login) =>
 
 // community post
 
-export const get_posts = async () => await axios.get(`${url}/post`);
+export const get_posts = async (category) =>
+    await axios.get(`${url}/post?category=${category}`);
 
 export const get_single_post = async (post_id) =>
     await axios.get(`${url}/post/${post_id}`);

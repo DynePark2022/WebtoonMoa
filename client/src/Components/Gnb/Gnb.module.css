@@ -3,7 +3,7 @@
     background-color: var(--background-white);
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 10;
     box-shadow: 0 0px 6px rgb(0, 0, 0, 25%);
 }
 

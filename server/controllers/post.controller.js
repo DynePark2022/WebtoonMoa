@@ -4,13 +4,14 @@ const url = process.env.URL;
 
 const getPosts = async (req, res) => {
     try {
-        const posts = await Post.find();
+        const posts = await Post.find().sort({ createdAt: -1 });
         res.setHeader("Content-Security-Policy", `script-src ${url}`);
         res.status(200).json(posts);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
 };
+
 const getSinglePost = async (req, res) => {
     const postId = req.params.id;
     try {
