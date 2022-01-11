@@ -21,6 +21,12 @@
     background-color: #4285f4;
     color: #fff;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.webtoonList button:disabled {
+    pointer-events: none;
+    background-color: grey;
 }
 
 @media screen and (max-width: 860px) {

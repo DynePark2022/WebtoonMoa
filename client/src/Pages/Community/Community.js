@@ -1,15 +1,24 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import useFetch from "../../Hooks/useFetch";
 import styles from "./Community.module.css";
 import { categoryArray } from "../../DB/text";
+import useFetchByCategory from "../../Hooks/useFetchByCateogry";
 
 function Community() {
     const navigate = useNavigate();
-    const [data] = useFetch(`http://localhost:3001/post/`);
     const [tab, setTab] = useState("전체");
     const [searchParams] = useSearchParams();
     const category = searchParams.get("category");
+    const page = 1;
+    const limit = 4;
+    const route = "post";
+    const { data, loading, error } = useFetchByCategory(
+        route,
+        page,
+        limit,
+        category
+    );
+    console.log(data);
 
     return (
         data && (

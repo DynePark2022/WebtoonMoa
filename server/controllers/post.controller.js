@@ -3,10 +3,49 @@ const Post = require("../models/post.model");
 const url = process.env.URL;
 
 const getPosts = async (req, res) => {
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    const category = req.query.category;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const results = {};
+
+    if (endIndex < (await Post.countDocuments().exec())) {
+        results.next = {
+            page: page + 1,
+            limit,
+        };
+    }
+
+    if (startIndex > 0) {
+        results.previous = {
+            page: page - 1,
+            limit,
+        };
+    }
+
     try {
-        const posts = await Post.find().sort({ createdAt: -1 });
-        res.setHeader("Content-Security-Policy", `script-src ${url}`);
-        res.status(200).json(posts);
+        if (category === "null") {
+            results.length = await Post.countDocuments().exec();
+            results.data = await Post.find()
+                .limit(limit)
+                .sort({ createdAt: -1 })
+                // .skip(startIndex)
+                .exec();
+            console.log(results);
+            res.setHeader("Content-Security-Policy", `script-src ${url}`);
+            res.status(200).json(results);
+        } else {
+            results.length = await Post.countDocuments({ category }).exec();
+            results.data = await Post.find({ category })
+                .limit(limit)
+                .sort({ createdAt: -1 })
+                // .skip(startIndex)
+                .exec();
+            console.log(results);
+            res.setHeader("Content-Security-Policy", `script-src ${url}`);
+            res.status(200).json(results);
+        }
     } catch (error) {
         res.status(409).json({ message: error.message });
     }

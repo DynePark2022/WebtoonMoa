@@ -3,7 +3,7 @@ const Webtoon = require("../models/webtoon.model");
 const getWebtoons = async (req, res) => {
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
-    const toon = req.query.toon;
+    const category = req.query.category;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     const results = {};
@@ -28,7 +28,7 @@ const getWebtoons = async (req, res) => {
     }
 
     try {
-        results.data = await Webtoon.find({ toon: toon })
+        results.data = await Webtoon.find({ toon: category })
             .limit(limit)
             .skip(startIndex)
             .exec();
