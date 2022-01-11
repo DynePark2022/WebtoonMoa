@@ -8,23 +8,13 @@ const getWebtoons = async (req, res) => {
     const endIndex = page * limit;
     const results = {};
 
-    // const results = {
-    //     next: { page: Number, limit: Number },
-    //     previous: { page: Number, limit: Number },
-    //     data: [{...},{...}],
-    // };
-    if (endIndex < (await Webtoon.countDocuments().exec())) {
-        results.next = {
-            page: page + 1,
-            limit,
-        };
-    }
-
-    if (startIndex > 0) {
-        results.previous = {
-            page: page - 1,
-            limit,
-        };
+    const total = await Webtoon.countDocuments({ toon: category }).exec();
+    if (endIndex < total) {
+        results.meta = { nextPage: page + 1, limit, total };
+    } else if (startIndex > 0) {
+        results.meta = { previousPage: page - 1, limit, total };
+    } else {
+        results.meta = { limit, total };
     }
 
     try {
@@ -42,7 +32,6 @@ const postWebtoon = async (req, res) => {
     try {
         const webtoon = await Webtoon.create(req.body);
         res.status(201).json(webtoon);
-        // res.send("webtoon added!");
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
@@ -66,7 +55,6 @@ const searchWebtoon = async (req, res) => {
     };
     try {
         const webtoon = await Webtoon.find(query);
-        console.log(webtoon);
         res.status(200).json(webtoon);
     } catch (error) {
         res.status(409).json({ message: error.message });

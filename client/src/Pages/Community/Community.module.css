@@ -31,7 +31,6 @@
 }
 
 .category_tab {
-    width: 100px;
     text-align: center;
     list-style: none;
     padding: 4px 10px;
@@ -41,18 +40,6 @@
 }
 .category_tab:hover {
     filter: brightness(0.9);
-}
-
-.button {
-    cursor: pointer;
-    border: none;
-    width: 82px;
-    height: 32px;
-    margin: 0 12px;
-    border-radius: 4px;
-    font-weight: bold;
-    color: var(--background-white);
-    background-color: var(--google-blue);
 }
 
 .community table {
@@ -99,4 +86,36 @@ tbody tr:last-of-type {
 
 tbody tr :nth-child(2) {
     text-align: left;
+}
+
+.page_buttons ul {
+    list-style: none;
+    display: flex;
+}
+
+.page_buttons ul li {
+    cursor: pointer;
+    padding: 6px 12px;
+    background-color: var(--background-white);
+    border: 1px solid var(--border-grey);
+}
+
+.page_buttons ul li:hover {
+    filter: brightness(0.9);
+}
+
+#current_page {
+    background-color: var(--border-grey);
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+    width: 82px;
+    height: 32px;
+    margin: 0 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--background-white);
+    background-color: var(--google-blue);
 }

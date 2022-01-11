@@ -9,40 +9,42 @@ const getPosts = async (req, res) => {
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     const results = {};
+    // FIXME: change to better code
 
-    if (endIndex < (await Post.countDocuments().exec())) {
-        results.next = {
-            page: page + 1,
-            limit,
-        };
+    if (category === "null") {
+        const total = await Post.countDocuments().exec();
+        if (endIndex < total) {
+            results.meta = { nextPage: page + 1, limit, total };
+        } else if (startIndex > 0) {
+            results.meta = { previousPage: page - 1, limit, total };
+        } else {
+            results.meta = { limit, total };
+        }
+    } else {
+        const total = await Post.countDocuments({ category }).exec();
+        if (endIndex < total) {
+            results.meta = { nextPage: page + 1, limit, total };
+        } else if (startIndex > 0) {
+            results.meta = { previousPage: page - 1, limit, total };
+        } else {
+            results.meta = { limit, total };
+        }
     }
-
-    if (startIndex > 0) {
-        results.previous = {
-            page: page - 1,
-            limit,
-        };
-    }
-
     try {
         if (category === "null") {
-            results.length = await Post.countDocuments().exec();
             results.data = await Post.find()
                 .limit(limit)
                 .sort({ createdAt: -1 })
-                // .skip(startIndex)
+                .skip(startIndex)
                 .exec();
-            console.log(results);
             res.setHeader("Content-Security-Policy", `script-src ${url}`);
             res.status(200).json(results);
         } else {
-            results.length = await Post.countDocuments({ category }).exec();
             results.data = await Post.find({ category })
                 .limit(limit)
                 .sort({ createdAt: -1 })
-                // .skip(startIndex)
+                .skip(startIndex)
                 .exec();
-            console.log(results);
             res.setHeader("Content-Security-Policy", `script-src ${url}`);
             res.status(200).json(results);
         }
@@ -64,7 +66,6 @@ const getSinglePost = async (req, res) => {
 
 const postPost = async (req, res) => {
     try {
-        console.log(req.body);
         const post = await Post.create(req.body);
         res.status(201).json(post);
     } catch (error) {
