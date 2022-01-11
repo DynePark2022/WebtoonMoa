@@ -91,20 +91,35 @@ const deletePost = async (req, res) => {
     }
 };
 
+const likePost = async (req, res) => {
+    const _id = req.body._id;
+    const user_id = res.locals.user._id;
+    const update = { $push: { thumbUp: user_id } };
+    const options = { new: true };
+    if ((res.locals.user = null)) {
+        res.status(403).json({ message: error.message });
+    } else {
+        try {
+            const result = await Post.findOneAndUpdate(
+                { _id },
+                update,
+                options
+            );
+            res.status(201).json(result);
+        } catch (error) {
+            res.status(409).json({ message: error.message });
+        }
+    }
+};
+
 module.exports = {
     getPosts,
     getSinglePost,
     postPost,
     deletePost,
+    likePost,
 };
 
-// const increaseThumbUp = async (_id) => {
-//     try {
-//         await Post.findOneAndUpdate({ _id }, { $inc: { thumbUp: 1 } });
-//     } catch {
-//         throw Error("not found");
-//     }
-// };
 // const increaseCommentCount = async function (_id) {
 //     try {
 //         await Post.findOneAndUpdate({ _id }, { $inc: { commentCount: 1 } });

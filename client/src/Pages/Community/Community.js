@@ -77,7 +77,7 @@ function Community() {
                             <td>{post.username}</td>
                             <td>{post.createdAt}</td>
                             <td>{post.viewCount}</td>
-                            <td>{post.thumbUp}</td>
+                            <td>{post.thumbUp.length}</td>
                         </tr>
                     ))}
                 </tbody>

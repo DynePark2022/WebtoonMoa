@@ -10,8 +10,8 @@ const PostSchema = new Schema({
     createdAt: { type: Date, immutable: true, default: () => Date.now() },
     commentCount: { type: Number, default: 0 },
     viewCount: { type: Number, default: 0 },
-    thumbUp: { type: Number, default: 0 },
-    thumbDown: { type: Number, default: 0 },
+    thumbUp: [String],
+    thumbDown: [String],
 });
 
 PostSchema.statics.increaseView = async function (_id) {

@@ -28,6 +28,9 @@ export const add_post = async (post) =>
 export const delete_post = async (post_id) =>
     await axios.delete(`${url}/post/${post_id}`, { withCredentials: true });
 
+export const patch_post_viewCount = async (_id) =>
+    await axios.patch(`${url}/post/like`, { _id }, { withCredentials: true });
+
 // comment
 export const add_comment = async (comment) =>
     await axios.post(`${url}/comment`, comment, { withCredentials: true });
