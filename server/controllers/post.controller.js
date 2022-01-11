@@ -56,6 +56,7 @@ const getPosts = async (req, res) => {
 const getSinglePost = async (req, res) => {
     const postId = req.params.id;
     try {
+        await Post.increaseView({ _id: postId });
         const post = await Post.find({ _id: postId });
         res.setHeader("Content-Security-Policy", `script-src ${url}`);
         res.status(200).json(post);
@@ -96,3 +97,25 @@ module.exports = {
     postPost,
     deletePost,
 };
+
+// const increaseThumbUp = async (_id) => {
+//     try {
+//         await Post.findOneAndUpdate({ _id }, { $inc: { thumbUp: 1 } });
+//     } catch {
+//         throw Error("not found");
+//     }
+// };
+// const increaseCommentCount = async function (_id) {
+//     try {
+//         await Post.findOneAndUpdate({ _id }, { $inc: { commentCount: 1 } });
+//     } catch {
+//         throw Error("not found");
+//     }
+// };
+// const decreaseCommentCount = async function (_id) {
+//     try {
+//         await Post.findOneAndUpdate({ _id }, { $dec: { commentCount: 1 } });
+//     } catch {
+//         throw Error("not found");
+//     }
+// };
