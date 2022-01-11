@@ -3,8 +3,10 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import styles from "./Community.module.css";
 import { categoryArray } from "../../DB/text";
 import useFetchPage from "../../Hooks/useFetchPage";
+import { useSelector } from "react-redux";
 
 function Community() {
+    const username = useSelector((state) => state.reducerUser.username);
     const navigate = useNavigate();
     const [tab, setTab] = useState("전체");
     const [page, setPage] = useState(1);
@@ -26,9 +28,7 @@ function Community() {
 
     return (
         <div className={styles.community}>
-            <h2>
-                Community {category} {page}
-            </h2>
+            <h2>Community {category}</h2>
             <div className={styles.top_buttons}></div>
             <ul className={styles.category}>
                 {categoryArray.map((category) => (
@@ -53,18 +53,23 @@ function Community() {
             <table>
                 <thead>
                     <tr>
-                        <th>말머리</th>
-                        <th>제목</th>
-                        <th>글쓴이</th>
-                        <th>잘성일</th>
-                        <th>조회</th>
-                        <th>추천</th>
+                        <th className={styles.th_category}>말머리</th>
+                        <th className={styles.th_title}>제목</th>
+                        <th className={styles.th_username}>글쓴이</th>
+                        <th className={styles.th_createdAt}>잘성일</th>
+                        <th className={styles.th_viewCount}>조회</th>
+                        <th className={styles.th_thumbUp}>추천</th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((post) => (
                         <tr
                             key={post._id}
+                            id={
+                                username === post.username
+                                    ? `${styles.my_post}`
+                                    : ""
+                            }
                             onClick={() => navigate(`/community/${post._id}`)}
                         >
                             <td>{post.category}</td>
@@ -72,7 +77,7 @@ function Community() {
                             <td>{post.username}</td>
                             <td>{post.createdAt}</td>
                             <td>{post.viewCount}</td>
-                            <td>{post.thumbUp}</td>
+                            <td>{post.thumbUp.length}</td>
                         </tr>
                     ))}
                 </tbody>

@@ -56,6 +56,7 @@ const getPosts = async (req, res) => {
 const getSinglePost = async (req, res) => {
     const postId = req.params.id;
     try {
+        await Post.increaseView({ _id: postId });
         const post = await Post.find({ _id: postId });
         res.setHeader("Content-Security-Policy", `script-src ${url}`);
         res.status(200).json(post);
@@ -90,9 +91,46 @@ const deletePost = async (req, res) => {
     }
 };
 
+const likePost = async (req, res) => {
+    const _id = req.body._id;
+    const user_id = res.locals.user._id;
+    const update = { $push: { thumbUp: user_id } };
+    const options = { new: true };
+    if ((res.locals.user = null)) {
+        res.status(403).json({ message: error.message });
+    } else {
+        try {
+            const result = await Post.findOneAndUpdate(
+                { _id },
+                update,
+                options
+            );
+            res.status(201).json(result);
+        } catch (error) {
+            res.status(409).json({ message: error.message });
+        }
+    }
+};
+
 module.exports = {
     getPosts,
     getSinglePost,
     postPost,
     deletePost,
+    likePost,
 };
+
+// const increaseCommentCount = async function (_id) {
+//     try {
+//         await Post.findOneAndUpdate({ _id }, { $inc: { commentCount: 1 } });
+//     } catch {
+//         throw Error("not found");
+//     }
+// };
+// const decreaseCommentCount = async function (_id) {
+//     try {
+//         await Post.findOneAndUpdate({ _id }, { $dec: { commentCount: 1 } });
+//     } catch {
+//         throw Error("not found");
+//     }
+// };

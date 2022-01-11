@@ -30,10 +30,11 @@ function Comment({ comment: c }) {
     return (
         comment && (
             <div
-                className={
+                className={styles.comment}
+                id={
                     user.username === comment.username
-                        ? `${styles.comment} ${styles.my_comment}`
-                        : `${styles.comment}`
+                        ? `${styles.my_comment}`
+                        : ""
                 }
             >
                 <div className={styles.user_id}>

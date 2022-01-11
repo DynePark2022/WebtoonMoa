@@ -4,8 +4,8 @@
     border-bottom: 1px solid var(--border-grey);
 }
 
-.my_comment {
-    background-color: rgb(239, 246, 255);
+#my_comment {
+    color: var(--google-green);
 }
 
 .user_id {
