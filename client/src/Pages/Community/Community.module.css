@@ -51,40 +51,59 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-#selected {
+.category #selected {
     background-color: var(--border-grey);
     font-weight: bold;
 }
 
-thead {
+.community table thead {
     line-height: 48px;
     border-bottom: 1px solid var(--text-black);
 }
 
-tbody tr {
+.th_category {
+    width: 200px;
+}
+
+.th_username {
+    width: 200px;
+}
+
+.th_createdAt {
+    width: 200px;
+}
+
+.th_viewCount,
+.th_thumbUp {
+    width: 60px;
+}
+
+.community table tbody tr {
     font-size: 11px;
     line-height: 28px;
     cursor: pointer;
     background-color: var(--background-white);
 }
-tbody tr:hover {
+
+.community table #my_post {
+    color: var(--google-green);
+}
+
+.community table tbody tr:hover {
     filter: brightness(0.9);
 }
 
-tbody tr :nth-child(1),
-tbody tr :nth-child(2),
-tbody tr :nth-child(3) {
+.community table tbody tr :nth-child(1),
+.community table tbody tr :nth-child(2),
+.community table tbody tr :nth-child(3) {
     font-size: 13px;
 }
 
-tbody tr:nth-of-type(even) {
+.community table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
 }
-tbody tr:last-of-type {
-    border-bottom: 1px solid var(--text-black);
-}
 
-tbody tr :nth-child(2) {
+.community table tbody tr :nth-child(2) {
     text-align: left;
 }
 
@@ -104,7 +123,7 @@ tbody tr :nth-child(2) {
     filter: brightness(0.9);
 }
 
-#current_page {
+.page_buttons #current_page {
     background-color: var(--border-grey);
 }
 
