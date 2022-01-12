@@ -21,7 +21,7 @@ function Community() {
         category
     );
 
-    const maxpage = Math.ceil(meta.total / meta.limit) || 1;
+    const maxpage = Math.ceil(meta?.total / meta?.limit) || 1;
     const pageArray = Array(maxpage)
         .fill(null)
         .map((_, i) => i + 1);

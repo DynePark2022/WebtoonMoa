@@ -3,50 +3,68 @@ const Post = require("../models/post.model");
 const url = process.env.URL;
 
 const getPosts = async (req, res) => {
-    const page = parseInt(req.query.page);
+    const page = Math.min(parseInt(req.query.page), 1);
     const limit = parseInt(req.query.limit);
     const category = req.query.category;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
     const results = {};
-    // FIXME: change to better code
 
-    if (category === "null") {
-        const total = await Post.countDocuments().exec();
-        if (endIndex < total) {
-            results.meta = { nextPage: page + 1, limit, total };
-        } else if (startIndex > 0) {
-            results.meta = { previousPage: page - 1, limit, total };
-        } else {
-            results.meta = { limit, total };
-        }
-    } else {
+    console.log(page);
+    console.log(startIndex);
+    console.log(limit);
+
+    // setMeta
+    async function setMeta() {
         const total = await Post.countDocuments({ category }).exec();
         if (endIndex < total) {
-            results.meta = { nextPage: page + 1, limit, total };
-        } else if (startIndex > 0) {
-            results.meta = { previousPage: page - 1, limit, total };
-        } else {
-            results.meta = { limit, total };
+            return (results.meta = { nextPage: page + 1, limit, total });
         }
+        if (startIndex > 0) {
+            return (results.meta = { previousPage: page - 1, limit, total });
+        }
+        results.meta = { limit, total };
     }
+
+    async function setMetaForNull() {
+        const total = await Post.countDocuments().exec();
+        if (endIndex < total) {
+            return (results.meta = { nextPage: page + 1, limit, total });
+        }
+        if (startIndex > 0) {
+            return (results.meta = { previousPage: page - 1, limit, total });
+        }
+        results.meta = { limit, total };
+    }
+
+    // findPosts
+    async function findPosts() {
+        results.data = await Post.find({ category })
+            .limit(limit)
+            .sort({ createdAt: -1 })
+            .skip(startIndex)
+            .exec();
+        res.setHeader("Content-Security-Policy", `script-src ${url}`);
+        res.status(200).json(results);
+    }
+
+    async function findPostsForNull() {
+        results.data = await Post.find()
+            .limit(limit)
+            .sort({ createdAt: -1 })
+            .skip(startIndex)
+            .exec();
+        res.setHeader("Content-Security-Policy", `script-src ${url}`);
+        res.status(200).json(results);
+    }
+
     try {
         if (category === "null") {
-            results.data = await Post.find()
-                .limit(limit)
-                .sort({ createdAt: -1 })
-                .skip(startIndex)
-                .exec();
-            res.setHeader("Content-Security-Policy", `script-src ${url}`);
-            res.status(200).json(results);
+            findPostsForNull();
+            setMetaForNull();
         } else {
-            results.data = await Post.find({ category })
-                .limit(limit)
-                .sort({ createdAt: -1 })
-                .skip(startIndex)
-                .exec();
-            res.setHeader("Content-Security-Policy", `script-src ${url}`);
-            res.status(200).json(results);
+            findPosts();
+            setMeta();
         }
     } catch (error) {
         res.status(409).json({ message: error.message });
@@ -66,14 +84,14 @@ const getSinglePost = async (req, res) => {
 };
 
 const postPost = async (req, res) => {
+    const titleLength = req.body.post.title.length;
+    const contentLength = req.body.post.content.length;
+
     try {
         const post = await Post.create(req.body);
         res.status(201).json(post);
     } catch (error) {
-        if (
-            req.body.post.title.length === 0 ||
-            req.body.post.content.length === 0
-        ) {
+        if (titleLength === 0 || contentLength === 0) {
             res.status(411).json({ message: error._message });
         } else {
             res.status(409).json({ message: error._message });
@@ -100,11 +118,7 @@ const likePost = async (req, res) => {
         res.status(403).json({ message: error.message });
     } else {
         try {
-            const result = await Post.findOneAndUpdate(
-                { _id },
-                update,
-                options
-            );
+            const result = await Post.findOneAndUpdate(_id, update, options);
             res.status(201).json(result);
         } catch (error) {
             res.status(409).json({ message: error.message });
@@ -119,18 +133,3 @@ module.exports = {
     deletePost,
     likePost,
 };
-
-// const increaseCommentCount = async function (_id) {
-//     try {
-//         await Post.findOneAndUpdate({ _id }, { $inc: { commentCount: 1 } });
-//     } catch {
-//         throw Error("not found");
-//     }
-// };
-// const decreaseCommentCount = async function (_id) {
-//     try {
-//         await Post.findOneAndUpdate({ _id }, { $dec: { commentCount: 1 } });
-//     } catch {
-//         throw Error("not found");
-//     }
-// };

@@ -31,11 +31,7 @@ function Comment({ comment: c }) {
         comment && (
             <div
                 className={styles.comment}
-                id={
-                    user.username === comment.username
-                        ? `${styles.my_comment}`
-                        : ""
-                }
+                id={user.email === comment.email ? `${styles.my_comment}` : ""}
             >
                 <div className={styles.user_id}>
                     {comment.username}({emailMasked})
@@ -47,7 +43,7 @@ function Comment({ comment: c }) {
                 </button>
                 {showMore && (
                     <div className={styles.more}>
-                        {user.username === comment.username && (
+                        {user.email === comment.email && (
                             <button onClick={deleteComment}>삭제하기</button>
                         )}
                         <button onClick={report}>신고하기</button>

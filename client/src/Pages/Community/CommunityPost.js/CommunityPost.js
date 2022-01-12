@@ -32,7 +32,7 @@ function CommunityPost() {
         <div className={styles.community_post}>
             <div>{loading && "loading"}</div>
             <div>{error && "loading"}</div>
-            {user.username === posts[0]?.username && (
+            {user.email === posts[0]?.email && (
                 <div className={styles.buttons}>
                     <div className={styles.delete} onClick={deletePost}>
                         <i className="fas fa-trash"></i>
