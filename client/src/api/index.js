@@ -1,5 +1,6 @@
 import axios from "axios";
-const url = "http://localhost:3001";
+
+export const url = "http://localhost:3001";
 
 export const get_data = async (url) => await axios.get(url);
 
@@ -9,10 +10,15 @@ export const get_data_byCategory = async (route, page, limit, category) =>
     );
 
 // auth
+export const post_signup = async (signupInput) => {
+    await axios.post(`${url}/signup`, signupInput);
+};
+
+export const post_login = async (loginInput) =>
+    await axios.post(`${url}/login`, loginInput, { withCredentials: true });
+
 export const get_logout = async () =>
     await axios.get(`${url}/logout`, { withCredentials: true });
-export const post_login = async (login) =>
-    await axios.post(`${url}/login`, login, { withCredentials: true });
 
 // community post
 

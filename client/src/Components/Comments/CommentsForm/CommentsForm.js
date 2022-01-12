@@ -5,51 +5,51 @@ import { useSelector } from "react-redux";
 import InputForm from "../../InputForm/InputForm";
 import { add_comment } from "../../../api";
 
-function CommentsForm({ addComment, setAddComment, loading, parentId }) {
+function CommentsForm({ comments, setComments, loading, error, parentId }) {
     const user = useSelector((state) => state.reducerUser);
-
     const { id } = useParams();
-    const defaultValue = {
+    const defaultInputValue = {
         username: user.username,
         email: user.email,
         postId: id,
         comment: "",
-        parentId: "",
+        parentId,
     };
-    const [values, setValues] = useState(defaultValue);
+
+    const [inputValue, setInputValue] = useState(defaultInputValue);
 
     const onChange = (e) => {
-        setValues({ ...values, parentId: parentId, comment: e.target.value });
+        setInputValue({ ...inputValue, comment: e.target.value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        add_comment(values)
+        add_comment(inputValue)
             .then((res) => {
-                setAddComment([...addComment, res.data]);
+                setComments([...comments, res.data]);
                 alert("댓글이 작성되었습니다.");
             })
             .catch((err) => {
                 alert(err);
             });
-        setValues(defaultValue);
+        setInputValue(defaultInputValue);
     };
     return (
         <div className={styles.comments_form}>
             <div className={styles.submit_form}>
                 {user.username ? (
-                    <form action="/comments" method="POST">
+                    <form>
                         <div className={styles.comments_top}>
                             <div className={styles.my_userid}>
                                 {user.username}
                             </div>
                             <div className={styles.form_length}>
-                                {values.comment.length}/200
+                                {inputValue.comment.length}/200
                             </div>
                         </div>
                         <InputForm
                             maxLength="200"
-                            value={values.comment}
+                            value={inputValue.comment}
                             onChange={onChange}
                             placeholder="주제와 무관한 댓글이나 광고, 스포일러, 악플은 경고조치 없이 삭제되며 징계 대상이 될 수 있습니다."
                         />
@@ -57,7 +57,9 @@ function CommentsForm({ addComment, setAddComment, loading, parentId }) {
                             <button
                                 onClick={handleSubmit}
                                 disabled={
-                                    loading || values.comment.length === 0
+                                    loading ||
+                                    error ||
+                                    inputValue.comment.length === 0
                                 }
                                 className={styles.button_submit}
                             >

@@ -1,59 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import CommentsForm from "../../CommentsForm/CommentsForm";
 import SingleComment from "../SingleComment/SingleComment";
 import styles from "./NestedComment.module.css";
 import useFetch from "../../../../Hooks/useFetch";
+import { url } from "../../../../api/index";
 
 function NestedComment({ parentId }) {
-    const [addComment, setAddComment] = useState([]);
-    const [data, loading, error] = useFetch(
-        `http://localhost:3001/comment/nested/${parentId}`
+    const [comments, loading, error, setComments] = useFetch(
+        `${url}/comment/nested/${parentId}`
     );
 
     return (
-        <>
-            <div className={styles.nested_comment}>
-                {data && (
-                    <>
-                        {data.map((comment) => (
-                            <div
-                                className={styles.arrow_position}
-                                key={comment._id}
-                            >
-                                <div className={styles.arrow}>
-                                    <i className="fas fa-caret-right"></i>
-                                </div>
-                                <SingleComment comment={comment} />
+        <div className={styles.nested_comment}>
+            {comments && (
+                <div>
+                    {comments.map((comment) => (
+                        <div className={styles.arrow_wrapper} key={comment._id}>
+                            <div className={styles.arrow}>
+                                <i className="fas fa-caret-right"></i>
                             </div>
-                        ))}
-                    </>
-                )}
-                {addComment && (
-                    <>
-                        {addComment.map((comment) => (
-                            <div
-                                className={styles.arrow_position}
-                                key={comment._id}
-                            >
-                                <div className={styles.arrow}>
-                                    <i className="fas fa-caret-right"></i>
-                                </div>
-                                <SingleComment comment={comment} />
-                            </div>
-                        ))}
-                    </>
-                )}
-            </div>
-            {/* <div>{loading && "Loading..."}</div>
-            <div>{error && "Error!!!"}</div> */}
+                            <SingleComment comment={comment} />
+                        </div>
+                    ))}
+                </div>
+            )}
             <CommentsForm
                 parentId={parentId}
-                addComment={addComment}
-                setAddComment={setAddComment}
+                comments={comments}
+                setComments={setComments}
                 loading={loading}
                 error={error}
             />
-        </>
+        </div>
     );
 }
 

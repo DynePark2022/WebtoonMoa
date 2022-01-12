@@ -24,6 +24,7 @@ function Write() {
         e.preventDefault();
         add_post(values)
             .then((res) => {
+                console.log(res);
                 navigate(`/community`);
             })
             .catch((err) => {

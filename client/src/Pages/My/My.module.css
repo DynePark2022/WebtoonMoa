@@ -2,9 +2,9 @@
     background-color: var(--background-white);
 }
 
-.my h3 {
+.my h3,
+.my h4 {
     padding: 20px;
-    font-size: 20px;
     text-align: center;
     margin: 0;
 }

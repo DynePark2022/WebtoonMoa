@@ -12,12 +12,12 @@ function useFetch(url) {
         get_data(url)
             .then((res) => {
                 setData(res.data);
-                setLoading(false);
             })
             .catch((err) => {
                 console.log(err);
                 setError(true);
             });
+        setLoading(false);
     }, [url]);
 
     return [data, loading, error, setData];

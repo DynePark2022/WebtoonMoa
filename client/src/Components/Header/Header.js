@@ -34,22 +34,14 @@ function Header() {
                         </button>
                     </Link>
                 ) : (
-                    <>
-                        <Link to="/login">
-                            <button
-                                className={styles.auth}
-                                onClick={() => dispatch({ type: "TAB_CLEAR" })}
-                            >
-                                로그인
-                            </button>
-                        </Link>
+                    <Link to="/login">
                         <button
-                            className={styles.temp_login}
-                            onClick={() => dispatch({ type: "TEMP" })}
+                            className={styles.auth}
+                            onClick={() => dispatch({ type: "TAB_CLEAR" })}
                         >
-                            임시 로그인
+                            로그인
                         </button>
-                    </>
+                    </Link>
                 )}
             </div>
         </header>
