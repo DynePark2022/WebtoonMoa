@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import InputForm from "../../Components/InputForm/InputForm";
 import styles from "./Signup.module.css";
 import termsOfUse from "../../DB/termsOfUse";
-import axios from "axios";
+import { post_signup } from "../../api";
 
 function Signup() {
     const navigate = useNavigate();
@@ -66,8 +66,7 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios
-            .post("http://localhost:3001/signup", { ...values })
+        post_signup(values)
             .then((res) => {
                 alert("회원가입 되었습니다!");
                 navigate("/login");
@@ -85,7 +84,7 @@ function Signup() {
                     <h3>회원가입</h3>
                 </div>
 
-                <form action="/signup" method="POST" className={styles.mid}>
+                <form className={styles.mid}>
                     {SignUpArray.map((input) => (
                         <InputForm
                             key={input.id}
@@ -102,8 +101,7 @@ function Signup() {
                             placeholder="닉네임"
                             required
                         />
-                        (필수)
-                        <strong>이용약관</strong>에 동의합니다.
+                        (필수)<strong>이용약관</strong>에 동의합니다.
                     </label>
                     <button onClick={handleSubmit}>회원가입</button>
                 </form>

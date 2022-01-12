@@ -3,12 +3,11 @@ import styles from "./Search.module.css";
 import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
 import Webtoon from "../../Components/Webtoon/Webtoon";
+import { url } from "../../api/index";
 
 function Search() {
     const { input } = useParams();
-    const [data, loading, error] = useFetch(
-        `http://localhost:3001/webtoon/search/${input}`
-    );
+    const [data, loading, error] = useFetch(`${url}/webtoon/search/${input}`);
 
     return (
         <div className={styles.search}>

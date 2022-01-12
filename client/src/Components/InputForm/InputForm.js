@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import useToggle from "../../Hooks/useToggle";
 import styles from "./InputForm.module.css";
 
 function InputForm(props) {
-    const { errorMessage, onChange, id, ...otherProps } = props;
-    const [focused, setFocused] = useState(false);
+    const { errorMessage, ...otherProps } = props;
+    const [focused, toggle] = useToggle(false);
 
-    const handleFocus = (e) => {
-        setFocused(true);
-    };
     return (
         <div className={styles.inputForm}>
             <input
                 {...otherProps}
-                onChange={onChange}
-                onBlur={handleFocus}
+                onBlur={() => toggle(true)}
                 focused={focused.toString()}
             />
             <span>{errorMessage}</span>

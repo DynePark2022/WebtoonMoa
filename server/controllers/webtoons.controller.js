@@ -9,13 +9,22 @@ const getWebtoons = async (req, res) => {
     const results = {};
 
     const total = await Webtoon.countDocuments({ toon: category }).exec();
-    if (endIndex < total) {
-        results.meta = { nextPage: page + 1, limit, total };
-    } else if (startIndex > 0) {
-        results.meta = { previousPage: page - 1, limit, total };
-    } else {
-        results.meta = { limit, total };
+    results.meta = setMeta();
+
+    function setMeta() {
+        if (endIndex < total) return { nextPage: page + 1, limit, total };
+        if (startIndex > 0) return { previousPage: page - 1, limit, total };
+        return { limit, total };
     }
+
+    // which one is better?
+    // if (endIndex < total) {
+    //     results.meta = { nextPage: page + 1, limit, total };
+    // } else if (startIndex > 0) {
+    //     results.meta = { previousPage: page - 1, limit, total };
+    // } else {
+    //     results.meta = { limit, total };
+    // }
 
     try {
         results.data = await Webtoon.find({ toon: category })

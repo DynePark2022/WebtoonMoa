@@ -48,12 +48,3 @@ header {
 .auth:hover {
     color: var(--google-blue);
 }
-
-.temp_login {
-    cursor: pointer;
-    border: none;
-    margin: 0 10px;
-    padding-left: 10px;
-    border-left: 1px solid var(--border-grey);
-    background-color: var(--background-white);
-}

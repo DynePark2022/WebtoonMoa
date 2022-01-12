@@ -34,13 +34,6 @@ const reducerUser = (state = userState, action) => {
         case CON.LOGOUT: {
             return emptyUser;
         }
-        case CON.TEMP: {
-            let copy = { ...state };
-            copy.username = "temp";
-            copy.email = "temp@gmail.com";
-            copy._id = "1";
-            return copy;
-        }
         default:
             return state;
     }

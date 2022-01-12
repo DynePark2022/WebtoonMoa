@@ -24,7 +24,7 @@ function Write() {
         e.preventDefault();
         add_post(values)
             .then((res) => {
-                alert("글이 작성되었습니다.");
+                console.log(res);
                 navigate(`/community`);
             })
             .catch((err) => {

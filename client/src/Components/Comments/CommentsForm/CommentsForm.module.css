@@ -30,7 +30,9 @@
     background-color: var(--google-blue);
     color: white;
     font-weight: bold;
+    border: none;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .button_submit:hover {
