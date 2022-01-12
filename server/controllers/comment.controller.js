@@ -43,9 +43,31 @@ const deleteComment = async (req, res) => {
     }
 };
 
+const likeComment = async (req, res) => {
+    const _id = req.body.comment_id;
+    const user_id = res.locals.user._id;
+    const update = { $push: { thumbUp: user_id } };
+    const options = { new: true };
+    if ((res.locals.user = null)) {
+        res.status(403).json({ message: error.message });
+    } else {
+        try {
+            const result = await Comment.findOneAndUpdate(
+                { _id },
+                update,
+                options
+            );
+            res.status(201).json(result);
+        } catch (error) {
+            res.status(409).json({ message: error.message });
+        }
+    }
+};
+
 module.exports = {
     getComments,
     postComment,
     deleteComment,
     getNestedComments,
+    likeComment,
 };

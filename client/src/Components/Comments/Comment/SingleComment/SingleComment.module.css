@@ -89,3 +89,8 @@
     margin-left: 4px;
     color: grey;
 }
+
+#comment_liked {
+    color: red;
+    pointer-events: none;
+}

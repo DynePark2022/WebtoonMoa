@@ -3,7 +3,7 @@ import styles from "./CommunityPost.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../../Hooks/useFetch";
 import { useSelector } from "react-redux";
-import { delete_post, patch_post_viewCount } from "../../../api";
+import { delete_post, patch_post_like } from "../../../api";
 import { url } from "../../../api/index";
 
 function CommunityPost() {
@@ -21,9 +21,8 @@ function CommunityPost() {
                 })
                 .catch((err) => console.log(err));
     };
-
-    const increaseViewCount = () => {
-        patch_post_viewCount(id)
+    const likePost = () => {
+        patch_post_like(id)
             .then((res) => setPosts([res.data]))
             .catch((err) => console.log(err));
     };
@@ -83,10 +82,10 @@ function CommunityPost() {
                 className={styles.post_like}
                 id={
                     posts[0]?.thumbUp.includes(user._id)
-                        ? `${styles.iLiked}`
+                        ? `${styles.post_liked}`
                         : ""
                 }
-                onClick={() => increaseViewCount()}
+                onClick={likePost}
             >
                 <div>{posts[0]?.thumbUp.length}</div>
                 <i className="fas fa-thumbs-up"></i>

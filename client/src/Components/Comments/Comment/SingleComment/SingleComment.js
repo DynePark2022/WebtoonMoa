@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import useToggle from "../../../../Hooks/useToggle";
 import styles from "./SingleComment.module.css";
-import { delete_comment } from "../../../../api";
+import { delete_comment, patch_comment_like } from "../../../../api";
 
 function Comment({ comment: c }) {
     const user = useSelector((state) => state.reducerUser);
@@ -21,6 +21,11 @@ function Comment({ comment: c }) {
                 })
                 .catch((err) => console.log(err));
     };
+    const likeComment = () => {
+        patch_comment_like(c._id)
+            .then((res) => setComment(res.data))
+            .catch((err) => console.log(err));
+    };
 
     const report = () => {
         alert("신고되었습니다.");
@@ -28,39 +33,45 @@ function Comment({ comment: c }) {
     };
 
     return (
-        comment && (
-            <div
-                className={styles.comment}
-                id={user.email === comment.email ? `${styles.my_comment}` : ""}
-            >
-                <div className={styles.user_id}>
-                    {comment.username}({emailMasked})
+        <div
+            className={styles.comment}
+            id={user.email === comment.email ? `${styles.my_comment}` : ""}
+        >
+            <div className={styles.user_id}>
+                {comment?.username}({emailMasked})
+            </div>
+            <div className={styles.comment_content}>{comment.comment}</div>
+            <div className={styles.created_at}>{comment?.createdAt}</div>
+            <button className={styles.comment_more} onClick={toggle}>
+                <i className="fas fa-ellipsis-v"></i>
+            </button>
+            {showMore && (
+                <div className={styles.more}>
+                    {user.email === comment.email && (
+                        <button onClick={deleteComment}>삭제하기</button>
+                    )}
+                    <button onClick={report}>신고하기</button>
                 </div>
-                <div className={styles.comment_content}>{comment.comment}</div>
-                <div className={styles.created_at}>{comment.createdAt}</div>
-                <button className={styles.comment_more} onClick={toggle}>
-                    <i className="fas fa-ellipsis-v"></i>
+            )}
+            <div className={styles.comment_recommend}>
+                <button
+                    onClick={likeComment}
+                    className={styles.comment_like}
+                    id={
+                        comment?.thumbUp.includes(user._id)
+                            ? `${styles.comment_liked}`
+                            : ""
+                    }
+                >
+                    <i className="far fa-thumbs-up"></i>
+                    <span>{comment?.thumbUp?.length}</span>
                 </button>
-                {showMore && (
-                    <div className={styles.more}>
-                        {user.email === comment.email && (
-                            <button onClick={deleteComment}>삭제하기</button>
-                        )}
-                        <button onClick={report}>신고하기</button>
-                    </div>
-                )}
-                <div className={styles.comment_recommend}>
-                    <button className={styles.comment_like}>
-                        <i className="far fa-thumbs-up"></i>
-                        <span>{comment.thumbUp}</span>
-                    </button>
-                    <button className={styles.comment_hate}>
+                {/* <button className={styles.comment_hate}>
                         <i className="far fa-thumbs-down"></i>
                         <span>{comment.thumbDown}</span>
-                    </button>
-                </div>
+                    </button> */}
             </div>
-        )
+        </div>
     );
 }
 

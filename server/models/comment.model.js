@@ -8,8 +8,8 @@ const CommentSchema = new Schema({
     createdAt: { type: Date, immutable: true, default: () => Date.now() },
     postId: { type: String, required: true },
     parentId: String,
-    thumbUp: { type: Number, default: 0 },
-    thumbDown: { type: Number, default: 0 },
+    thumbUp: [String],
+    thumbDown: [String],
 });
 
 const Comment = mongoose.model("comment", CommentSchema);

@@ -81,7 +81,7 @@
     background-color: var(--background-grey);
 }
 
-#iLiked {
+#post_liked {
     color: red;
     pointer-events: none;
 }

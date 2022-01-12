@@ -27,7 +27,6 @@ function CommentsForm({ comments, setComments, loading, error, parentId }) {
         add_comment(inputValue)
             .then((res) => {
                 setComments([...comments, res.data]);
-                alert("댓글이 작성되었습니다.");
             })
             .catch((err) => {
                 alert(err);
