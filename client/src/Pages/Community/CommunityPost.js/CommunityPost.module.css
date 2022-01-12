@@ -83,4 +83,5 @@
 
 #iLiked {
     color: red;
+    pointer-events: none;
 }
