@@ -67,7 +67,7 @@ const loginUser = async (req, res) => {
         });
         res.status(200).json({
             username: user.username,
-            userid: user._id,
+            userId: user._id,
             email: user.email,
             bookmark: user.bookmark,
         });

@@ -10,10 +10,6 @@ const getPosts = async (req, res) => {
     const endIndex = page * limit;
     const results = {};
 
-    console.log(page);
-    console.log(startIndex);
-    console.log(limit);
-
     // setMeta
     async function setMeta() {
         const total = await Post.countDocuments({ category }).exec();
@@ -84,16 +80,15 @@ const getSinglePost = async (req, res) => {
 };
 
 const postPost = async (req, res) => {
-    const titleLength = req.body.post.title.length;
-    const contentLength = req.body.post.content.length;
-
-    try {
-        const post = await Post.create(req.body);
-        res.status(201).json(post);
-    } catch (error) {
-        if (titleLength === 0 || contentLength === 0) {
-            res.status(411).json({ message: error._message });
-        } else {
+    const title = req.body.title;
+    const content = req.body.content;
+    if (title === "" || content === "") {
+        res.status(411).json({ message: "need content" });
+    } else {
+        try {
+            const post = await Post.create(req.body);
+            res.status(201).json(post);
+        } catch (error) {
             res.status(409).json({ message: error._message });
         }
     }
@@ -110,7 +105,7 @@ const deletePost = async (req, res) => {
 };
 
 const likePost = async (req, res) => {
-    const _id = req.body._id;
+    const _id = req.body.post_id;
     const user_id = res.locals.user._id;
     const update = { $push: { thumbUp: user_id } };
     const options = { new: true };
@@ -118,7 +113,11 @@ const likePost = async (req, res) => {
         res.status(403).json({ message: error.message });
     } else {
         try {
-            const result = await Post.findOneAndUpdate(_id, update, options);
+            const result = await Post.findOneAndUpdate(
+                { _id },
+                update,
+                options
+            );
             res.status(201).json(result);
         } catch (error) {
             res.status(409).json({ message: error.message });

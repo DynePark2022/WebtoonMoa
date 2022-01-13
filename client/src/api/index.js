@@ -34,24 +34,23 @@ export const add_post = async (post) =>
 export const delete_post = async (post_id) =>
     await axios.delete(`${url}/post/${post_id}`, { withCredentials: true });
 
-export const patch_post_viewCount = async (_id) =>
-    await axios.patch(`${url}/post/like`, { _id }, { withCredentials: true });
+export const patch_post_like = async (post_id) =>
+    await axios.patch(
+        `${url}/post/like`,
+        { post_id },
+        { withCredentials: true }
+    );
 
 // comment
 export const add_comment = async (comment) =>
     await axios.post(`${url}/comment`, comment, { withCredentials: true });
 
-export const like_comment = async (comment_id) => {
-    await axios.patch(`${url}/webtoon/like/${comment_id}`, {
-        withCredentials: true,
-    });
-};
-
-export const dislike_comment = async (comment_id) => {
-    await axios.patch(`${url}/webtoon/dislike/${comment_id}`, {
-        withCredentials: true,
-    });
-};
+export const patch_comment_like = async (comment_id) =>
+    await axios.patch(
+        `${url}/comment/like`,
+        { comment_id },
+        { withCredentials: true }
+    );
 
 export const delete_comment = async (comment_id) =>
     await axios.delete(`${url}/comment/${comment_id}`, {
@@ -62,10 +61,6 @@ export const delete_comment = async (comment_id) =>
 
 export const get_user = async () =>
     await axios.get(`${url}/check`, { withCredentials: true });
-// export const get_user = async (token) =>
-//     await axios.get(`${url}/check`, {
-//         headers: { Authorization: `Bearer ${token}` },
-//     });
 
 export const patch_user = async (webtoon_id) =>
     await axios.patch(

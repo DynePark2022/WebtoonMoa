@@ -8,7 +8,6 @@ header {
 
 .logo {
     height: 20px;
-    width: 180px;
     margin-left: 20px;
     font-weight: bold;
     color: black;
@@ -29,8 +28,13 @@ header {
     height: 100%;
     object-fit: cover;
 }
+
+.hello {
+    flex: 1;
+    font-size: 12px;
+    text-align: center;
+}
 .icons {
-    min-width: 290px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -47,4 +51,22 @@ header {
 
 .auth:hover {
     color: var(--google-blue);
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .logo {
+        transform: translateX(20px);
+        transition: transform 300ms;
+    }
+    .hello {
+        display: none;
+    }
+    .auth {
+        font-size: 12px;
+    }
 }

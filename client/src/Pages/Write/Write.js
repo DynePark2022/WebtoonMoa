@@ -14,23 +14,29 @@ function Write() {
     const defaultValue = {
         title: "",
         content: "",
-        username: user.username,
-        email: user.email,
+        authorId: user._id,
+        authorName: user.username,
+        authorEmail: user.email,
         category: "일반",
     };
     const [values, setValues] = useState(defaultValue);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        add_post(values)
-            .then((res) => {
-                console.log(res);
-                navigate(`/community`);
-            })
-            .catch((err) => {
-                alert(err);
-            });
-        setValues(defaultValue);
+        if (values.title === "") {
+            alert("제목을 입력해주세요");
+        } else if (values.content === "") {
+            alert("내용을 입력해주세요");
+        } else {
+            add_post(values)
+                .then((res) => {
+                    setValues(defaultValue);
+                    navigate(`/community`);
+                })
+                .catch((err) => {
+                    alert(err);
+                });
+        }
     };
 
     return (

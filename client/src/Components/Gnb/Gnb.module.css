@@ -25,7 +25,7 @@
     list-style: none;
     width: 100%;
     text-align: center;
-    padding: 16px 8px 12px;
+    padding: 12px 0;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -41,4 +41,37 @@
 
 li.selected_tab {
     background-color: #e5e5e5;
+}
+
+.bars {
+    display: none;
+    border: none;
+    background: none;
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 10;
+}
+
+@media screen and (max-width: 480px) {
+    .gnb {
+        position: fixed;
+        top: 40px;
+    }
+    .gnb ul {
+        flex-direction: column;
+        display: none;
+    }
+    .gnb ul li {
+        padding: 8px;
+        font-size: 12px;
+    }
+    .bars {
+        display: block;
+    }
+    #showGnb {
+        display: block;
+    }
 }

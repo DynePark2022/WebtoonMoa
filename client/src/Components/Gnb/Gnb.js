@@ -3,19 +3,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "./Gnb.module.css";
 import { GnbArray } from "../../DB/text";
+import useToggle from "../../Hooks/useToggle";
 
 function Gnb() {
     const tab = useSelector((state) => state.reducerTab);
-    let dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const [showGnb, toggle] = useToggle(false);
+    console.log(showGnb);
     return (
         <div className={styles.gnb}>
-            <ul>
+            <ul id={showGnb ? `${styles.showGnb}` : ""}>
                 {GnbArray.map((item, index) => (
                     <Link to={item.url} key={item.id}>
                         <li
                             onClick={() => {
                                 dispatch({ type: item.type });
                                 dispatch({ type: "DEFAULT_PAGE" });
+                                toggle(false);
                             }}
                             className={
                                 item.name === tab
@@ -28,6 +32,9 @@ function Gnb() {
                     </Link>
                 ))}
             </ul>
+            <button onClick={toggle} className={styles.bars}>
+                <i className="fas fa-bars"></i>
+            </button>
         </div>
     );
 }

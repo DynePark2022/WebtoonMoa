@@ -2,6 +2,7 @@
     position: relative;
     padding: 20px 20px 24px 20px;
     border-bottom: 1px solid var(--border-grey);
+    color: var(--text-black);
 }
 
 #my_comment {
@@ -17,10 +18,18 @@
     font-size: 13px;
 }
 
+#deleted_comment {
+    color: var(--text-grey);
+}
+
+#deleted_content:before {
+    content: " \203B";
+}
+
 .created_at {
     margin-top: 4px;
     font-size: 10px;
-    color: #999;
+    color: var(--text-grey);
 }
 
 .comment_more {
@@ -31,7 +40,7 @@
     top: 24px;
     right: 20px;
     font-size: 12px;
-    color: grey;
+    color: var(--text-grey);
     background: none;
 }
 
@@ -87,5 +96,10 @@
 }
 .comment_recommend button span {
     margin-left: 4px;
-    color: grey;
+    color: var(--text-grey);
+}
+
+#comment_liked {
+    color: red;
+    pointer-events: none;
 }

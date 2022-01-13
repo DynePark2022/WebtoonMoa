@@ -16,7 +16,6 @@
     padding: 6px;
     justify-content: center;
     align-items: center;
-    width: 28px;
     height: 100%;
     border-radius: 28px;
     color: var(--google-blue);
@@ -30,7 +29,6 @@
 }
 
 .input {
-    flex: 1;
     height: 100%;
 }
 
@@ -60,4 +58,14 @@
     margin-top: 2px;
     font-size: 8px;
     color: grey;
+}
+
+@media screen and (max-width: 480px) {
+    #active {
+        width: 140px;
+    }
+    .input input,
+    .icon {
+        padding: 6px 2px;
+    }
 }

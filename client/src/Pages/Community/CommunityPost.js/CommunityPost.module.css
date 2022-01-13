@@ -1,10 +1,15 @@
 .community_post {
     background-color: var(--background-white);
+    color: var(--text-black);
+    padding: 40px;
+}
+
+.community_post .article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px;
-    color: var(--text-black);
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border-grey);
 }
 
 .buttons {
@@ -50,6 +55,7 @@
     align-items: center;
     font-size: 12px;
     padding: 12px;
+    white-space: nowrap;
 }
 
 .post_detail_left {
@@ -81,7 +87,23 @@
     background-color: var(--background-grey);
 }
 
-#iLiked {
+#post_liked {
     color: red;
     pointer-events: none;
+}
+
+.comments {
+    background-color: red;
+    width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+    .community_post {
+        padding: 4px;
+    }
+    .post_like {
+        width: 50px;
+        height: 50px;
+        font-size: 12px;
+    }
 }

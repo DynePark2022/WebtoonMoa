@@ -1,7 +1,6 @@
 .comments {
     background-color: var(--background-white);
     padding: 16px 20px;
-    border-bottom: 1px solid var(--border-grey);
 }
 
 .comments > h3 {
