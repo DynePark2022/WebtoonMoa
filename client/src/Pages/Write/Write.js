@@ -14,12 +14,12 @@ function Write() {
     const defaultValue = {
         title: "",
         content: "",
-        username: user.username,
-        email: user.email,
+        authorId: user._id,
+        authorName: user.username,
+        authorEmail: user.email,
         category: "일반",
     };
     const [values, setValues] = useState(defaultValue);
-    console.log(values.content);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +30,6 @@ function Write() {
         } else {
             add_post(values)
                 .then((res) => {
-                    console.log(res);
                     setValues(defaultValue);
                     navigate(`/community`);
                 })

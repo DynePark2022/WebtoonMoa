@@ -9,6 +9,7 @@ function Comments({ postId }) {
     const [comments, loading, error, setComments] = useFetch(
         `${url}/comment/${postId}`
     );
+
     return (
         <div className={styles.comments}>
             <h3>Comments</h3>

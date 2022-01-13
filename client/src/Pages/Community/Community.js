@@ -6,7 +6,7 @@ import useFetchPage from "../../Hooks/useFetchPage";
 import { useSelector } from "react-redux";
 
 function Community() {
-    const username = useSelector((state) => state.reducerUser.username);
+    const userId = useSelector((state) => state.reducerUser._id);
     const navigate = useNavigate();
     const [tab, setTab] = useState("전체");
     const [page, setPage] = useState(1);
@@ -50,38 +50,43 @@ function Community() {
                     </Link>
                 ))}
             </ul>
-            <table>
-                <thead>
-                    <tr>
-                        <th className={styles.th_category}>말머리</th>
-                        <th className={styles.th_title}>제목</th>
-                        <th className={styles.th_username}>글쓴이</th>
-                        <th className={styles.th_createdAt}>잘성일</th>
-                        <th className={styles.th_viewCount}>조회</th>
-                        <th className={styles.th_thumbUp}>추천</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map((post) => (
-                        <tr
-                            key={post._id}
-                            id={
-                                username === post.username
-                                    ? `${styles.my_post}`
-                                    : ""
-                            }
-                            onClick={() => navigate(`/community/${post._id}`)}
-                        >
-                            <td>{post.category}</td>
-                            <td>{post.title}</td>
-                            <td>{post.username}</td>
-                            <td>{post.createdAt}</td>
-                            <td>{post.viewCount}</td>
-                            <td>{post.thumbUp.length}</td>
+            <div className={styles.table}>
+                <table>
+                    <thead>
+                        <tr>
+                            <th className={styles.th_category}>말머리</th>
+                            <th className={styles.th_title}>제목</th>
+                            <th className={styles.th_username}>글쓴이</th>
+                            <th className={styles.th_createdAt}>잘성일</th>
+                            <th className={styles.th_viewCount}>조회</th>
+                            <th className={styles.th_thumbUp}>추천</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {data.map((post) => (
+                            <tr
+                                key={post._id}
+                                id={
+                                    userId === post.authorId
+                                        ? `${styles.my_post}`
+                                        : ""
+                                }
+                                onClick={() =>
+                                    navigate(`/community/${post._id}`)
+                                }
+                            >
+                                <td>{post.category}</td>
+                                <td>{post.title}</td>
+                                <td>{post.authorName}</td>
+                                <td>{post.createdAt}</td>
+                                <td>{post.viewCount}</td>
+                                <td>{post.thumbUp.length}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+
             <div>{loading && "loading"}</div>
             <div>{error && "error"}</div>
             <div className={styles.page_buttons}>
@@ -131,7 +136,7 @@ function Community() {
             </div>
             <div>
                 <Link to="/write">
-                    <button className={styles.button}>글쓰기</button>
+                    <button className={styles.write_button}>글쓰기</button>
                 </Link>
             </div>
         </div>

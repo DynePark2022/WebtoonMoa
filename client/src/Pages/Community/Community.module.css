@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     padding: 40px;
+    min-width: 380px;
 }
 
 .community h2 {
@@ -31,6 +32,7 @@
 }
 
 .category_tab {
+    font-size: 13px;
     text-align: center;
     list-style: none;
     padding: 4px 10px;
@@ -42,7 +44,7 @@
     filter: brightness(0.9);
 }
 
-.community table {
+.community .table {
     margin: 12px 0;
     width: 100%;
     text-align: center;
@@ -51,31 +53,19 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+.table table {
+    width: 100%;
+}
+
 .category #selected {
     background-color: var(--border-grey);
     font-weight: bold;
 }
 
 .community table thead {
+    font-size: 16px;
     line-height: 48px;
-    border-bottom: 1px solid var(--text-black);
-}
-
-.th_category {
-    width: 200px;
-}
-
-.th_username {
-    width: 200px;
-}
-
-.th_createdAt {
-    width: 200px;
-}
-
-.th_viewCount,
-.th_thumbUp {
-    width: 60px;
+    white-space: nowrap;
 }
 
 .community table tbody tr {
@@ -108,6 +98,8 @@
 }
 
 .page_buttons ul {
+    padding: 0;
+    margin: 4px 0 12px;
     list-style: none;
     display: flex;
 }
@@ -127,7 +119,8 @@
     background-color: var(--border-grey);
 }
 
-.button {
+.write_button {
+    font-size: 16px;
     cursor: pointer;
     border: none;
     width: 82px;
@@ -137,4 +130,44 @@
     font-weight: bold;
     color: var(--background-white);
     background-color: var(--google-blue);
+}
+
+@media screen and (max-width: 480px) {
+    .community {
+        padding: 4px;
+    }
+
+    .category_tab {
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    .community table thead {
+        font-size: 12px;
+        line-height: 22px;
+        white-space: nowrap;
+    }
+
+    .community table tbody tr {
+        color: red;
+        font-size: 8px;
+    }
+    .community table tbody tr :nth-child(1),
+    .community table tbody tr :nth-child(2),
+    .community table tbody tr :nth-child(3) {
+        font-size: 10px;
+    }
+    .page_buttons ul {
+        margin-bottom: 8px;
+    }
+    .page_buttons ul li {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+
+    .write_button {
+        font-size: 12px;
+        width: 60px;
+        height: 24px;
+    }
 }

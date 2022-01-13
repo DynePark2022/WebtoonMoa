@@ -9,8 +9,9 @@ function CommentsForm({ comments, setComments, loading, error, parentId }) {
     const user = useSelector((state) => state.reducerUser);
     const { id } = useParams();
     const defaultInputValue = {
-        username: user.username,
-        email: user.email,
+        authorId: user._id,
+        authorName: user.username,
+        authorEmail: user.email,
         postId: id,
         comment: "",
         parentId,

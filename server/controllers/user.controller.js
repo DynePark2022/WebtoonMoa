@@ -1,9 +1,9 @@
 const User = require("../models/user.model");
 
 const getUser = (req, res) => {
-    const { username, email, bookmark, createdAt: joined } = res.locals.user;
+    const { _id, username, email, bookmark } = res.locals.user;
     try {
-        res.status(200).json({ username, email, bookmark, joined });
+        res.status(200).json({ _id, username, email, bookmark });
     } catch (error) {
         res.status(409).json({ message: error.message });
     }

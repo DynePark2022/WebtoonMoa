@@ -23,7 +23,7 @@ const UserSchema = new Schema({
         minlength: [8, "minimum 8 characters required"],
     },
     bookmark: [String],
-    createdAt: { type: Date, immutable: true, default: () => Date.now() },
+    joinedAt: { type: Date, immutable: true, default: () => Date.now() },
 });
 
 UserSchema.pre("save", async function (next) {
