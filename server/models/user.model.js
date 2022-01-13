@@ -23,7 +23,7 @@ const UserSchema = new Schema({
         minlength: [8, "minimum 8 characters required"],
     },
     bookmark: [String],
-    createdAt: { type: Date, immutable: true, default: () => Date.now() },
+    joinedAt: { type: Date, immutable: true, default: () => Date.now() },
 });
 
 UserSchema.pre("save", async function (next) {
@@ -34,14 +34,31 @@ UserSchema.pre("save", async function (next) {
 UserSchema.statics.login = async function (email, password) {
     const user = await this.findOne({ email });
     if (user) {
-        const auth = await argon2.verify(user.password, password);
-        if (auth) {
-            return user;
-        }
-        throw Error("incorrect password");
+        return verfiyUser(user.password, password, user);
     }
     throw Error("incorrect email");
 };
+
+async function verfiyUser(password, checkPassword, user) {
+    const auth = await argon2.verify(password, checkPassword);
+    if (auth) {
+        return user;
+    }
+    throw Error("incorrect password");
+}
+
+// which one is better?
+// UserSchema.statics.login = async function (email, password) {
+//     const user = await this.findOne({ email });
+//     if (user) {
+//         const auth = await argon2.verify(user.password, password);
+//         if (auth) {
+//             return user;
+//         }
+//         throw Error("incorrect password");
+//     }
+//     throw Error("incorrect email");
+// };
 
 const User = mongoose.model("user", UserSchema);
 module.exports = User;

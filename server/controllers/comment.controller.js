@@ -34,12 +34,62 @@ const postComment = async (req, res) => {
 };
 
 const deleteComment = async (req, res) => {
-    const id = req.params.id;
-    try {
-        await Comment.findOneAndDelete({ _id: id });
-        res.status(204).send("post deleted!");
-    } catch (error) {
-        res.status(409).json({ message: error.message });
+    const _id = req.params.id;
+    const checkHaveNested = await Comment.exists({ parentId: _id });
+    if (checkHaveNested) {
+        changeContentToDeleted(_id);
+    } else {
+        deleteComment(_id);
+    }
+
+    async function changeContentToDeleted(_id) {
+        const update = {
+            $set: {
+                comment: "삭제된 댓글입니다.",
+                authorId: "5d6ede6a0ba62570afcedd3a",
+            },
+        };
+        const options = { new: true };
+        try {
+            const result = await Comment.findOneAndUpdate(
+                { _id },
+                update,
+                options
+            );
+            res.status(200).json(result);
+        } catch (error) {
+            res.status(409).json({ message: error.message });
+        }
+    }
+
+    async function deleteComment(_id) {
+        try {
+            await Comment.findOneAndDelete({ _id });
+            res.status(204).send("post deleted!");
+        } catch (error) {
+            res.status(409).json({ message: error.message });
+        }
+    }
+};
+
+const likeComment = async (req, res) => {
+    const _id = req.body.comment_id;
+    const user_id = res.locals.user._id;
+    const update = { $push: { thumbUp: user_id } };
+    const options = { new: true };
+    if (res.locals.user == null) {
+        res.status(403).json({ message: error.message });
+    } else {
+        try {
+            const result = await Comment.findOneAndUpdate(
+                { _id },
+                update,
+                options
+            );
+            res.status(201).json(result);
+        } catch (error) {
+            res.status(409).json({ message: error.message });
+        }
     }
 };
 
@@ -48,4 +98,5 @@ module.exports = {
     postComment,
     deleteComment,
     getNestedComments,
+    likeComment,
 };

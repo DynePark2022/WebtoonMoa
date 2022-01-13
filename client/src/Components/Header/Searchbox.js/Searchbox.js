@@ -13,38 +13,33 @@ function Searchbox() {
         setSearchInput("");
     };
 
-    const submitform = (e) => {
+    const submitForm = (e) => {
         e.preventDefault();
         navigate(`/search/${searchInput}`);
     };
 
+    const openForm = (e) => {
+        e.stopPropagation();
+        toggle();
+    };
+
     return (
-        <div
-            onClick={toggle}
-            className={
-                value
-                    ? `${styles.Searchbox} ${styles.active}`
-                    : `${styles.Searchbox}`
-            }
-        >
-            <div className={styles.icon}>
+        <div className={styles.searchbox} id={value ? `${styles.active}` : ``}>
+            <div onClick={openForm} className={styles.icon}>
                 <i className="fas fa-search"></i>
             </div>
-            <form
-                className={styles.input}
-                onClick={(e) => e.stopPropagation()}
-                onSubmit={submitform}
-            >
+            <form className={styles.input} onSubmit={submitForm}>
                 <input
                     type="text"
                     placeholder="검색(제목, 작가)"
                     onChange={(e) => setSearchInput(e.target.value)}
                     value={searchInput}
-                    onSubmit={submitform}
+                    onSubmit={submitForm}
+                    disabled={value ? false : true}
                 />
             </form>
-            <div className={styles.clear}>
-                <i onClick={clearInput} className="fas fa-times"></i>
+            <div className={styles.clear} onClick={clearInput}>
+                <i className="fas fa-times"></i>
             </div>
         </div>
     );

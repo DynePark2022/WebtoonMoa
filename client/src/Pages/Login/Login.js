@@ -2,22 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import InputForm from "../../Components/InputForm/InputForm";
 import styles from "./Login.module.css";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { GET_USER, LOGOUT, TAB_CLEAR } from "../../Redux/constants/constants";
+import { post_login } from "../../api";
 
 function Login() {
-    useSelector((state) => state);
     let dispatch = useDispatch();
     useEffect(() => {
         dispatch({ type: LOGOUT });
         dispatch({ type: TAB_CLEAR });
-    }, []);
+    }, [dispatch]);
     const navigate = useNavigate();
-    const [values, setValues] = useState({
-        email: "",
-        password: "",
-    });
+    const [values, setValues] = useState({ email: "", password: "" });
     const LoginArray = [
         {
             id: 1,
@@ -42,10 +38,7 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios
-            .post("http://localhost:3001/login", values, {
-                withCredentials: true,
-            })
+        post_login(values)
             .then((res) => {
                 dispatch({ type: GET_USER, payload: res.data });
                 navigate("/");
@@ -59,9 +52,9 @@ function Login() {
         <div className={styles.login}>
             <div className={styles.container}>
                 <div className={styles.top}>
-                    <h4>로그인</h4>
+                    <h3>로그인</h3>
                 </div>
-                <form action="/login" method="POST" className={styles.mid}>
+                <form className={styles.mid}>
                     {LoginArray.map((input) => (
                         <InputForm
                             key={input.id}
@@ -70,9 +63,7 @@ function Login() {
                             onChange={onChange}
                         />
                     ))}
-                    <button onClick={handleSubmit} type="submit">
-                        로그인
-                    </button>
+                    <button onClick={handleSubmit}>로그인</button>
                 </form>
                 <div className={styles.bot}>
                     <Link to="/signup">회원가입</Link>

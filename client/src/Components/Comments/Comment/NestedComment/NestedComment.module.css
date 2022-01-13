@@ -1,9 +1,8 @@
 .nested_comment {
     margin-left: 40px;
-    /* background-color: rgb(230, 230, 230); */
 }
 
-.arrow_position {
+.arrow_wrapper {
     position: relative;
 }
 

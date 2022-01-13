@@ -18,6 +18,11 @@
     background: #fafafa;
 }
 
+.top h3 {
+    margin: 0;
+    font-size: 16;
+}
+
 .mid {
     padding: 16px;
     border-bottom: 1px solid var(--border-grey);
@@ -26,6 +31,7 @@
 }
 
 .checkbox {
+    cursor: pointer;
     width: 12px;
     height: 12px;
     margin: 0 2px;
@@ -33,6 +39,7 @@
 
 .mid button {
     border: none;
+    cursor: pointer;
     padding: 5px 10px;
     background-color: var(--google-blue);
     color: var(--background-white);
@@ -61,6 +68,11 @@
     display: flex;
     justify-content: center;
     font-size: 14px;
+}
+
+.bot a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .bot :first-child {

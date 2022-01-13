@@ -13,6 +13,8 @@ footer {
 }
 
 .top a {
+    text-decoration: none;
+    color: inherit;
     margin: 4px;
 }
 

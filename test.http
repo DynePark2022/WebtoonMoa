@@ -7,6 +7,9 @@ GET {{hostname}}
 ###secret Auth
 GET  {{hostname}}/secret HTTP/1.1
 
+###
+GET http://localhost:3000/community?category=%EA%B3%B5%EC%A7%80 HTTP/1.1
+
 ###user
 GET  {{hostname}}/check HTTP/1.1
 ###
@@ -84,3 +87,18 @@ Content-Type: {{content-type}}
     "email": "111@gmail.com",
     "password": "123123123q"
 }
+
+### POST post
+POST {{hostname}}/post HTTP/1.1
+Content-Type: {{content-type}}
+
+{
+    "title": "test post",
+    "content": "test content",
+    "username":"tester",
+    "email":"tester@gmail.com",
+    "tag":"일반"
+}
+
+###
+GET {{hostname}}/post/61dbe1d35d7a6b9e01e0cc77 HTTP/1.1

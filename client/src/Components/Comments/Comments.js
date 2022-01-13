@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Comments.module.css";
 import Comment from "./Comment/Comment";
 import CommentsForm from "./CommentsForm/CommentsForm";
 import useFetch from "../../Hooks/useFetch";
+import { url } from "../../api/index";
 
 function Comments({ postId }) {
-    const [addComment, setAddComment] = useState([]);
-    const [data, loading, error] = useFetch(
-        `http://localhost:3001/comment/${postId}`
+    const [comments, loading, error, setComments] = useFetch(
+        `${url}/comment/${postId}`
     );
 
     return (
@@ -16,27 +16,17 @@ function Comments({ postId }) {
             <div>{loading && "Loading..."}</div>
             <div>{error && "Error!!!"}</div>
             <CommentsForm
-                postId={postId}
-                addComment={addComment}
-                setAddComment={setAddComment}
+                comments={comments}
+                setComments={setComments}
                 loading={loading}
             />
-            <div className={styles.comments_list}>
-                {data && (
-                    <>
-                        {data.map((comment) => (
-                            <Comment key={comment._id} comment={comment} />
-                        ))}
-                    </>
-                )}
-                {addComment && (
-                    <>
-                        {addComment.map((comment) => (
-                            <Comment key={comment._id} comment={comment} />
-                        ))}
-                    </>
-                )}
-            </div>
+            {comments && (
+                <div className={styles.comments_list}>
+                    {comments.map((comment) => (
+                        <Comment key={comment._id} comment={comment} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

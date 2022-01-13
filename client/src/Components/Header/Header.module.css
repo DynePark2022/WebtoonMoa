@@ -8,10 +8,19 @@ header {
 
 .logo {
     height: 20px;
-    width: 180px;
     margin-left: 20px;
     font-weight: bold;
     color: black;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo a h1 {
+    font-size: 16px;
+    margin: 0;
 }
 
 .logo img {
@@ -19,26 +28,45 @@ header {
     height: 100%;
     object-fit: cover;
 }
+
+.hello {
+    flex: 1;
+    font-size: 12px;
+    text-align: center;
+}
 .icons {
-    min-width: 290px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
 .auth {
+    cursor: pointer;
     margin-left: 10px;
     background: none;
     padding: 4px;
+    border: none;
+    font-size: 16px;
 }
 
 .auth:hover {
     color: var(--google-blue);
 }
 
-.temp_login {
-    margin: 0 10px;
-    padding-left: 10px;
-    border-left: 1px solid var(--border-grey);
-    background-color: var(--background-white);
+@media screen and (max-width: 480px) {
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .logo {
+        transform: translateX(20px);
+        transition: transform 300ms;
+    }
+    .hello {
+        display: none;
+    }
+    .auth {
+        font-size: 12px;
+    }
 }

@@ -8,14 +8,13 @@ import { RecWebtoonArray } from "../../DB/text";
 import { useDispatch, useSelector } from "react-redux";
 import { patch_user } from "../../api";
 import { UPDATE_BOOKMARK } from "../../Redux/constants/constants";
+import { url } from "../../api/index";
 
 function WebtoonDetail() {
-    const url = "http://localhost:3001/";
     const { id } = useParams();
-    const [webtoon, loading, error] = useFetch(`${url}webtoon/${id}`);
+    const [webtoon, loading, error] = useFetch(`${url}/webtoon/${id}`);
     const user = useSelector((state) => state.reducerUser);
     const dispatch = useDispatch();
-
     const submitBookmark = async () => {
         patch_user(webtoon._id)
             .then((res) => {
@@ -36,7 +35,7 @@ function WebtoonDetail() {
                     <div>{loading && "Loading..."}</div>
                     <div>{error && "Error!!!"}</div>
                     <div className={styles.main_title}>
-                        <h1>{webtoon.title}</h1>
+                        <h3>{webtoon.title}</h3>
                     </div>
                     <div className={styles.main_info}>
                         <div className={styles.info_wrap}>
@@ -48,35 +47,35 @@ function WebtoonDetail() {
                                     <tbody>
                                         <tr>
                                             <th>장르</th>
-                                            <td>{webtoon.genre}</td>
+                                            <td>{webtoon?.genre}</td>
                                         </tr>
                                         <tr>
                                             <th>원작</th>
-                                            <td></td>
+                                            <td>{webtoon?.original}</td>
                                         </tr>
                                         <tr>
                                             <th>작가</th>
-                                            <td>{webtoon.author}</td>
+                                            <td>{webtoon?.author}</td>
                                         </tr>
                                         <tr>
                                             <th>출판사</th>
-                                            <td></td>
+                                            <td>{webtoon?.publisher}</td>
                                         </tr>
                                         <tr>
                                             <th>연재처</th>
-                                            <td>{webtoon.publisher}</td>
+                                            <td>{webtoon?.platform}</td>
                                         </tr>
                                         <tr>
                                             <th>연재 기간</th>
-                                            <td>0000. 00. 00 ~ 0000. 00. 00</td>
+                                            <td>{webtoon?.published}</td>
                                         </tr>
                                         <tr>
                                             <th>연재 주기</th>
-                                            <td>{webtoon.days}</td>
+                                            <td>{webtoon?.days}</td>
                                         </tr>
                                         <tr>
                                             <th>이용 등급</th>
-                                            <td>{webtoon.age}</td>
+                                            <td>{webtoon?.age}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -88,27 +87,26 @@ function WebtoonDetail() {
                                         id={
                                             user.bookmark.includes(webtoon._id)
                                                 ? `${styles.bookmarked}`
-                                                : undefined
+                                                : null
                                         }
                                         onClick={submitBookmark}
                                     >
                                         <i className="fas fa-bookmark"></i>
                                     </button>
-                                    {/* <button>
-                                        <i className="fas fa-heart"></i>
-                                    </button> */}
                                 </div>
                             </div>
                         </div>
                         <div className={styles.main_synopsis}>
                             <h3>줄거리</h3>
-                            <div>{webtoon.synopsis}lorem</div>
+                            <div>
+                                {webtoon?.synopsis || "줄거리가 없습니다."}
+                            </div>
                         </div>
                     </div>
                 </div>
                 <aside className={styles.aside}>
                     <div className={styles.update}>
-                        <h2>최신 업데이트</h2>
+                        <h3>최신 업데이트</h3>
                         <li className={styles.update_list}>
                             {RecWebtoonArray.map((toon) => (
                                 <ul key={toon._id}>
@@ -132,7 +130,7 @@ function WebtoonDetail() {
             <div className={styles.bottom}>
                 <Comments postId={webtoon._id} />
                 <div className={styles.recommend}>
-                    <h1>Recommendation</h1>
+                    <h3>Recommendation</h3>
                     <div className={styles.recommend_list}>
                         {RecWebtoonArray.map((toon) => (
                             <Webtoon key={toon._id} webtoon={toon} />

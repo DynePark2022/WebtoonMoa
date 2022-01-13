@@ -6,36 +6,25 @@ import KakaopageLogo from "../../../Assets/Images/Kakaopage_logo.png";
 import BufftoonLogo from "../../../Assets/Images/Bufftoon_logo.png";
 
 function Publisher({ publisher }) {
+    const publisherArray = [
+        { name: "Naver", src: NaverLogo },
+        { name: "Kakao", src: KakaoLogo },
+        { name: "Kakaopage", src: KakaopageLogo },
+        { name: "Bufftoon", src: BufftoonLogo },
+    ];
+
     return (
         <div className="publisher">
-            {publisher === "Naver" ? (
-                <img
-                    className={styles.publisherName}
-                    src={NaverLogo}
-                    alt="logo"
-                />
-            ) : null}
-            {publisher === "Kakao" ? (
-                <img
-                    className={styles.publisherName}
-                    src={KakaoLogo}
-                    alt="logo"
-                />
-            ) : null}
-            {publisher === "Kakaopage" ? (
-                <img
-                    className={styles.publisherName}
-                    src={KakaopageLogo}
-                    alt="logo"
-                />
-            ) : null}
-            {publisher === "Bufftoon" ? (
-                <img
-                    className={styles.publisherName}
-                    src={BufftoonLogo}
-                    alt="logo"
-                />
-            ) : null}
+            {publisherArray.map((companyName) =>
+                publisher === companyName.name ? (
+                    <img
+                        key={companyName.name}
+                        className={styles.publisherName}
+                        src={companyName.src}
+                        alt="logo"
+                    />
+                ) : null
+            )}
         </div>
     );
 }

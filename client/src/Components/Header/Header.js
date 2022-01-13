@@ -8,6 +8,7 @@ import Searchbox from "./Searchbox.js/Searchbox";
 function Header() {
     const user = useSelector((state) => state.reducerUser);
     let dispatch = useDispatch();
+
     return (
         <header>
             <div className={styles.logo}>
@@ -17,7 +18,9 @@ function Header() {
                     </h1>
                 </Link>
             </div>
-            {user.username && <div>안녕하세요 {user.username}님</div>}
+            <div className={styles.hello}>
+                {user.username && `안녕하세요 ${user.username}님`}
+            </div>
             <div className={styles.icons}>
                 <Searchbox />
 
@@ -34,22 +37,14 @@ function Header() {
                         </button>
                     </Link>
                 ) : (
-                    <>
-                        <Link to="/login">
-                            <button
-                                className={styles.auth}
-                                onClick={() => dispatch({ type: "TAB_CLEAR" })}
-                            >
-                                로그인
-                            </button>
-                        </Link>
+                    <Link to="/login">
                         <button
-                            className={styles.temp_login}
-                            onClick={() => dispatch({ type: "TEMP" })}
+                            className={styles.auth}
+                            onClick={() => dispatch({ type: "TAB_CLEAR" })}
                         >
-                            임시 로그인
+                            로그인
                         </button>
-                    </>
+                    </Link>
                 )}
             </div>
         </header>
