@@ -27,6 +27,8 @@ function Banner() {
         clearTimeout(timeRef.current);
     };
 
+    console.log(slide);
+
     return (
         <div className={styles.banner}>
             <div className={styles.container}>
@@ -47,6 +49,20 @@ function Banner() {
                                 {slide.text}
                             </div>
                         </div>
+                    ))}
+                </div>
+                <div className={styles.progress}>
+                    {BannerArray.map((item, index) => (
+                        <div
+                            key={item.url}
+                            className={styles.progress_dot}
+                            id={
+                                slide === index
+                                    ? `${styles.active_dot}`
+                                    : undefined
+                            }
+                            onClick={() => setSlide(index)}
+                        ></div>
                     ))}
                 </div>
             </div>
