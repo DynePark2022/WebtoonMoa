@@ -8,7 +8,6 @@ import Searchbox from "./Searchbox.js/Searchbox";
 function Header() {
     const user = useSelector((state) => state.reducerUser);
     let dispatch = useDispatch();
-
     return (
         <header>
             <div className={styles.logo}>

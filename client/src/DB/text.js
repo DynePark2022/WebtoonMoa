@@ -1,19 +1,19 @@
 export const BannerArray = [
     {
         url: "https://thumbs.dreamstime.com/b/christmas-banner-gingerbread-man-cookies-mulled-wine-holiday-decorations-fir-branches-festive-bokeh-lighting-dark-80838264.jpg",
-        text: "웹툰모아는 비영리 웹사이트입니다. (1/4)",
+        text: "웹툰모아는 비영리 웹사이트입니다.",
     },
     {
         url: "https://thumbs.dreamstime.com/b/xmas-banner-204671559.jpg",
-        text: "모든 웹툰은 공식 사이트로 연결되어 있습니다. (2/4)",
+        text: "모든 웹툰은 공식 사이트로 연결되어 있습니다.",
     },
     {
         url: "https://thumbs.dreamstime.com/b/christmas-holidays-banner-tree-bokeh-background-gifts-lights-wooden-floor-161932746.jpg",
-        text: "광고용 칸 아닙니다. 배너는 연습삼아 만들어 봤습니다. 화살표 클릭하면 멈춥니다. (3/4)",
+        text: "광고용 칸 아닙니다. 배너는 연습삼아 만들어 봤습니다. 화살표 클릭하면 멈춥니다.",
     },
     {
         url: "https://thumbs.dreamstime.com/z/merry-christmas-colorful-balls-banner-decoration-stars-backgroun-background-text-77218307.jpg",
-        text: "메리 크리스마스 (4/4)",
+        text: "메리 크리스마스",
     },
 ];
 
@@ -136,18 +136,6 @@ export const RecWebtoonArray = [
     {
         _id: 8,
         title: "쌉니다 천리마마트 ",
-        toon: "completed",
-        publisher: "Naver",
-        author: "김규삼",
-        genre: "스토리, 개그",
-        image: "https://shared-comic.pstatic.net/thumb/webtoon/697679/thumbnail/thumbnail_IMAG06_9a844df7-d7ef-4ce9-9bcd-84254976f4b6.jpg",
-        url: "https://comic.naver.com/webtoon/list?titleId=697679",
-        age: "전체",
-        days: "완결",
-    },
-    {
-        _id: 9,
-        title: "쌉니다 천리마마트 엄청 싸요 아주 너무너무 싸요 진짜 싸요 싸요싸요",
         toon: "completed",
         publisher: "Naver",
         author: "김규삼",

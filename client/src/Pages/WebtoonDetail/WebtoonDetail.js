@@ -30,10 +30,10 @@ function WebtoonDetail() {
 
     return (
         <div className={styles.webtoon_detail}>
+            <div>{loading && "Loading..."}</div>
+            <div>{error && "Error!!!"}</div>
             <div className={styles.top}>
                 <div className={styles.webtoon_detail_main}>
-                    <div>{loading && "Loading..."}</div>
-                    <div>{error && "Error!!!"}</div>
                     <div className={styles.main_title}>
                         <h3>{webtoon.title}</h3>
                     </div>
@@ -42,7 +42,7 @@ function WebtoonDetail() {
                             <div className={styles.img_container}>
                                 <img src={webtoon.image} alt={webtoon.title} />
                             </div>
-                            <div className={styles.info_container}>
+                            <div className={styles.table_container}>
                                 <table>
                                     <tbody>
                                         <tr>
@@ -80,9 +80,7 @@ function WebtoonDetail() {
                                     </tbody>
                                 </table>
                                 <div className={styles.buttons}>
-                                    <a href={webtoon.url}>
-                                        <button>웹툰보기</button>
-                                    </a>
+                                    <a href={webtoon.url}>웹툰보기</a>
                                     <button
                                         id={
                                             user.bookmark.includes(webtoon._id)
