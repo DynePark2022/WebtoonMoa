@@ -6,7 +6,7 @@
     border-top: 1px solid var(--border-grey);
 }
 
-#my_comment {
+.my_comment {
     color: var(--google-green);
 }
 
