@@ -145,16 +145,4 @@ export const RecWebtoonArray = [
         age: "전체",
         days: "완결",
     },
-    {
-        _id: 9,
-        title: "쌉니다 천리마마트 엄청 싸요 아주 너무너무 싸요 진짜 싸요 싸요싸요",
-        toon: "completed",
-        publisher: "Naver",
-        author: "김규삼",
-        genre: "스토리, 개그",
-        image: "https://shared-comic.pstatic.net/thumb/webtoon/697679/thumbnail/thumbnail_IMAG06_9a844df7-d7ef-4ce9-9bcd-84254976f4b6.jpg",
-        url: "https://comic.naver.com/webtoon/list?titleId=697679",
-        age: "전체",
-        days: "완결",
-    },
 ];

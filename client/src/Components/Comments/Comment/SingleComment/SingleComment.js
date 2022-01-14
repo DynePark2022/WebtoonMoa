@@ -11,9 +11,6 @@ function Comment({ comment: c }) {
     const emailStars = "*".repeat(c?.authorEmail?.length - 3);
     const emailMasked = c?.authorEmail.substring(0, 3) + emailStars;
 
-    console.log(`authorId : ${comment?.authorId}`);
-    console.log(`userid : ${userId}`);
-
     const deleteComment = () => {
         window.confirm("댓글을 삭제할까요?") &&
             delete_comment(c._id)
