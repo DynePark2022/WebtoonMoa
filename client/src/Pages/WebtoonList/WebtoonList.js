@@ -4,6 +4,7 @@ import styles from "./WebtoonList.module.css";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import useFetchPageAppend from "../../Hooks/useFetchPageAppend";
+import Filter from "../../Components/Filter/Filter";
 
 function WebtoonList() {
     const page = useSelector((state) => state.reducerPage);
@@ -23,6 +24,7 @@ function WebtoonList() {
     };
     return (
         <div className={styles.webtoonList}>
+            <Filter />
             <div className={styles.webtoons}>
                 {data.map((webtoon) => (
                     <Webtoon key={webtoon._id} webtoon={webtoon} />

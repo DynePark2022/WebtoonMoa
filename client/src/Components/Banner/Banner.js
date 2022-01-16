@@ -27,8 +27,6 @@ function Banner() {
         clearTimeout(timeRef.current);
     };
 
-    console.log(slide);
-
     return (
         <div className={styles.banner}>
             <div className={styles.container}>
