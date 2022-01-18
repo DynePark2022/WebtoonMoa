@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import styles from "./Filter.module.css";
 import { FilterArray } from "../../DB/text";
 import FilterRow from "./FilterRow/FilterRow";
-import useFetchFilter from "../../Hooks/useFetchFilter";
+import { get_webtoon_byFilter } from "../../api";
 
 function Filter({ route, page, limit, category, setData }) {
     const [tags, setTags] = useState(["전체", "전체", "전체", "전체", "전체"]);
 
-    const useFilterSubmit = (e) => {
+    const filterSubmit = (e) => {
         e.preventDefault();
         let [platform, day, genre, age, consonant] = tags;
-        const { data, loading, error, meta } = useFetchFilter(
+        get_webtoon_byFilter(
             route,
             page,
             limit,
@@ -20,8 +20,14 @@ function Filter({ route, page, limit, category, setData }) {
             genre,
             age,
             consonant
-        );
-        console.log(data);
+        )
+            .then((res) => {
+                setData(res.data.data);
+                console.log(res);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     };
 
     return (
@@ -36,7 +42,7 @@ function Filter({ route, page, limit, category, setData }) {
                         setTags={setTags}
                     />
                 ))}
-                <button onClick={useFilterSubmit} className={styles.search}>
+                <button onClick={filterSubmit} className={styles.search}>
                     검색
                 </button>
             </form>
@@ -45,39 +51,3 @@ function Filter({ route, page, limit, category, setData }) {
 }
 
 export default Filter;
-
-// () => setTags({ ...tags })
-
-// onClick={
-//     item.title === "연재"
-//         ? () =>
-//               setTags({
-//                   ...tags,
-//                   연재: tag,
-//               })
-//         : item.title === "요일"
-//         ? () =>
-//               setTags({
-//                   ...tags,
-//                   요일: tag,
-//               })
-//         : item.title === "장르"
-//         ? () =>
-//               setTags({
-//                   ...tags,
-//                   장르: tag,
-//               })
-//         : item.title === "나이"
-//         ? () =>
-//               setTags({
-//                   ...tags,
-//                   나이: tag,
-//               })
-//         : item.title === "초성"
-//         ? () =>
-//               setTags({
-//                   ...tags,
-//                   초성: tag,
-//               })
-//         : () => setTags({ ...tags })
-// }
