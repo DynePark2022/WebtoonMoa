@@ -35,6 +35,6 @@ function useFetchPageAppend(route, page, limit, category) {
                 setError(true);
             });
     }, [page, limit, category, route]);
-    return { data, loading, error, meta };
+    return { data, loading, error, meta, setData };
 }
 export default useFetchPageAppend;

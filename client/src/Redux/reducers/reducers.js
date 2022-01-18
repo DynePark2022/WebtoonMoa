@@ -57,17 +57,6 @@ const reducerTab = (state = [], action) => {
     }
 };
 
-const reducerPage = (state = 1, action) => {
-    switch (action.type) {
-        case CONSTANT.INCREASE_PAGE:
-            return (state = state += 1);
-        case CONSTANT.DEFAULT_PAGE:
-            return (state = 1);
-        default:
-            return state;
-    }
-};
-
-const reducers = combineReducers({ reducerUser, reducerTab, reducerPage });
+const reducers = combineReducers({ reducerUser, reducerTab });
 
 export default reducers;

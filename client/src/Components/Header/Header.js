@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { signOut } from "../../Redux/actions/actions";
 import Searchbox from "./Searchbox.js/Searchbox";
+import { TAB_CLEAR } from "../../Redux/constants/constants";
 
 function Header() {
     const user = useSelector((state) => state.reducerUser);
     let dispatch = useDispatch();
-
     return (
         <header>
             <div className={styles.logo}>
@@ -30,7 +30,7 @@ function Header() {
                             className={styles.auth}
                             onClick={() => {
                                 dispatch(signOut());
-                                dispatch({ type: "TAB_CLEAR" });
+                                dispatch({ type: TAB_CLEAR });
                             }}
                         >
                             로그아웃
@@ -40,7 +40,7 @@ function Header() {
                     <Link to="/login">
                         <button
                             className={styles.auth}
-                            onClick={() => dispatch({ type: "TAB_CLEAR" })}
+                            onClick={() => dispatch({ type: TAB_CLEAR })}
                         >
                             로그인
                         </button>

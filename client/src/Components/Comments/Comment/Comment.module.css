@@ -1,14 +1,11 @@
 .comment {
-    position: relative;
+    border-bottom: 1px solid var(--border-grey);
 }
 
 .comment_nest {
     cursor: pointer;
-    position: absolute;
-    top: 70px;
-    left: 20px;
     padding: 0 8px;
-    margin-top: 4px;
+    margin: 0 0 12px 20px;
     font-size: 12px;
     background-color: var(--background-white);
     border: 1px solid var(--border-grey);

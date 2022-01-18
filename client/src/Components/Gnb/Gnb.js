@@ -9,7 +9,6 @@ function Gnb() {
     const tab = useSelector((state) => state.reducerTab);
     const dispatch = useDispatch();
     const [showGnb, toggle] = useToggle(false);
-    console.log(showGnb);
     return (
         <div className={styles.gnb}>
             <ul id={showGnb ? `${styles.showGnb}` : ""}>

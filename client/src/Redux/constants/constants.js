@@ -10,6 +10,3 @@ export const TAB_COMPLETED = "TAB_COMPLETED";
 export const TAB_MY = "TAB_MY";
 export const TAB_COMMUNITY = "TAB_COMMUNITY";
 export const TAB_CLEAR = "TAB_CLEAR";
-
-export const INCREASE_PAGE = "INCREASE_PAGE";
-export const DEFAULT_PAGE = "DEFAULT_PAGE";

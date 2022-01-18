@@ -32,13 +32,12 @@
 
 .info_wrap {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     margin-bottom: 20px;
 }
 
 .img_container {
-    width: 300px;
-    height: 400px;
+    flex: 1;
 }
 
 .img_container img {
@@ -46,44 +45,54 @@
     background-color: var(--border-grey);
     width: 100%;
     height: 100%;
+    max-height: 400px;
 }
 
-.info_container {
+.table_container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
+    align-items: flex-start;
+    flex: 2;
 }
-.info_container table {
+.table_container table {
+    width: 50%;
+    margin-bottom: 20px;
     font-size: 13px;
     border-collapse: separate;
     border-spacing: 0 8px;
 }
 
-.info_container th {
-    width: 100px;
+.table_container th {
+    width: 50%;
     text-align: left;
 }
 
-.info_container .buttons {
-    font-size: 14px;
+.table_container td {
+    width: 50%;
+}
+
+.table_container .buttons {
+    width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
 }
 
-.buttons a {
-    width: 100%;
-}
-
-.info_container .buttons button {
+.table_container .buttons button,
+.table_container .buttons a {
     cursor: pointer;
     border: none;
-    width: 40%;
+    width: 50%;
+    height: 32px;
     background-color: var(--google-blue);
     padding: 8px 12px;
     color: #fff;
+    font-size: 16px;
+    line-height: 16px;
     border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
 }
 
 #bookmarked {
@@ -179,13 +188,37 @@
 }
 
 @media screen and (max-width: 860px) {
+    .info_wrap {
+        flex-direction: column;
+        gap: 0;
+    }
+    .aside {
+        display: none;
+    }
     .recommend_list {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .table_container .buttons,
+    .table_container {
+        align-items: center;
+    }
+    .table_container table,
+    .table_container .buttons {
+        width: 60%;
+    }
+    .table_container .buttons button,
+    .table_container .buttons a {
+        width: 100%;
     }
 }
 
 @media screen and (max-width: 480px) {
     .recommend_list {
         grid-template-columns: repeat(3, 1fr);
+    }
+    .table_container table,
+    .table_container .buttons {
+        width: 100%;
     }
 }

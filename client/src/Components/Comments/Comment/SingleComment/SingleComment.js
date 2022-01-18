@@ -8,7 +8,6 @@ function Comment({ comment: c }) {
     const userId = useSelector((state) => state.reducerUser._id);
     const [comment, setComment] = useState(c);
     const [showMore, toggle] = useToggle(false);
-
     const emailStars = "*".repeat(c?.authorEmail?.length - 3);
     const emailMasked = c?.authorEmail.substring(0, 3) + emailStars;
 
@@ -34,8 +33,11 @@ function Comment({ comment: c }) {
     return (
         comment && (
             <div
-                className={styles.comment}
-                id={userId === comment?.authorId ? `${styles.my_comment}` : ""}
+                className={
+                    userId !== comment?.authorId
+                        ? `${styles.comment}`
+                        : `${styles.comment} ${styles.my_comment}`
+                }
                 id={
                     comment?.authorId === "5d6ede6a0ba62570afcedd3a"
                         ? `${styles.deleted_comment}`

@@ -17,17 +17,40 @@ const getWebtoons = async (req, res) => {
         return { limit, total };
     }
 
-    // which one is better?
-    // if (endIndex < total) {
-    //     results.meta = { nextPage: page + 1, limit, total };
-    // } else if (startIndex > 0) {
-    //     results.meta = { previousPage: page - 1, limit, total };
-    // } else {
-    //     results.meta = { limit, total };
-    // }
-
     try {
         results.data = await Webtoon.find({ toon: category })
+            .limit(limit)
+            .skip(startIndex)
+            .exec();
+        res.status(200).json(results);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
+const getWebtoonsFiltered = async (req, res) => {
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
+    let { category, platform, days, genre, age, consonant } = req.query;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const results = {};
+    const query = { ...{ category, platform, days, genre, age, consonant } };
+    Object.keys(query).forEach(
+        (key) => query[key] === "전체" && delete query[key]
+    );
+
+    const total = await Webtoon.countDocuments(query);
+    results.meta = setMeta();
+
+    function setMeta() {
+        if (endIndex < total) return { nextPage: page + 1, limit, total };
+        if (startIndex > 0) return { previousPage: page - 1, limit, total };
+        return { limit, total };
+    }
+
+    try {
+        results.data = await Webtoon.find(query)
             .limit(limit)
             .skip(startIndex)
             .exec();
@@ -81,6 +104,7 @@ const getBookmarked = async (req, res) => {
 };
 module.exports = {
     getWebtoons,
+    getWebtoonsFiltered,
     postWebtoon,
     getSingleWebtoon,
     searchWebtoon,

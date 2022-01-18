@@ -9,6 +9,22 @@ export const get_data_byCategory = async (route, page, limit, category) =>
         `${url}/${route}?page=${page}&limit=${limit}&category=${category}`
     );
 
+//
+export const get_webtoon_byFilter = async (
+    route,
+    page,
+    limit,
+    category,
+    platform,
+    days,
+    genre,
+    age,
+    consonant
+) =>
+    await axios.get(
+        `${url}/${route}/filtered?page=${page}&limit=${limit}&category=${category}&platform=${platform}&days=${days}&genre=${genre}&age=${age}&consonant=${consonant}`
+    );
+
 // auth
 export const post_signup = async (signupInput) => {
     await axios.post(`${url}/signup`, signupInput);

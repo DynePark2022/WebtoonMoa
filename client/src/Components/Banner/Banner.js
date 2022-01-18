@@ -49,6 +49,20 @@ function Banner() {
                         </div>
                     ))}
                 </div>
+                <div className={styles.progress}>
+                    {BannerArray.map((item, index) => (
+                        <div
+                            key={item.url}
+                            className={styles.progress_dot}
+                            id={
+                                slide === index
+                                    ? `${styles.active_dot}`
+                                    : undefined
+                            }
+                            onClick={() => setSlide(index)}
+                        ></div>
+                    ))}
+                </div>
             </div>
         </div>
     );

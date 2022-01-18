@@ -1,19 +1,19 @@
 export const BannerArray = [
     {
         url: "https://thumbs.dreamstime.com/b/christmas-banner-gingerbread-man-cookies-mulled-wine-holiday-decorations-fir-branches-festive-bokeh-lighting-dark-80838264.jpg",
-        text: "웹툰모아는 비영리 웹사이트입니다. (1/4)",
+        text: "웹툰모아는 비영리 웹사이트입니다.",
     },
     {
         url: "https://thumbs.dreamstime.com/b/xmas-banner-204671559.jpg",
-        text: "모든 웹툰은 공식 사이트로 연결되어 있습니다. (2/4)",
+        text: "모든 웹툰은 공식 사이트로 연결되어 있습니다.",
     },
     {
         url: "https://thumbs.dreamstime.com/b/christmas-holidays-banner-tree-bokeh-background-gifts-lights-wooden-floor-161932746.jpg",
-        text: "광고용 칸 아닙니다. 배너는 연습삼아 만들어 봤습니다. 화살표 클릭하면 멈춥니다. (3/4)",
+        text: "광고용 칸 아닙니다. 배너는 연습삼아 만들어 봤습니다. 화살표 클릭하면 멈춥니다.",
     },
     {
         url: "https://thumbs.dreamstime.com/z/merry-christmas-colorful-balls-banner-decoration-stars-backgroun-background-text-77218307.jpg",
-        text: "메리 크리스마스 (4/4)",
+        text: "메리 크리스마스",
     },
 ];
 
@@ -46,6 +46,62 @@ export const GnbArray = [
     // { id: 3, name: "BL/GL", url: "webtoon?toon=bl%2Fgl", type: "TAB_BLGL" },
     { id: 4, name: "My", url: "user", type: "TAB_MY" },
     { id: 5, name: "커뮤니티", url: "community", type: "TAB_COMMUNITY" },
+];
+
+export const FilterArray = [
+    {
+        title: "연재",
+        list: ["전체", "네이버", "카카오", "카카오페이지", "버프툰", "기타"],
+    },
+    {
+        title: "요일",
+        list: ["전체", "월", "화", "수", "목", "금", "토", "일", "기타"],
+    },
+    {
+        title: "장르",
+        list: [
+            "전체",
+            "판타지",
+            "액션",
+            "개그",
+            "미스터리",
+            "로맨스",
+            "드라마",
+            "무협",
+            " 스포츠",
+            "일상",
+            "학원",
+            "성인",
+            "한국",
+            "중국",
+        ],
+    },
+    {
+        title: "나이",
+        list: ["전체", "전체 이용가", "12세", "15세", "성인"],
+    },
+    {
+        title: "초성",
+        list: [
+            "전체",
+            "ㄱ",
+            "ㄴ",
+            "ㄷ",
+            "ㄹ",
+            "ㅁ",
+            "ㅂ",
+            "ㅅ",
+            "ㅇ",
+            "ㅈ",
+            "ㅊ",
+            "ㅋ",
+            "ㅌ",
+            "ㅍ",
+            "ㅎ",
+            "a-z",
+            "0-9",
+        ],
+    },
 ];
 
 export const RecWebtoonArray = [
@@ -136,18 +192,6 @@ export const RecWebtoonArray = [
     {
         _id: 8,
         title: "쌉니다 천리마마트 ",
-        toon: "completed",
-        publisher: "Naver",
-        author: "김규삼",
-        genre: "스토리, 개그",
-        image: "https://shared-comic.pstatic.net/thumb/webtoon/697679/thumbnail/thumbnail_IMAG06_9a844df7-d7ef-4ce9-9bcd-84254976f4b6.jpg",
-        url: "https://comic.naver.com/webtoon/list?titleId=697679",
-        age: "전체",
-        days: "완결",
-    },
-    {
-        _id: 9,
-        title: "쌉니다 천리마마트 엄청 싸요 아주 너무너무 싸요 진짜 싸요 싸요싸요",
         toon: "completed",
         publisher: "Naver",
         author: "김규삼",
