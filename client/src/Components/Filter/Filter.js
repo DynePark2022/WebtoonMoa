@@ -1,42 +1,44 @@
 import React, { useState } from "react";
 import styles from "./Filter.module.css";
 import { FilterArray } from "../../DB/text";
+import FilterRow from "./FilterRow/FilterRow";
+import useFetchFilter from "../../Hooks/useFetchFilter";
 
-function Filter() {
-    const [platform, setPlatform] = useState("전체");
+function Filter({ route, page, limit, category, setData }) {
+    const [tags, setTags] = useState(["전체", "전체", "전체", "전체", "전체"]);
 
-    //FIXME: change to one useState
+    const useFilterSubmit = (e) => {
+        e.preventDefault();
+        let [platform, day, genre, age, consonant] = tags;
+        const { data, loading, error, meta } = useFetchFilter(
+            route,
+            page,
+            limit,
+            category,
+            platform,
+            day,
+            genre,
+            age,
+            consonant
+        );
+        console.log(data);
+    };
 
-    const [tags, setTags] = useState({
-        연재: "전체",
-        요일: "전체",
-        장르: "전체",
-        나이: "전체",
-        초성: "전체",
-    });
-    console.log(tags);
     return (
         <div className={styles.filter}>
             <form className={styles.filter_container}>
-                {FilterArray.map((item) => (
-                    <div key={item.title}>
-                        <div>{item.title}</div>
-                        {item.list.map((tag) => (
-                            <ul key={tag}>
-                                <li
-                                    id={
-                                        tags.연재 === tag
-                                            ? `${styles.selected}`
-                                            : ""
-                                    }
-                                >
-                                    {tag}
-                                </li>
-                            </ul>
-                        ))}
-                    </div>
+                {FilterArray.map((item, index) => (
+                    <FilterRow
+                        key={item.title}
+                        index={index}
+                        item={item}
+                        tags={tags}
+                        setTags={setTags}
+                    />
                 ))}
-                <button className={styles.search}>검색</button>
+                <button onClick={useFilterSubmit} className={styles.search}>
+                    검색
+                </button>
             </form>
         </div>
     );

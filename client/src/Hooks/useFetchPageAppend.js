@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { get_data_byCategory } from "../api/index";
+import { get_webtoon_byFilter } from "../api/index";
 
 function useFetchPageAppend(route, page, limit, category) {
     const [loading, setLoading] = useState(false);
@@ -10,7 +10,7 @@ function useFetchPageAppend(route, page, limit, category) {
     useEffect(() => {
         setLoading(true);
         setError(false);
-        get_data_byCategory(route, page, limit, category)
+        get_webtoon_byFilter(route, page, limit, category)
             .then((res) => {
                 if (page === 1) {
                     const every = [...res.data.data];
@@ -35,6 +35,6 @@ function useFetchPageAppend(route, page, limit, category) {
                 setError(true);
             });
     }, [page, limit, category, route]);
-    return { data, loading, error, meta };
+    return { data, loading, error, meta, setData };
 }
 export default useFetchPageAppend;

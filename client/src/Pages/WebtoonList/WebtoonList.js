@@ -13,7 +13,7 @@ function WebtoonList() {
     const category = searchParams.get("category");
     const limit = 16;
     const route = "webtoon";
-    const { data, loading, error, meta } = useFetchPageAppend(
+    const { data, loading, error, meta, setData } = useFetchPageAppend(
         route,
         page,
         limit,
@@ -24,7 +24,13 @@ function WebtoonList() {
     };
     return (
         <div className={styles.webtoonList}>
-            <Filter />
+            <Filter
+                route={route}
+                page={page}
+                limit={limit}
+                category={category}
+                setData={setData}
+            />
             <div className={styles.webtoons}>
                 {data.map((webtoon) => (
                     <Webtoon key={webtoon._id} webtoon={webtoon} />
