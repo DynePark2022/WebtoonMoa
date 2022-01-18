@@ -26,33 +26,6 @@
     margin-right: 20px;
 }
 
-.filter_container div ul {
-    display: flex;
-    list-style: none;
-    gap: 4px;
-    flex-wrap: wrap;
-    margin: 0;
-    padding: 0;
-}
-
-.filter_container div ul li {
-    padding: 3px 6px;
-    background-color: var(--background-white);
-    border: 1px solid var(--border-grey);
-    border-radius: 4px;
-    cursor: pointer;
-    margin-right: 4px;
-}
-
-.filter_container div ul li:hover {
-    filter: brightness(0.9);
-}
-
-#selected {
-    background-color: var(--google-red);
-    color: var(--background-white);
-}
-
 .filter_container .search {
     margin: 0 auto;
     width: 20%;

@@ -1,0 +1,31 @@
+.filterRow {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.filterRow ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+}
+
+.filterRow ul li {
+    padding: 3px 6px;
+    background-color: var(--background-white);
+    border: 1px solid var(--border-grey);
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 4px;
+}
+
+.filterRow ul li:hover {
+    filter: brightness(0.9);
+}
+
+#selected {
+    background-color: var(--google-red);
+    color: var(--background-white);
+}
