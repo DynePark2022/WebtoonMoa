@@ -16,13 +16,13 @@ export const get_webtoon_byFilter = async (
     limit,
     category,
     platform,
-    day,
+    days,
     genre,
     age,
     consonant
 ) =>
     await axios.get(
-        `${url}/${route}?page=${page}&limit=${limit}&category=${category}&platform=${platform}&day=${day}&genre=${genre}&age=${age}&consonant=${consonant}`
+        `${url}/${route}/filtered?page=${page}&limit=${limit}&category=${category}&platform=${platform}&days=${days}&genre=${genre}&age=${age}&consonant=${consonant}`
     );
 
 // auth

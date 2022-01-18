@@ -9,21 +9,21 @@ function Filter({ route, page, limit, category, setData }) {
 
     const filterSubmit = (e) => {
         e.preventDefault();
-        let [platform, day, genre, age, consonant] = tags;
+        let [platform, days, genre, age, consonant] = tags;
+        console.log("filter");
         get_webtoon_byFilter(
             route,
             page,
             limit,
             category,
             platform,
-            day,
+            days,
             genre,
             age,
             consonant
         )
             .then((res) => {
                 setData(res.data.data);
-                console.log(res);
             })
             .catch((e) => {
                 console.log(e);
