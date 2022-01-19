@@ -49,6 +49,11 @@ function Banner() {
                         </div>
                     ))}
                 </div>
+                <div className={styles.progress_type2}>
+                    <div>
+                        {slide + 1}/{BannerArray.length}
+                    </div>
+                </div>
                 <div className={styles.progress}>
                     {BannerArray.map((item, index) => (
                         <div

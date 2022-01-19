@@ -9,11 +9,11 @@ export const BannerArray = [
     },
     {
         url: "https://thumbs.dreamstime.com/b/christmas-holidays-banner-tree-bokeh-background-gifts-lights-wooden-floor-161932746.jpg",
-        text: "광고용 칸 아닙니다. 배너는 연습삼아 만들어 봤습니다. 화살표 클릭하면 멈춥니다.",
+        text: "지속적으로 업데이트 중입니다.",
     },
     {
         url: "https://thumbs.dreamstime.com/z/merry-christmas-colorful-balls-banner-decoration-stars-backgroun-background-text-77218307.jpg",
-        text: "메리 크리스마스",
+        text: "웹툰모아는 웹툰 정보/비교 사이트 입니다.",
     },
 ];
 

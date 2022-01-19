@@ -1,13 +1,14 @@
 .filterRow {
     display: flex;
+    align-items: center;
     list-style: none;
-    flex-wrap: wrap;
     margin: 0;
     padding: 0;
 }
 
 .filterRow ul {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
     margin: 0;
 }
@@ -18,7 +19,7 @@
     border: 1px solid var(--border-grey);
     border-radius: 4px;
     cursor: pointer;
-    margin-right: 4px;
+    margin: 0 4px 2px;
 }
 
 .filterRow ul li:hover {
