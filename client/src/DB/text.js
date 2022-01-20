@@ -61,21 +61,29 @@ export const FilterArray = [
         title: "장르",
         list: [
             "전체",
-            "판타지",
-            "액션",
+            "스토리",
+            "에피소드",
+            "옴니버스",
+            "감성",
             "개그",
-            "미스터리",
-            "로맨스",
+            "공포",
             "드라마",
+            "로맨스",
             "무협",
-            "스포츠",
+            "액션",
             "일상",
+            "소년",
+            "스포츠",
+            "스릴러",
+            "시대극",
+            "판타지",
             "학원",
+            "BL/GL",
         ],
     },
     {
         title: "나이",
-        list: ["전체", "전체 이용가", "12세", "15세", "성인"],
+        list: ["전체", "전체 이용가", "12세", "15세", "18세"],
     },
     // {
     //     title: "초성",
@@ -99,6 +107,71 @@ export const FilterArray = [
     //         "0-9",
     //     ],
     // },
+];
+
+export const MainArray = [
+    {
+        image: "http://spnimage.edaily.co.kr/images/photo/files/NP/S/2021/11/PS21111700082.jpg",
+        title: "연재웹툰",
+        link: "/webtoon?category=ongoing",
+    },
+    {
+        image: "https://img.etnews.com/photonews/2104/1408381_20210428103333_670_0001.jpg",
+        title: "완결웹툰",
+        link: "/webtoon?category=completed",
+    },
+    {
+        image: "https://dn-img-page.kakao.com/download/resource?kid=bl4JKE/hzmU187Nli/KazQYNzCqNRTK06fmof5k0&filename=th2",
+        title: "BL/GL웹툰",
+        link: "/webtoon?category=BL/GL",
+    },
+    {
+        image: "https://w.namu.la/s/9810f6e1bee8f22356a41c350c3de67fc69914740e32cd0a78743d07153847d9e1798b9d79ff895190791ca49d8f0822d7c773fde5801db11500f5ab79225c85d929de863ea88ffc6e275c42247c7374",
+        title: "성인웹툰",
+        link: "/webtoon?category=adult",
+    },
+
+    {
+        image: "https://static8.depositphotos.com/1368414/973/i/950/depositphotos_9730733-stock-photo-community.jpg",
+        title: "커뮤니티",
+        link: "/community",
+    },
+    {
+        image: "http://t1.kakaocdn.net/membership/product/resource/d12164b1-100a-4327-995f-cb3245ce6e0a",
+        title: "My",
+        link: "/user",
+    },
+];
+
+export const MainQnAArray = [
+    {
+        question: "이거 불법 사이트임?",
+        answer: "ㄴㄴ 웹툰 호스팅 절대 안함. Wiki처럼 웹툰 정보 모아놓고 비교하는 웹사이트로 운영 할 것",
+    },
+    {
+        question: "이 사이트 왜 만듬?",
+        answer: "취미로, 불법 웹사이트 쓰기 싫어서",
+    },
+    {
+        question: "광고 받음?",
+        answer: "수익목적으로는 안받음, 공익광고나, 커뮤니티 관련 광고만 넣을 예정",
+    },
+    {
+        question: "서버비 어쩜?",
+        answer: "트래픽 높아지면 그때 걱정하지 뭐",
+    },
+    {
+        question: "비밀번호 안전함?",
+        answer: "Salt 치고 Hash 해서 개발자 며느리도(며느리 없음) 모름",
+    },
+    {
+        question: "버그 언제 고침?",
+        answer: "몰?루",
+    },
+    {
+        question: "기능은 추가 언제됨?",
+        answer: "지속적으로 업데이트 하는데 개발자가 허접이라 좀 걸림",
+    },
 ];
 
 export const RecWebtoonArray = [
