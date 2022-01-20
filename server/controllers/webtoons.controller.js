@@ -61,7 +61,6 @@ const getWebtoonsFiltered = async (req, res) => {
 };
 
 const postWebtoon = async (req, res) => {
-    console.log(req.body);
     try {
         const webtoon = await Webtoon.create(req.body);
         res.status(201).json(webtoon);

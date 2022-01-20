@@ -29,7 +29,7 @@ function Main() {
         <div className={styles.main}>
             <div className={styles.cards}>
                 {mainArray.map((card) => (
-                    <Link to={card.link}>
+                    <Link key={card.title} to={card.link}>
                         <div className={styles.card}>
                             <div className={styles.img_container}>
                                 <img src={card.image} />
