@@ -8,7 +8,7 @@ const getWebtoons = async (req, res) => {
     const endIndex = page * limit;
     const results = {};
 
-    const total = await Webtoon.countDocuments({ toon: category }).exec();
+    const total = await Webtoon.countDocuments({ category }).exec();
     results.meta = setMeta();
 
     function setMeta() {
@@ -18,7 +18,7 @@ const getWebtoons = async (req, res) => {
     }
 
     try {
-        results.data = await Webtoon.find({ toon: category })
+        results.data = await Webtoon.find({ category })
             .limit(limit)
             .skip(startIndex)
             .exec();
@@ -61,6 +61,7 @@ const getWebtoonsFiltered = async (req, res) => {
 };
 
 const postWebtoon = async (req, res) => {
+    console.log(req.body);
     try {
         const webtoon = await Webtoon.create(req.body);
         res.status(201).json(webtoon);

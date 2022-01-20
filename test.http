@@ -26,15 +26,15 @@ POST {{hostname}}/webtoon HTTP/1.1
 Content-Type: {{content-type}}
 
         {
-            "title": "생각하는 정이",
-            "publisher": "Bufftoon",
-            "toon": "completed",
-            "author": "정이",
-            "genre": "드라마",
+            "title": "카카오 테스트",
+            "platform": "카카오",
+            "category": "completed",
+            "author": "YYY XXX",
+            "genre": ["드라마","판타지","로맨스"],
             "image": "https://buffimgs.plaync.com/buff/contents/0/10077/cover_8a2ec7727edff4ccde40b373faaed32f5e40e3e32e3a13e6570325f883529f91.jpg",
             "url": "https://bufftoon.plaync.com/series/10077",
-            "age": "",
-            "days": "기타A"
+            "days": ["월","화"],
+            "age": "12세"
         }
 
 ### Post a Comment
@@ -61,7 +61,7 @@ GET  {{hostname}}/webtoon?page=1&limit=10 HTTP/1.1
 Content-Type: {{content-type}}
 
 ### Get Webtoons Pagination/tab
-GET  {{hostname}}/webtoon?page=1&limit=10&toon=ongoing HTTP/1.1
+GET  {{hostname}}/webtoon?page=1&limit=10&category=ongoing HTTP/1.1
 Content-Type: {{content-type}}
 
 ### Get Comments
@@ -102,3 +102,14 @@ Content-Type: {{content-type}}
 
 ###
 GET {{hostname}}/post/61dbe1d35d7a6b9e01e0cc77 HTTP/1.1
+
+
+###
+POST {{hostname}}/webtoon HTTP/1.1
+Content-Type: {{content-type}}
+
+{
+    "title": "test",
+    "image": "https://shared-comic.pstatic.net/thumb/webtoon/748534/thumbnail/thumbnail_IMAG06_8d10d87d-0e1b-4a11-9f88-2759ee34820c.jpg",
+    "url": "https://comic.naver.com/webtoon/list?titleId=748534",
+}
