@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Webtoon.module.css";
-import Publisher from "./Publisher/Publisher";
+import Platform from "./Platform/Platform";
 import { Link } from "react-router-dom";
 
 function Webtoon({ webtoon }) {
@@ -17,7 +17,7 @@ function Webtoon({ webtoon }) {
                 <div className={styles.title}>{webtoon.title}</div>
             </Link>
             <div className={styles.tag}>
-                <Publisher publisher={webtoon.publisher} />
+                <Platform platform={webtoon.platform[0]} />
                 <div className={styles.update}>NEW</div>
             </div>
         </div>

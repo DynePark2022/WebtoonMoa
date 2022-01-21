@@ -11,7 +11,7 @@ function Main() {
                     <Link key={card.title} to={card.link}>
                         <div className={styles.card}>
                             <div className={styles.img_container}>
-                                <img src={card.image} />
+                                <img src={card.image} alt={card.title} />
                             </div>
                             <h3>{card.title}</h3>
                             <h4>바로가기</h4>
@@ -22,7 +22,7 @@ function Main() {
             <div className={styles.qna}>
                 <h2>자주 묻는 질문</h2>
                 {MainQnAArray.map((QnA) => (
-                    <details keys={QnA.question}>
+                    <details key={QnA.question}>
                         <summary>{QnA.question}</summary>
                         <div>{QnA.answer}</div>
                     </details>

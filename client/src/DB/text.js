@@ -34,18 +34,16 @@ export const GnbArray = [
         id: 0,
         name: "연재중",
         url: "webtoon?category=ongoing",
-        type: "TAB_ONGOING",
     },
     {
         id: 1,
         name: "완결",
         url: "webtoon?category=completed",
-        type: "TAB_COMPLETED",
     },
-    { id: 2, name: "성인", url: "webtoon?category=adult", type: "TAB_ADULT" },
+    { id: 2, name: "성인", url: "webtoon?category=adult" },
     // { id: 3, name: "BL/GL", url: "webtoon?category=bl%2Fgl", type: "TAB_BLGL" },
-    { id: 4, name: "My", url: "user", type: "TAB_MY" },
-    { id: 5, name: "커뮤니티", url: "community", type: "TAB_COMMUNITY" },
+    { id: 4, name: "My", url: "user" },
+    { id: 5, name: "커뮤니티", url: "community" },
 ];
 
 export const FilterArray = [

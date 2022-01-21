@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import styles from "./Gnb.module.css";
 import { GnbArray } from "../../DB/text";
 import useToggle from "../../Hooks/useToggle";
+import { DEFAULT_PAGE, TAB_CHANGE } from "../../Redux/constants/constants";
 
 function Gnb() {
     const tab = useSelector((state) => state.reducerTab);
@@ -12,12 +13,15 @@ function Gnb() {
     return (
         <div className={styles.gnb}>
             <ul id={showGnb ? `${styles.showGnb}` : ""}>
-                {GnbArray.map((item, index) => (
+                {GnbArray.map((item) => (
                     <Link to={item.url} key={item.id}>
                         <li
                             onClick={() => {
-                                dispatch({ type: item.type });
-                                dispatch({ type: "DEFAULT_PAGE" });
+                                dispatch({
+                                    type: TAB_CHANGE,
+                                    payload: item.name,
+                                });
+                                dispatch({ type: DEFAULT_PAGE });
                                 toggle(false);
                             }}
                             className={

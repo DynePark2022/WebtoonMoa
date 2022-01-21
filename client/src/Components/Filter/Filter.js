@@ -3,14 +3,19 @@ import styles from "./Filter.module.css";
 import { FilterArray } from "../../DB/text";
 import FilterRow from "./FilterRow/FilterRow";
 import { get_webtoon_byFilter } from "../../api";
+import { useDispatch, useSelector } from "react-redux";
+import { DEFAULT_PAGE } from "../../Redux/constants/constants";
 
-function Filter({ route, page, limit, category, setData }) {
+function Filter({ route, limit, category, setData }) {
+    const page = useSelector((state) => state.reducerPage);
+    const dispatch = useDispatch();
     const [tags, setTags] = useState(["전체", "전체", "전체", "전체", "전체"]);
+    let [platform, days, genre, age, consonant] = tags;
 
     const filterSubmit = (e) => {
         e.preventDefault();
-        let [platform, days, genre, age, consonant] = tags;
-        console.log("filter");
+        dispatch({ type: DEFAULT_PAGE });
+
         get_webtoon_byFilter(
             route,
             page,

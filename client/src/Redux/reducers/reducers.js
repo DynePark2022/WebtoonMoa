@@ -38,18 +38,8 @@ const reducerUser = (state = userState, action) => {
 
 const reducerTab = (state = [], action) => {
     switch (action.type) {
-        case CONSTANT.TAB_ONGOING:
-            return (state = "연재중");
-        case CONSTANT.TAB_ADULT:
-            return (state = "성인");
-        case CONSTANT.TAB_BLGL:
-            return (state = "BL/GL");
-        case CONSTANT.TAB_COMPLETED:
-            return (state = "완결");
-        case CONSTANT.TAB_MY:
-            return (state = "My");
-        case CONSTANT.TAB_COMMUNITY:
-            return (state = "커뮤니티");
+        case CONSTANT.TAB_CHANGE:
+            return (state = action.payload);
         case CONSTANT.TAB_CLEAR:
             return (state = []);
         default:
@@ -57,6 +47,17 @@ const reducerTab = (state = [], action) => {
     }
 };
 
-const reducers = combineReducers({ reducerUser, reducerTab });
+const reducerPage = (state = 1, action) => {
+    switch (action.type) {
+        case CONSTANT.INCREASE_PAGE:
+            return (state = state += 1);
+        case CONSTANT.DEFAULT_PAGE:
+            return (state = 1);
+        default:
+            return state;
+    }
+};
+
+const reducers = combineReducers({ reducerUser, reducerTab, reducerPage });
 
 export default reducers;
