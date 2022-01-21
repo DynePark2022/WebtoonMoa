@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./Searchbox.module.css";
 import useToggle from "../../../Hooks/useToggle";
 import { useNavigate } from "react-router-dom";
+import { DEFAULT_PAGE } from "../../../Redux/constants/constants";
 
 function Searchbox() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState("");
     const [value, toggle] = useToggle();
@@ -15,6 +18,7 @@ function Searchbox() {
 
     const submitForm = (e) => {
         e.preventDefault();
+        dispatch({ type: DEFAULT_PAGE });
         navigate(`/search/${searchInput}`);
     };
 

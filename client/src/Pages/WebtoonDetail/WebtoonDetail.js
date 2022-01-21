@@ -47,40 +47,57 @@ function WebtoonDetail() {
                                     <tbody>
                                         <tr>
                                             <th>장르</th>
-                                            <td>{webtoon?.genre}</td>
+                                            <td>{webtoon.genre?.join(", ")}</td>
                                         </tr>
                                         <tr>
                                             <th>원작</th>
-                                            <td>{webtoon?.original}</td>
+                                            <td>{webtoon.original || "-"}</td>
                                         </tr>
                                         <tr>
                                             <th>작가</th>
-                                            <td>{webtoon?.author}</td>
+                                            <td>
+                                                {webtoon.author?.join(", ") ||
+                                                    "-"}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>출판사</th>
-                                            <td>{webtoon?.publisher}</td>
+                                            <td>{webtoon.publisher || "-"}</td>
                                         </tr>
                                         <tr>
                                             <th>연재처</th>
-                                            <td>{webtoon?.platform}</td>
+                                            <td>{webtoon.platform || "-"}</td>
                                         </tr>
                                         <tr>
                                             <th>연재 기간</th>
-                                            <td>{webtoon?.published}</td>
+                                            <td>{webtoon.published || "-"}</td>
                                         </tr>
                                         <tr>
                                             <th>연재 주기</th>
-                                            <td>{webtoon?.days}</td>
+                                            <td>
+                                                {webtoon.days?.join(", ") ||
+                                                    "-"}
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th>이용 등급</th>
-                                            <td>{webtoon?.age}</td>
+                                            <td>{webtoon.age || "-"}</td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div className={styles.buttons}>
-                                    <a href={webtoon.url}>웹툰보기</a>
+                                    {webtoon.first_episode_url && (
+                                        <a href={webtoon.first_episode_url}>
+                                            첫화 보기
+                                        </a>
+                                    )}
+                                    {webtoon.lastest_episode_url && (
+                                        <a href={webtoon.lastest_episode_url}>
+                                            최신화 {webtoon.latested_episode}{" "}
+                                            보기
+                                        </a>
+                                    )}
+                                    <a href={webtoon.url}>웹툰목록</a>
                                     <button
                                         id={
                                             user.bookmark.includes(webtoon._id)
@@ -96,9 +113,13 @@ function WebtoonDetail() {
                         </div>
                         <div className={styles.main_synopsis}>
                             <h3>줄거리</h3>
-                            <div>
-                                {webtoon?.synopsis || "줄거리가 없습니다."}
-                            </div>
+                            <div
+                                dangerouslySetInnerHTML={{
+                                    __html:
+                                        webtoon.synopsis ||
+                                        "줄거리가 없습니다.",
+                                }}
+                            />
                         </div>
                     </div>
                 </div>

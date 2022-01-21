@@ -3,14 +3,19 @@ import styles from "./Filter.module.css";
 import { FilterArray } from "../../DB/text";
 import FilterRow from "./FilterRow/FilterRow";
 import { get_webtoon_byFilter } from "../../api";
+import { useDispatch, useSelector } from "react-redux";
+import { DEFAULT_PAGE } from "../../Redux/constants/constants";
 
-function Filter({ route, page, limit, category, setData }) {
-    const [tags, setTags] = useState(["전체", "전체", "전체", "전체", "전체"]);
+function Filter({ route, limit, category, setData }) {
+    const page = useSelector((state) => state.reducerPage);
+    const tag = useSelector((state) => state.reducerTag);
+    const dispatch = useDispatch();
+    let [platform, days, genre, age, consonant] = tag;
 
     const filterSubmit = (e) => {
         e.preventDefault();
-        let [platform, days, genre, age, consonant] = tags;
-        console.log("filter");
+        dispatch({ type: DEFAULT_PAGE });
+
         get_webtoon_byFilter(
             route,
             page,
@@ -34,13 +39,7 @@ function Filter({ route, page, limit, category, setData }) {
         <div className={styles.filter}>
             <form className={styles.filter_container}>
                 {FilterArray.map((item, index) => (
-                    <FilterRow
-                        key={item.title}
-                        index={index}
-                        item={item}
-                        tags={tags}
-                        setTags={setTags}
-                    />
+                    <FilterRow key={item.title} index={index} item={item} />
                 ))}
                 <button onClick={filterSubmit} className={styles.search}>
                     검색

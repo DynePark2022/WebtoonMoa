@@ -10,7 +10,7 @@
 .cards {
     display: grid;
     gap: 12px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-column: auto;
     justify-content: space-between;
 }
@@ -23,22 +23,17 @@
     overflow: hidden;
 }
 
-.cards a:nth-child(1) {
-    border: 6px solid var(--google-blue);
-    background-color: var(--google-blue);
-}
-
-.cards a:nth-child(2) {
-    border: 6px solid var(--google-green);
-    background-color: var(--google-green);
-}
-
-.cards a:nth-child(3) {
+.cards a:nth-child(3n + 1) {
     border: 6px solid var(--google-red);
     background-color: var(--google-red);
 }
 
-.cards a:nth-child(4) {
+.cards a:nth-child(3n + 2) {
+    border: 6px solid var(--google-green);
+    background-color: var(--google-green);
+}
+
+.cards a:nth-child(3n + 3) {
     border: 6px solid var(--google-yellow);
     background-color: var(--google-yellow);
 }
@@ -62,14 +57,58 @@
     font-size: 14px;
 }
 
+.qna {
+    background-color: var(--background-black);
+    margin-top: 20px;
+    padding: 60px 20px;
+}
+
+.qna h2 {
+    margin: 0 0 40px;
+    padding: 0;
+    color: var(--background-white);
+}
+
+.qna details {
+    color: var(--background-white);
+    margin: 12px auto;
+    padding: 20px;
+    width: 50%;
+    background-color: var(--text-black);
+    text-align: left;
+}
+
+.qna details summary {
+    cursor: pointer;
+}
+
+.qna details div {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--background-black);
+    font-size: 16px;
+}
+
 @media screen and (max-width: 860px) {
     .cards {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .qna details {
+        width: 80%;
     }
 }
 
 @media screen and (max-width: 480px) {
     .cards {
         grid-template-columns: repeat(1, 1fr);
+    }
+    .qna {
+        padding: 20px;
+    }
+    .qna h2 {
+        margin: 0 0 20px;
+    }
+    .qna details {
+        width: 100%;
     }
 }
