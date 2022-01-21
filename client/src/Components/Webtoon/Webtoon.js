@@ -17,7 +17,9 @@ function Webtoon({ webtoon }) {
                 <div className={styles.title}>{webtoon.title}</div>
             </Link>
             <div className={styles.tag}>
-                <Platform platform={webtoon.platform[0]} />
+                {webtoon.platform && (
+                    <Platform platform={webtoon.platform[0]} />
+                )}
                 <div className={styles.update}>NEW</div>
             </div>
         </div>

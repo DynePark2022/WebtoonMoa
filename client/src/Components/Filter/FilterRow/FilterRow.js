@@ -1,12 +1,18 @@
 import React from "react";
+import { TAG_CHANGE } from "../../../Redux/constants/constants";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./FilterRow.module.css";
 
-function FilterRow({ item, tags, setTags, index }) {
+function FilterRow({ item, index }) {
+    const dispatch = useDispatch();
+    const tag = useSelector((state) => state.reducerTag);
+
     const changeTab = (e) => {
-        const copy = [...tags];
+        const copy = [...tag];
         copy[index] = e.target.innerText;
-        setTags(copy);
+        dispatch({ type: TAG_CHANGE, payload: copy });
     };
+
     return (
         <div className={styles.filterRow}>
             <div>{item.title}</div>
@@ -15,9 +21,7 @@ function FilterRow({ item, tags, setTags, index }) {
                     <li
                         key={listItem}
                         onClick={changeTab}
-                        id={
-                            tags[index] === listItem ? `${styles.selected}` : ""
-                        }
+                        id={tag[index] === listItem ? `${styles.selected}` : ""}
                     >
                         {listItem}
                     </li>

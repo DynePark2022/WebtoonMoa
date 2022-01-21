@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 import styles from "./Gnb.module.css";
 import { GnbArray } from "../../DB/text";
 import useToggle from "../../Hooks/useToggle";
-import { DEFAULT_PAGE, TAB_CHANGE } from "../../Redux/constants/constants";
+import {
+    DEFAULT_PAGE,
+    TAB_CHANGE,
+    TAG_CLEAR,
+} from "../../Redux/constants/constants";
 
 function Gnb() {
     const tab = useSelector((state) => state.reducerTab);
@@ -22,6 +26,8 @@ function Gnb() {
                                     payload: item.name,
                                 });
                                 dispatch({ type: DEFAULT_PAGE });
+                                dispatch({ type: TAG_CLEAR });
+
                                 toggle(false);
                             }}
                             className={

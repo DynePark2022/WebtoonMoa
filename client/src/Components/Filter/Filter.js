@@ -8,9 +8,9 @@ import { DEFAULT_PAGE } from "../../Redux/constants/constants";
 
 function Filter({ route, limit, category, setData }) {
     const page = useSelector((state) => state.reducerPage);
+    const tag = useSelector((state) => state.reducerTag);
     const dispatch = useDispatch();
-    const [tags, setTags] = useState(["전체", "전체", "전체", "전체", "전체"]);
-    let [platform, days, genre, age, consonant] = tags;
+    let [platform, days, genre, age, consonant] = tag;
 
     const filterSubmit = (e) => {
         e.preventDefault();
@@ -39,13 +39,7 @@ function Filter({ route, limit, category, setData }) {
         <div className={styles.filter}>
             <form className={styles.filter_container}>
                 {FilterArray.map((item, index) => (
-                    <FilterRow
-                        key={item.title}
-                        index={index}
-                        item={item}
-                        tags={tags}
-                        setTags={setTags}
-                    />
+                    <FilterRow key={item.title} index={index} item={item} />
                 ))}
                 <button onClick={filterSubmit} className={styles.search}>
                     검색
