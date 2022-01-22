@@ -40,8 +40,8 @@ export const GnbArray = [
         name: "완결",
         url: "webtoon?category=completed",
     },
-    { id: 2, name: "성인", url: "webtoon?category=adult" },
-    // { id: 3, name: "BL/GL", url: "webtoon?category=bl%2Fgl", type: "TAB_BLGL" },
+    { id: 2, name: "BL/GL", url: "webtoon?category=BL/GL" },
+    { id: 3, name: "성인", url: "webtoon?category=adult" },
     { id: 4, name: "My", url: "user" },
     { id: 5, name: "커뮤니티", url: "community" },
 ];
@@ -53,7 +53,7 @@ export const FilterArray = [
     },
     {
         title: "요일",
-        list: ["전체", "월", "화", "수", "목", "금", "토", "일", "기타"],
+        list: ["전체", "월", "화", "수", "목", "금", "토", "일", "완결"],
     },
     {
         title: "장르",
