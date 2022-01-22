@@ -32,6 +32,7 @@ function useFetchPageAppend(route, page, limit, category) {
             })
             .catch((e) => {
                 console.log(e);
+                setLoading(false);
                 setError(true);
             });
     }, [page, limit, category, route]);
