@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { patch_user } from "../../api";
 import { UPDATE_BOOKMARK } from "../../Redux/constants/constants";
 import { url } from "../../api/index";
+import UpdatedWebtoons from "../../Components/UpdatedWebtoons/UpdatedWebtoons";
 
 function WebtoonDetail() {
     const { id } = useParams();
@@ -124,26 +125,7 @@ function WebtoonDetail() {
                     </div>
                 </div>
                 <aside className={styles.aside}>
-                    <div className={styles.update}>
-                        <h3>최신 업데이트</h3>
-                        <li className={styles.update_list}>
-                            {RecWebtoonArray.map((toon) => (
-                                <ul key={toon._id}>
-                                    <div
-                                        className={styles.update_img_container}
-                                    >
-                                        <img
-                                            src={toon.image}
-                                            alt={toon.title}
-                                        />
-                                    </div>
-                                    <div className={styles.update_title}>
-                                        {toon.title}
-                                    </div>
-                                </ul>
-                            ))}
-                        </li>
-                    </div>
+                    <UpdatedWebtoons />
                 </aside>
             </div>
             <div className={styles.bottom}>
