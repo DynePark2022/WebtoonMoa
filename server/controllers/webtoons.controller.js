@@ -28,6 +28,19 @@ const getWebtoons = async (req, res) => {
     }
 };
 
+const getWebtoonsUpdated = async (req, res) => {
+    const limit = 8;
+    try {
+        results = await Webtoon.find({})
+            .sort({ updated: -1 })
+            .limit(limit)
+            .exec();
+        res.status(200).json(results);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
 const getWebtoonsFiltered = async (req, res) => {
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
@@ -104,6 +117,7 @@ const getBookmarked = async (req, res) => {
 };
 module.exports = {
     getWebtoons,
+    getWebtoonsUpdated,
     getWebtoonsFiltered,
     postWebtoon,
     getSingleWebtoon,
