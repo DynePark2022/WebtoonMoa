@@ -118,20 +118,6 @@
     box-shadow: inset 0 0 10px #333;
 }
 
-/* Recommendation list */
-.recommend {
-    background-color: var(--background-white);
-    padding: 16px 20px;
-}
-
-.recommend_list {
-    padding: 16px 0;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 12px;
-    overflow: hidden;
-}
-
 /* aside */
 
 .aside {
@@ -141,10 +127,6 @@
     max-width: 200px;
     padding: 16px 8px 0 8px;
     background-color: var(--background-white);
-}
-
-.recommend h3 {
-    margin: 0;
 }
 
 @media screen and (max-width: 860px) {

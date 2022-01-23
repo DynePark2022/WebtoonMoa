@@ -105,3 +105,5 @@ GET {{hostname}}/post/61dbe1d35d7a6b9e01e0cc77 HTTP/1.1
 
 ###
 GET {{hostname}}/webtoon/updated HTTP/1.1
+###
+GET {{hostname}}/webtoon/recommended?genre=로맨스 HTTP/1.1
