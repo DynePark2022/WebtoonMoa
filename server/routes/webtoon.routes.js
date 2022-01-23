@@ -4,6 +4,7 @@ const router = Router();
 const webtoonController = require("../controllers/webtoons.controller");
 
 router.get("/", webtoonController.getWebtoons);
+router.get("/updated", webtoonController.getWebtoonsUpdated);
 router.get("/filtered", webtoonController.getWebtoonsFiltered);
 router.get("/bookmark", webtoonController.getBookmarked);
 router.get("/:id", webtoonController.getSingleWebtoon);

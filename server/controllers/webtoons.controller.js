@@ -8,7 +8,7 @@ const getWebtoons = async (req, res) => {
     const endIndex = page * limit;
     const results = {};
 
-    const total = await Webtoon.countDocuments({ toon: category }).exec();
+    const total = await Webtoon.countDocuments({ category }).exec();
     results.meta = setMeta();
 
     function setMeta() {
@@ -18,9 +18,22 @@ const getWebtoons = async (req, res) => {
     }
 
     try {
-        results.data = await Webtoon.find({ toon: category })
+        results.data = await Webtoon.find({ category })
             .limit(limit)
             .skip(startIndex)
+            .exec();
+        res.status(200).json(results);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
+const getWebtoonsUpdated = async (req, res) => {
+    const limit = 8;
+    try {
+        results = await Webtoon.find({})
+            .sort({ updated: -1 })
+            .limit(limit)
             .exec();
         res.status(200).json(results);
     } catch (error) {
@@ -104,6 +117,7 @@ const getBookmarked = async (req, res) => {
 };
 module.exports = {
     getWebtoons,
+    getWebtoonsUpdated,
     getWebtoonsFiltered,
     postWebtoon,
     getSingleWebtoon,

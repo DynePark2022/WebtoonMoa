@@ -21,6 +21,8 @@ function Write() {
     };
     const [values, setValues] = useState(defaultValue);
 
+    console.log(user);
+    console.log(values);
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (values.title === "") {
