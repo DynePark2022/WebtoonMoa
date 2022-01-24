@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./WebtoonDetail.module.css";
 import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/useFetch";
-import Webtoon from "../../Components/Webtoon/Webtoon";
+
 import Comments from "../../Components/Comments/Comments";
-import { RecWebtoonArray } from "../../DB/text";
 import { useDispatch, useSelector } from "react-redux";
 import { patch_user } from "../../api";
 import { UPDATE_BOOKMARK } from "../../Redux/constants/constants";
 import { url } from "../../api/index";
 import UpdatedWebtoons from "../../Components/UpdatedWebtoons/UpdatedWebtoons";
+import RecommendedWebtoons from "../../Components/RecommendedWebtoons/RecommendedWebtoons";
 
 function WebtoonDetail() {
     const { id } = useParams();
@@ -130,14 +130,7 @@ function WebtoonDetail() {
             </div>
             <div className={styles.bottom}>
                 <Comments postId={webtoon._id} />
-                <div className={styles.recommend}>
-                    <h3>Recommendation</h3>
-                    <div className={styles.recommend_list}>
-                        {RecWebtoonArray.map((toon) => (
-                            <Webtoon key={toon._id} webtoon={toon} />
-                        ))}
-                    </div>
-                </div>
+                {webtoon.genre && <RecommendedWebtoons genre={webtoon.genre} />}
             </div>
         </div>
     );

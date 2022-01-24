@@ -1,0 +1,16 @@
+.recommend {
+    background-color: var(--background-white);
+    padding: 16px 20px;
+}
+
+.recommend h3 {
+    margin: 0;
+}
+
+.recommend_list {
+    padding: 16px 0;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
+    overflow: hidden;
+}

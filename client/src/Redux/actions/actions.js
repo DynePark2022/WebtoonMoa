@@ -3,7 +3,7 @@ import { GET_USER, LOGOUT } from "../constants/constants";
 
 export const signOut = () => async (dispatch) => {
     try {
-        const { data } = await api.get_logout();
+        await api.get_logout();
         dispatch({ type: LOGOUT });
     } catch (err) {
         console.log(err.message);

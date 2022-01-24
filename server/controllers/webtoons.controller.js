@@ -41,6 +41,19 @@ const getWebtoonsUpdated = async (req, res) => {
     }
 };
 
+const getWebtoonsRecommended = async (req, res) => {
+    const genre = req.query.genre;
+    const limit = 8;
+    try {
+        const count = await Webtoon.countDocuments({ genre });
+        const random = Math.floor(Math.random() * count);
+        const results = await Webtoon.find({ genre }).skip(random).limit(limit);
+        res.status(200).json(results);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+};
+
 const getWebtoonsFiltered = async (req, res) => {
     const page = parseInt(req.query.page);
     const limit = parseInt(req.query.limit);
@@ -118,6 +131,7 @@ const getBookmarked = async (req, res) => {
 module.exports = {
     getWebtoons,
     getWebtoonsUpdated,
+    getWebtoonsRecommended,
     getWebtoonsFiltered,
     postWebtoon,
     getSingleWebtoon,

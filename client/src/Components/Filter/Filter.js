@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Filter.module.css";
 import { FilterArray } from "../../DB/text";
 import FilterRow from "./FilterRow/FilterRow";
