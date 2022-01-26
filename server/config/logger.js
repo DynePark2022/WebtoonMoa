@@ -5,10 +5,10 @@ require("dotenv").config();
 
 const logDir = `${appRoot}/logs`;
 
-const { combine, timestamp, printf, colorize, simple } = winston.format;
+const { label, combine, timestamp, printf, colorize, simple } = winston.format;
 
-const logFormat = printf(({ level, message, timestamp, stack }) => {
-    return `${timestamp} [${level}] ${stack || message}`;
+const logFormat = printf(({ label, level, message, timestamp, stack }) => {
+    return `${timestamp} | ${label} | [${level}] ${stack || message}`;
 });
 
 // Log Lv.
@@ -16,8 +16,9 @@ const logFormat = printf(({ level, message, timestamp, stack }) => {
 
 const logger = winston.createLogger({
     format: combine(
+        label({ label: "WebtoonMoa" }),
         timestamp({
-            format: "MM-DD-YYYY HH:mm:ss",
+            format: "YYYY-MM-DD HH:mm:ss",
         }),
         winston.format.errors({ stack: true }),
         logFormat

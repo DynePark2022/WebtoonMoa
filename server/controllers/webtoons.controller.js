@@ -1,4 +1,5 @@
 const Webtoon = require("../models/webtoon.model");
+const log = require("../config/logger");
 
 const getWebtoons = async (req, res) => {
     const page = parseInt(req.query.page);
@@ -22,8 +23,10 @@ const getWebtoons = async (req, res) => {
             .limit(limit)
             .skip(startIndex)
             .exec();
+        log.info(`GET / 200 get webtoons.`);
         res.status(200).json(results);
     } catch (error) {
+        log.error(`GET / 404 get webtoons. ${error.message}`);
         res.status(404).json({ message: error.message });
     }
 };
@@ -35,8 +38,10 @@ const getWebtoonsUpdated = async (req, res) => {
             .sort({ updated: -1 })
             .limit(limit)
             .exec();
+        log.info(`GET / 200 get updated webtoons.`);
         res.status(200).json(results);
     } catch (error) {
+        log.error(`GET / 404 get updated webtoons. ${error.message}`);
         res.status(404).json({ message: error.message });
     }
 };
@@ -48,8 +53,10 @@ const getWebtoonsRecommended = async (req, res) => {
         const count = await Webtoon.countDocuments({ genre });
         const random = Math.floor(Math.random() * count);
         const results = await Webtoon.find({ genre }).skip(random).limit(limit);
+        log.info(`GET / 200 get recommended webtoons.`);
         res.status(200).json(results);
     } catch (error) {
+        log.error(`GET / 404 get recommended webtoons. ${error.message}`);
         res.status(404).json({ message: error.message });
     }
 };
@@ -80,8 +87,10 @@ const getWebtoonsFiltered = async (req, res) => {
             .limit(limit)
             .skip(startIndex)
             .exec();
+        log.info(`GET / 200 get filtered webtoons.`);
         res.status(200).json(results);
     } catch (error) {
+        log.error(`GET / 404 get filtered webtoons. ${error.message}`);
         res.status(404).json({ message: error.message });
     }
 };
@@ -89,8 +98,10 @@ const getWebtoonsFiltered = async (req, res) => {
 const postWebtoon = async (req, res) => {
     try {
         const webtoon = await Webtoon.create(req.body);
+        log.info(`POST / 201 post webtoons`);
         res.status(201).json(webtoon);
     } catch (error) {
+        log.error(`POST / 409 post webtoons. ${error.message}`);
         res.status(409).json({ message: error.message });
     }
 };
@@ -99,8 +110,10 @@ const getSingleWebtoon = async (req, res) => {
     const id = req.params.id;
     try {
         const webtoon = await Webtoon.findOne({ _id: id });
+        log.info(`GET / 200 get single webtoon.`);
         res.status(200).json(webtoon);
     } catch (error) {
+        log.error(`GET / 404 get single webtoon. ${error.message}`);
         res.status(409).json({ message: error.message });
     }
 };
@@ -113,8 +126,12 @@ const searchWebtoon = async (req, res) => {
     };
     try {
         const webtoon = await Webtoon.find(query);
+        log.info(`GET / 200 search webtoon. search_text:${search_text}`);
         res.status(200).json(webtoon);
     } catch (error) {
+        log.error(
+            `GET / 409 search webtoon. search_text:${search_text} ${error.message}`
+        );
         res.status(409).json({ message: error.message });
     }
 };
@@ -123,8 +140,10 @@ const getBookmarked = async (req, res) => {
     const ids = req.query.ids.split(",");
     try {
         const webtoons = await Webtoon.find({ _id: { $in: ids } });
+        log.info(`GET / 200 get bookmarked webtoon.`);
         res.status(200).json(webtoons);
     } catch (error) {
+        log.error(`GET / 409 get bookmarked webtoon. ${error.message}`);
         res.status(409).json({ message: error.message });
     }
 };
