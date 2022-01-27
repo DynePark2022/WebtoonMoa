@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const log = require("../config/logger");
 
 // Handle errors
 const handleErrors = (err) => {
@@ -47,12 +48,15 @@ const createUser = async (req, res) => {
                 httpOnly: true,
                 maxAge: dayInSec * 1000,
             });
+            log.info(`POST / 201 user created. userEmail: ${email}`);
             return res.status(201).json(user.username);
         } catch (err) {
             const errors = handleErrors(err);
+            log.error(`POST / 400 ${errors}`);
             return res.status(400).json({ errors });
         }
     }
+    log.info(`POST / 401 passwords do not match`);
     return res.status(401).send("passwords do not match");
 };
 
@@ -65,6 +69,7 @@ const loginUser = async (req, res) => {
             httpOnly: true,
             maxAge: dayInSec * 1000,
         });
+        log.info(`POST / 200 user logged in. userEmail: ${email}`);
         res.status(200).json({
             username: user.username,
             userId: user._id,
@@ -73,12 +78,14 @@ const loginUser = async (req, res) => {
         });
     } catch (err) {
         const errors = handleErrors(err);
+        log.error(`POST / 400 ${err}. userEmail: ${email}.`);
         res.status(400).json(errors);
     }
 };
 
 const logoutUser = (req, res) => {
     res.cookie("jwt", "", { maxAge: 1 });
+    log.info(`POST / 200 user logged out.`);
     res.send("logout");
 };
 

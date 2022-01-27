@@ -4,4 +4,4 @@ build
 .http
 .txt
 
-data.json
+logs/

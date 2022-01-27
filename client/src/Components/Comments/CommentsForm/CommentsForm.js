@@ -19,6 +19,7 @@ function CommentsForm({ comments, setComments, loading, error, parentId }) {
 
     const [inputValue, setInputValue] = useState(defaultInputValue);
 
+    console.log(inputValue);
     const onChange = (e) => {
         setInputValue({ ...inputValue, comment: e.target.value });
     };
