@@ -9,17 +9,14 @@ function CommentsForm({ comments, setComments, loading, error, parentId }) {
     const user = useSelector((state) => state.reducerUser);
     const { id } = useParams();
     const defaultInputValue = {
-        authorId: user._id,
+        authorId: user.userId,
         authorName: user.username,
         authorEmail: user.email,
         postId: id,
         comment: "",
         parentId,
     };
-
     const [inputValue, setInputValue] = useState(defaultInputValue);
-
-    console.log(inputValue);
     const onChange = (e) => {
         setInputValue({ ...inputValue, comment: e.target.value });
     };

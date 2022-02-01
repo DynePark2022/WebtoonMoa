@@ -14,15 +14,12 @@ function Write() {
     const defaultValue = {
         title: "",
         content: "",
-        authorId: user._id,
+        authorId: user.userId,
         authorName: user.username,
         authorEmail: user.email,
         category: "일반",
     };
     const [values, setValues] = useState(defaultValue);
-
-    console.log(user);
-    console.log(values);
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (values.title === "") {
