@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Header from "./Components/Header/Header";
@@ -38,22 +38,22 @@ function App() {
             <Header />
             <Gnb />
             <Banner />
-            <Routes>
-                <Route exact path="/" element={<Main />} />
-                <Route path="/webtoon" element={<WebtoonList />} />
-                <Route path="/webtoon/:id" element={<WebtoonDetail />} />
-                <Route path="/search/:input" element={<Search />} />
-                <Route exact path="/community" element={<Community />} />
-                <Route path="/community/:id" element={<CommunityPost />} />
-                <React.Suspense fallback={<p>loading...</p>}>
+            <Suspense fallback={<p>loading...</p>}>
+                <Routes>
+                    <Route exact path="/" element={<Main />} />
+                    <Route path="/webtoon" element={<WebtoonList />} />
+                    <Route path="/webtoon/:id" element={<WebtoonDetail />} />
+                    <Route path="/search/:input" element={<Search />} />
+                    <Route exact path="/community" element={<Community />} />
+                    <Route path="/community/:id" element={<CommunityPost />} />
                     <Route exact path="/login" element={<Login />} />
-                </React.Suspense>
-                <Route exact path="/signup" element={<Signup />} />
-                <Route element={<ProtectedRoutes />}>
-                    <Route exact path="/write" element={<Write />} />
-                    <Route exact path="/user" element={<My />} />
-                </Route>
-            </Routes>
+                    <Route exact path="/signup" element={<Signup />} />
+                    <Route element={<ProtectedRoutes />}>
+                        <Route exact path="/write" element={<Write />} />
+                        <Route exact path="/user" element={<My />} />
+                    </Route>
+                </Routes>
+            </Suspense>
             <Footer />
             <HoverButton />
         </div>
